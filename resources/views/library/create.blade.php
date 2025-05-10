@@ -72,39 +72,31 @@
 
                         <!-- Categories -->
                         <div>
-                            <x-input-label for="categories" :value="__('Categories')" />
-                            <div class="mt-1">
-                                <select id="categories" name="categories[]" class="js-example-basic-multiple w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm" multiple="multiple">
-                                    <option value="Therapy Techniques">Therapy Techniques</option>
-                                    <option value="Research">Research</option>
-                                    <option value="Case Studies">Case Studies</option>
-                                    <option value="Training Materials">Training Materials</option>
-                                    <option value="Client Resources">Client Resources</option>
-                                </select>
-                            </div>
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                                {{ __('You can select multiple categories or type to create a new one.') }}
-                            </p>
+                            <taxonomy-selector 
+                                id="categories"
+                                label="{{ __('Categories') }}"
+                                name="categories"
+                                :initial-options='@json($categories)'
+                                :initial-selected='@json(old("categories", []))'
+                                :multiple="false"
+                                :is-required="true"
+                                required-message="{{ __('Please select a category') }}"
+                                placeholder="{{ __('Select a category...') }}"
+                                help-text="{{ __('Select a category or type to create a new one.') }}">
+                            </taxonomy-selector>
                             <x-input-error :messages="$errors->get('categories')" class="mt-2" />
                         </div>
 
                         <!-- Tags -->
                         <div>
-                            <x-input-label for="tags" :value="__('Tags')" />
-                            <div class="mt-1">
-                                <select id="tags" name="tags[]" class="js-example-basic-multiple w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm" multiple="multiple">
-                                    <option value="EMDR">EMDR</option>
-                                    <option value="Trauma">Trauma</option>
-                                    <option value="Depression">Depression</option>
-                                    <option value="Anxiety">Anxiety</option>
-                                    <option value="CBT">CBT</option>
-                                    <option value="Children">Children</option>
-                                    <option value="Adults">Adults</option>
-                                </select>
-                            </div>
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                                {{ __('You can select multiple tags or type to create a new one.') }}
-                            </p>
+                            <taxonomy-selector 
+                                id="tags"
+                                label="{{ __('Tags') }}"
+                                name="tags"
+                                :initial-options='@json($tags)'
+                                :initial-selected='@json(old("tags", []))'
+                                help-text="{{ __('You can select multiple tags or type to create a new one.') }}">
+                            </taxonomy-selector>
                             <x-input-error :messages="$errors->get('tags')" class="mt-2" />
                         </div>
 
@@ -128,13 +120,6 @@
     @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Select2 for multi-select inputs
-            $('.js-example-basic-multiple').select2({
-                tags: true,
-                tokenSeparators: [','],
-                placeholder: 'Select or type to add...'
-            });
-
             // Toggle visibility of file upload and external URL based on item type
             const typeRadios = document.querySelectorAll('input[name="type"]');
             const documentUpload = document.getElementById('document_upload');
@@ -150,96 +135,6 @@
                         externalUrlInput.classList.remove('hidden');
                     }
                 });
-            });
-
-            // Using jQuery for form submission to better debug the issue
-            const form = $('form[action="{{ route('library.store') }}"]');
-            const submitButton = form.find('button[type="submit"]');
-            
-            // Add explicit type="submit" to the button if it doesn't have it
-            if (!submitButton.attr('type')) {
-                submitButton.attr('type', 'submit');
-            }
-            
-            form.on('submit', function(e) {
-                e.preventDefault(); // Prevent default form submission
-                
-                console.log('Form submission intercepted');
-                
-                // Check CSRF token
-                const csrfToken = $('input[name="_token"]').val();
-                console.log('CSRF Token exists:', !!csrfToken);
-                
-                // Check form validity
-                const isValid = this.checkValidity();
-                console.log('Form is valid:', isValid);
-                
-                if (!isValid) {
-                    console.log('Form validation errors detected');
-                    // Let the browser handle the validation
-                    return false;
-                }
-                
-                // Log form data being submitted
-                const formData = new FormData(this);
-                console.log('Form data:');
-                for (let pair of formData.entries()) {
-                    console.log(pair[0], pair[1]);
-                }
-                
-                // Submit the form using jQuery Ajax
-                $.ajax({
-                    url: form.attr('action'),
-                    method: form.attr('method'),
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    beforeSend: function() {
-                        console.log('Sending form data to server...');
-                        submitButton.prop('disabled', true).html('Saving...');
-                    },
-                    success: function(response) {
-                        console.log('Form submitted successfully', response);
-                        // Redirect to the library index
-                        window.location.href = "{{ route('library.index') }}";
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Form submission error:', error);
-                        console.error('Response:', xhr.responseText);
-                        
-                        // Display error message on the form
-                        let errorMessage = 'An error occurred while saving the item.';
-                        try {
-                            const response = JSON.parse(xhr.responseText);
-                            if (response.message) {
-                                errorMessage = response.message;
-                            } else if (response.error) {
-                                errorMessage = response.error;
-                            }
-                        } catch (e) {
-                            // If response isn't JSON, use the full text
-                            errorMessage = xhr.responseText || errorMessage;
-                        }
-                        
-                        // Create an error alert at the top of the form
-                        const errorAlert = $('<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" role="alert">' +
-                            '<strong class="font-bold">Error!</strong>' +
-                            '<span class="block sm:inline"> ' + errorMessage + '</span>' +
-                            '</div>');
-                        
-                        form.prepend(errorAlert);
-                        
-                        // Scroll to the top of the form
-                        $('html, body').animate({
-                            scrollTop: form.offset().top - 100
-                        }, 500);
-                    },
-                    complete: function() {
-                        submitButton.prop('disabled', false).html('Save Item');
-                    }
-                });
-                
-                return false; // Prevent default form submission
             });
             
             // Set an initial active radio button if none is selected

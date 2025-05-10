@@ -123,7 +123,27 @@ class LibraryItemController extends Controller
     public function create()
     {
         // No need to check admin here since it's done via middleware
-        return view('library.create');
+        
+        // Get all unique categories and tags for the form
+        $categories = LibraryItem::pluck('categories')
+            ->flatten()
+            ->filter()
+            ->unique()
+            ->values()
+            ->toArray();
+
+        $tags = LibraryItem::pluck('tags')
+            ->flatten()
+            ->filter()
+            ->unique()
+            ->values()
+            ->toArray();
+            
+        // Sort alphabetically
+        sort($categories);
+        sort($tags);
+        
+        return view('library.create', compact('categories', 'tags'));
     }
 
     /**
@@ -147,7 +167,7 @@ class LibraryItemController extends Controller
                 'title' => 'required|string|max:255',
                 'description' => 'nullable|string',
                 'type' => 'required|in:document,video',
-                'categories' => 'nullable|array',
+                'categories' => 'required|string',
                 'tags' => 'nullable|array',
                 'is_published' => 'boolean',
             ];
@@ -169,7 +189,7 @@ class LibraryItemController extends Controller
                 'title' => $validated['title'],
                 'description' => $validated['description'] ?? null,
                 'type' => $validated['type'],
-                'categories' => $validated['categories'] ?? [],
+                'categories' => [$validated['categories']], // Wrap category in array since DB expects array
                 'tags' => $validated['tags'] ?? [],
                 'is_published' => $request->has('is_published'),
                 'added_by' => Auth::id(),
@@ -305,7 +325,26 @@ class LibraryItemController extends Controller
         // No need to check admin here since it's done via middleware
         $item = LibraryItem::findOrFail($id);
         
-        return view('library.edit', compact('item'));
+        // Get all unique categories and tags for the form
+        $categories = LibraryItem::pluck('categories')
+            ->flatten()
+            ->filter()
+            ->unique()
+            ->values()
+            ->toArray();
+
+        $tags = LibraryItem::pluck('tags')
+            ->flatten()
+            ->filter()
+            ->unique()
+            ->values()
+            ->toArray();
+            
+        // Sort alphabetically
+        sort($categories);
+        sort($tags);
+        
+        return view('library.edit', compact('item', 'categories', 'tags'));
     }
 
     /**
@@ -318,25 +357,42 @@ class LibraryItemController extends Controller
         try {
             $item = LibraryItem::findOrFail($id);
 
+            // Log all incoming request data for debugging
+            Log::info('Update request data:', [
+                'all_data' => $request->all(),
+                'categories' => $request->input('categories'),
+                'raw_post' => file_get_contents('php://input')
+            ]);
+
             $validated = $request->validate([
                 'title' => 'required|string|max:255',
                 'description' => 'nullable|string',
                 'type' => 'required|in:document,video',
                 'file' => 'nullable|file|mimes:pdf,doc,docx,ppt,pptx,xls,xlsx|max:10240',
                 'external_url' => 'required_if:type,video|url|max:255',
-                'categories' => 'nullable|array',
+                'categories' => 'required|string',
                 'tags' => 'nullable|array',
                 'is_published' => 'boolean',
+            ]);
+
+            // Log validated data
+            Log::info('Validated data:', [
+                'validated' => $validated,
+                'categories' => $validated['categories']
             ]);
 
             $data = [
                 'title' => $validated['title'],
                 'description' => $validated['description'] ?? null,
                 'type' => $validated['type'],
-                'categories' => $validated['categories'] ?? [],
+                'categories' => [$validated['categories']], // Wrap category in array since DB expects array
                 'tags' => $validated['tags'] ?? [],
                 'is_published' => $request->has('is_published'),
             ];
+
+            Log::info('Data prepared for database:', [
+                'data' => $data
+            ]);
 
             // Handle file upload or external URL
             if ($validated['type'] === 'document' && $request->hasFile('file')) {
@@ -359,10 +415,18 @@ class LibraryItemController extends Controller
             }
 
             $item->update($data);
-            Log::info('Library item updated', ['item_id' => $item->id]);
+            Log::info('Library item updated', [
+                'item_id' => $item->id,
+                'updated_categories' => $item->categories
+            ]);
 
             return redirect()->route('library.index')
                 ->with('success', 'Library item updated successfully.');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            Log::error('Validation error during update:', [
+                'errors' => $e->errors()
+            ]);
+            return back()->withErrors($e->errors())->withInput();
         } catch (\Exception $e) {
             Log::error('Error updating library item', [
                 'error' => $e->getMessage(),

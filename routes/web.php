@@ -35,6 +35,15 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(func
     Route::put('/library/items/{id}', [LibraryItemController::class, 'update'])->name('library.update');
     Route::delete('/library/items/{id}', [LibraryItemController::class, 'destroy'])->name('library.destroy');
     
+    // Categories and Tags Management - Admin Only
+    Route::get('/taxonomy', [\App\Http\Controllers\AdminTaxonomyController::class, 'index'])->name('admin.taxonomy.index');
+    Route::post('/taxonomy/categories', [\App\Http\Controllers\AdminTaxonomyController::class, 'storeCategory'])->name('admin.taxonomy.categories.store');
+    Route::put('/taxonomy/categories', [\App\Http\Controllers\AdminTaxonomyController::class, 'updateCategory'])->name('admin.taxonomy.categories.update');
+    Route::delete('/taxonomy/categories', [\App\Http\Controllers\AdminTaxonomyController::class, 'destroyCategory'])->name('admin.taxonomy.categories.destroy');
+    Route::post('/taxonomy/tags', [\App\Http\Controllers\AdminTaxonomyController::class, 'storeTag'])->name('admin.taxonomy.tags.store');
+    Route::put('/taxonomy/tags', [\App\Http\Controllers\AdminTaxonomyController::class, 'updateTag'])->name('admin.taxonomy.tags.update');
+    Route::delete('/taxonomy/tags', [\App\Http\Controllers\AdminTaxonomyController::class, 'destroyTag'])->name('admin.taxonomy.tags.destroy');
+    
     // Statistics Dashboard - Admin Only
     Route::get('/stats', [StatsController::class, 'index'])->name('admin.stats');
 });

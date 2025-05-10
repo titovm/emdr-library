@@ -83,51 +83,31 @@
 
                         <!-- Categories -->
                         <div>
-                            <x-input-label for="categories" :value="__('Categories')" />
-                            <div class="mt-1">
-                                <select id="categories" name="categories[]" class="js-example-basic-multiple w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm" multiple="multiple">
-                                    <option value="Therapy Techniques" {{ in_array('Therapy Techniques', old('categories', $item->categories ?? [])) ? 'selected' : '' }}>Therapy Techniques</option>
-                                    <option value="Research" {{ in_array('Research', old('categories', $item->categories ?? [])) ? 'selected' : '' }}>Research</option>
-                                    <option value="Case Studies" {{ in_array('Case Studies', old('categories', $item->categories ?? [])) ? 'selected' : '' }}>Case Studies</option>
-                                    <option value="Training Materials" {{ in_array('Training Materials', old('categories', $item->categories ?? [])) ? 'selected' : '' }}>Training Materials</option>
-                                    <option value="Client Resources" {{ in_array('Client Resources', old('categories', $item->categories ?? [])) ? 'selected' : '' }}>Client Resources</option>
-                                    
-                                    @foreach(old('categories', $item->categories ?? []) as $category)
-                                        @if(!in_array($category, ['Therapy Techniques', 'Research', 'Case Studies', 'Training Materials', 'Client Resources']))
-                                            <option value="{{ $category }}" selected>{{ $category }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                                {{ __('You can select multiple categories or type to create a new one.') }}
-                            </p>
+                            <taxonomy-selector 
+                                id="categories"
+                                label="{{ __('Categories') }}"
+                                name="categories"
+                                :initial-options='@json($categories)'
+                                :initial-selected='@json(old("categories", $item->categories ?? []))'
+                                :multiple="false"
+                                :is-required="true"
+                                required-message="{{ __('Please select a category') }}"
+                                placeholder="{{ __('Select a category...') }}"
+                                help-text="{{ __('Select a category or type to create a new one.') }}">
+                            </taxonomy-selector>
                             <x-input-error :messages="$errors->get('categories')" class="mt-2" />
                         </div>
 
                         <!-- Tags -->
                         <div>
-                            <x-input-label for="tags" :value="__('Tags')" />
-                            <div class="mt-1">
-                                <select id="tags" name="tags[]" class="js-example-basic-multiple w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm" multiple="multiple">
-                                    <option value="EMDR" {{ in_array('EMDR', old('tags', $item->tags ?? [])) ? 'selected' : '' }}>EMDR</option>
-                                    <option value="Trauma" {{ in_array('Trauma', old('tags', $item->tags ?? [])) ? 'selected' : '' }}>Trauma</option>
-                                    <option value="Depression" {{ in_array('Depression', old('tags', $item->tags ?? [])) ? 'selected' : '' }}>Depression</option>
-                                    <option value="Anxiety" {{ in_array('Anxiety', old('tags', $item->tags ?? [])) ? 'selected' : '' }}>Anxiety</option>
-                                    <option value="CBT" {{ in_array('CBT', old('tags', $item->tags ?? [])) ? 'selected' : '' }}>CBT</option>
-                                    <option value="Children" {{ in_array('Children', old('tags', $item->tags ?? [])) ? 'selected' : '' }}>Children</option>
-                                    <option value="Adults" {{ in_array('Adults', old('tags', $item->tags ?? [])) ? 'selected' : '' }}>Adults</option>
-                                    
-                                    @foreach(old('tags', $item->tags ?? []) as $tag)
-                                        @if(!in_array($tag, ['EMDR', 'Trauma', 'Depression', 'Anxiety', 'CBT', 'Children', 'Adults']))
-                                            <option value="{{ $tag }}" selected>{{ $tag }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                                {{ __('You can select multiple tags or type to create a new one.') }}
-                            </p>
+                            <taxonomy-selector 
+                                id="tags"
+                                label="{{ __('Tags') }}"
+                                name="tags"
+                                :initial-options='@json($tags)'
+                                :initial-selected='@json(old("tags", $item->tags ?? []))'
+                                help-text="{{ __('You can select multiple tags or type to create a new one.') }}">
+                            </taxonomy-selector>
                             <x-input-error :messages="$errors->get('tags')" class="mt-2" />
                         </div>
 
@@ -155,13 +135,6 @@
     @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Select2 for multi-select inputs
-            $('.js-example-basic-multiple').select2({
-                tags: true,
-                tokenSeparators: [','],
-                placeholder: 'Select or type to add...'
-            });
-
             // Toggle visibility of file upload and external URL based on item type
             const typeRadios = document.querySelectorAll('input[name="type"]');
             const documentUpload = document.getElementById('document_upload');
