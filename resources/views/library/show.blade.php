@@ -3,11 +3,31 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <div class="flex justify-between items-center mb-4">
-                        <a href="{{ route('library.index') }}" class="text-blue-600 hover:underline">
-                            &larr; {{ __('Back to Library') }}
-                        </a>
-                        <x-language-switcher />
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="flex items-center space-x-2">
+                            <a href="{{ route('library.index') }}" class="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
+                                <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                </svg>
+                                {{ __('Back to Library') }}
+                            </a>
+                        </div>
+                        
+                        @if(auth()->check() && auth()->user()->is_admin)
+                            <div class="flex space-x-2">
+                                <a href="{{ route('library.edit', $item->id) }}" class="inline-flex items-center px-4 py-2 bg-yellow-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                                    {{ __('Edit') }}
+                                </a>
+                                
+                                <form action="{{ route('library.destroy', $item->id) }}" method="POST" class="inline" onsubmit="return confirm('{{ __('Are you sure you want to delete this item?') }}');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                                        {{ __('Delete') }}
+                                    </button>
+                                </form>
+                            </div>
+                        @endif
                     </div>
 
                     <div class="flex flex-col lg:flex-row gap-8">

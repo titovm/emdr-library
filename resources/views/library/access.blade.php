@@ -3,13 +3,12 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="max-w-xl mx-auto">
-                    <div class="flex justify-end mb-4">
-                        <x-language-switcher />
+                    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+                        
+                        <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white">
+                            {{ __('Access the Therapist Library') }}
+                        </h2>
                     </div>
-
-                    <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                        {{ __('Access the Therapist Library') }}
-                    </h2>
 
                     <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
                         {{ __('Please enter your name and email address to access the library resources.') }}
