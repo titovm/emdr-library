@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AccessToken;
+use App\Models\VisitorStat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -24,6 +25,7 @@ class LibraryAccessController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
+            'consent' => 'required|accepted',
         ]);
 
         // Generate a new access token
@@ -31,6 +33,17 @@ class LibraryAccessController extends Controller
             $validated['name'],
             $validated['email']
         );
+
+        // Record visitor statistics
+        VisitorStat::recordVisit([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'ip_address' => $request->ip(),
+            'user_agent' => $request->userAgent(),
+            'page_visited' => 'library.index',
+            'access_method' => 'token',
+            'has_consent' => true,
+        ]);
 
         // Store the token in session
         Session::put('library_access_token', $token->token);
@@ -52,6 +65,17 @@ class LibraryAccessController extends Controller
 
         // Mark the token as used
         $accessToken->markAsUsed();
+
+        // Record visitor statistics
+        VisitorStat::recordVisit([
+            'name' => $accessToken->name,
+            'email' => $accessToken->email,
+            'ip_address' => $request->ip(),
+            'user_agent' => $request->userAgent(),
+            'page_visited' => 'library.index',
+            'access_method' => 'token_link',
+            'has_consent' => true,  // Consent is implied when using a token link
+        ]);
 
         // Store the token in session
         Session::put('library_access_token', $token);

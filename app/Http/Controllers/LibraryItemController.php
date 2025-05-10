@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\LibraryItem;
+use App\Models\VisitorStat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\LibraryAccessController;
+use Illuminate\Support\Facades\Session;
 
 class LibraryItemController extends Controller
 {
@@ -33,6 +35,42 @@ class LibraryItemController extends Controller
         }
         
         return null;
+    }
+
+    /**
+     * Record visitor statistics.
+     */
+    protected function recordVisit(string $page, $item = null)
+    {
+        $accessToken = null;
+        $tokenStr = Session::get('library_access_token');
+        
+        if ($tokenStr) {
+            $accessToken = \App\Models\AccessToken::findValidToken($tokenStr);
+        }
+        
+        // Record stats based on user type
+        if (Auth::check()) {
+            VisitorStat::recordVisit([
+                'name' => Auth::user()->name,
+                'email' => Auth::user()->email,
+                'ip_address' => request()->ip(),
+                'user_agent' => request()->userAgent(),
+                'page_visited' => $page,
+                'access_method' => Auth::user()->is_admin ? 'admin' : 'user',
+                'has_consent' => true, // Admins and users implicitly provide consent
+            ]);
+        } elseif ($accessToken) {
+            VisitorStat::recordVisit([
+                'name' => $accessToken->name,
+                'email' => $accessToken->email,
+                'ip_address' => request()->ip(),
+                'user_agent' => request()->userAgent(),
+                'page_visited' => $page,
+                'access_method' => 'token',
+                'has_consent' => true, // Token holders have provided consent during signup
+            ]);
+        }
     }
 
     /**
@@ -71,6 +109,9 @@ class LibraryItemController extends Controller
             ->unique()
             ->values()
             ->toArray();
+
+        // Record the visit
+        $this->recordVisit('library.index');
 
         return view('library.index', compact('items', 'categories', 'tags'));
     }
@@ -205,6 +246,9 @@ class LibraryItemController extends Controller
             abort(404);
         }
 
+        // Record the visit
+        $this->recordVisit('library.show.'.$id, $item);
+
         return view('library.show', compact('item'));
     }
 
@@ -230,6 +274,9 @@ class LibraryItemController extends Controller
         if ($item->type !== 'document' || !$item->file_path) {
             abort(404);
         }
+
+        // Record the download
+        $this->recordVisit('library.download.'.$id, $item);
 
         try {
             return Storage::disk('local')->download(
@@ -396,6 +443,9 @@ class LibraryItemController extends Controller
             ->values()
             ->toArray();
 
+        // Record the visit
+        $this->recordVisit('library.category.'.$category);
+
         return view('library.index', compact('items', 'categories', 'tags'))
             ->with('activeCategory', $category);
     }
@@ -435,6 +485,9 @@ class LibraryItemController extends Controller
             ->unique()
             ->values()
             ->toArray();
+
+        // Record the visit
+        $this->recordVisit('library.tag.'.$tag);
 
         return view('library.index', compact('items', 'categories', 'tags'))
             ->with('activeTag', $tag);

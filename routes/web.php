@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\LibraryItemController;
 use App\Http\Controllers\LibraryAccessController;
+use App\Http\Controllers\StatsController;
 use App\Http\Middleware\AdminMiddleware;
 
 Route::get('/', function () {
@@ -29,6 +30,9 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(func
     Route::get('/library/items/{id}/edit', [LibraryItemController::class, 'edit'])->name('library.edit');
     Route::put('/library/items/{id}', [LibraryItemController::class, 'update'])->name('library.update');
     Route::delete('/library/items/{id}', [LibraryItemController::class, 'destroy'])->name('library.destroy');
+    
+    // Statistics Dashboard - Admin Only
+    Route::get('/stats', [StatsController::class, 'index'])->name('admin.stats');
 });
 
 // User Setting Routes - Auth Only
