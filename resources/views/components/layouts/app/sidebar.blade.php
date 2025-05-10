@@ -13,13 +13,28 @@
 
             @auth
                 @if(auth()->user()->is_admin)
+                <!-- Admin Navigation -->
                 <flux:navlist variant="outline">
-                    <flux:navlist.group :heading="__('Platform')" class="grid">
+                    <flux:navlist.group :heading="__('Admin Panel')" class="grid">
                         <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
-                        <flux:navlist.item icon="book-open" :href="route('library.index')" :current="request()->routeIs('library.*')">{{ __('Library') }}</flux:navlist.item>
+                        <flux:navlist.item icon="book-open" :href="route('library.index')" :current="request()->routeIs('library.*')">{{ __('Manage Library') }}</flux:navlist.item>
+                    </flux:navlist.group>
+                </flux:navlist>
+                @else
+                <!-- Regular User Navigation -->
+                <flux:navlist variant="outline">
+                    <flux:navlist.group :heading="__('Library')" class="grid">
+                        <flux:navlist.item icon="book-open" :href="route('library.index')" :current="request()->routeIs('library.*')">{{ __('Browse Library') }}</flux:navlist.item>
                     </flux:navlist.group>
                 </flux:navlist>
                 @endif
+            @else
+                <!-- Guest Navigation - Show library access form link -->
+                <flux:navlist variant="outline">
+                    <flux:navlist.group :heading="__('Library Access')" class="grid">
+                        <flux:navlist.item icon="book-open" :href="route('library.access')" :current="request()->routeIs('library.access')">{{ __('Access Library') }}</flux:navlist.item>
+                    </flux:navlist.group>
+                </flux:navlist>
             @endauth
 
             <flux:spacer />

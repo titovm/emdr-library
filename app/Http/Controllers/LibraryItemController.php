@@ -12,11 +12,11 @@ use App\Http\Controllers\LibraryAccessController;
 class LibraryItemController extends Controller
 {
     /**
-     * Constructor to check access for library methods.
+     * Constructor to handle route-level middleware
      */
     public function __construct()
     {
-        // We'll handle authentication in routes instead of here
+        // Constructor no longer needs to handle auth checks as they are in route middleware
     }
 
     /**
@@ -24,8 +24,12 @@ class LibraryItemController extends Controller
      */
     protected function checkLibraryAccess()
     {
-        if (!LibraryAccessController::hasAccess() && !Auth::check()) {
-            return redirect()->route('library.access');
+        // For regular users accessing the library
+        if (!Auth::check()) {
+            // If they're not authenticated, check if they have a valid access token
+            if (!LibraryAccessController::hasAccess()) {
+                return redirect()->route('library.access');
+            }
         }
         
         return null;
@@ -36,28 +40,32 @@ class LibraryItemController extends Controller
      */
     public function index(Request $request)
     {
-        // Check access first
-        if ($redirect = $this->checkLibraryAccess()) {
-            return $redirect;
+        // Check access first for non-admin users
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            if ($redirect = $this->checkLibraryAccess()) {
+                return $redirect;
+            }
         }
 
-        $items = LibraryItem::published()
-            ->orderBy('created_at', 'desc')
-            ->paginate(12);
+        // All users see published items
+        $query = LibraryItem::query();
+        
+        // Admin users can see all items, others only see published
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            $query->where('is_published', true);
+        }
+        
+        $items = $query->orderBy('created_at', 'desc')->paginate(12);
 
-        // Get all unique categories and tags for filtering
-        $categories = LibraryItem::published()
-            ->get()
-            ->pluck('categories')
+        // Get all unique categories and tags for the sidebar
+        $categories = LibraryItem::pluck('categories')
             ->flatten()
             ->filter()
             ->unique()
             ->values()
             ->toArray();
 
-        $tags = LibraryItem::published()
-            ->get()
-            ->pluck('tags')
+        $tags = LibraryItem::pluck('tags')
             ->flatten()
             ->filter()
             ->unique()
@@ -68,92 +76,23 @@ class LibraryItemController extends Controller
     }
 
     /**
-     * Filter items by category.
-     */
-    public function filterByCategory(Request $request, $category)
-    {
-        // Check access first
-        if ($redirect = $this->checkLibraryAccess()) {
-            return $redirect;
-        }
-
-        $items = LibraryItem::published()
-            ->inCategory($category)
-            ->orderBy('created_at', 'desc')
-            ->paginate(12);
-
-        $categories = LibraryItem::published()
-            ->get()
-            ->pluck('categories')
-            ->flatten()
-            ->filter()
-            ->unique()
-            ->values()
-            ->toArray();
-
-        $tags = LibraryItem::published()
-            ->get()
-            ->pluck('tags')
-            ->flatten()
-            ->filter()
-            ->unique()
-            ->values()
-            ->toArray();
-
-        return view('library.index', compact('items', 'categories', 'tags'))
-            ->with('activeCategory', $category);
-    }
-
-    /**
-     * Filter items by tag.
-     */
-    public function filterByTag(Request $request, $tag)
-    {
-        // Check access first
-        if ($redirect = $this->checkLibraryAccess()) {
-            return $redirect;
-        }
-
-        $items = LibraryItem::published()
-            ->withTag($tag)
-            ->orderBy('created_at', 'desc')
-            ->paginate(12);
-
-        $categories = LibraryItem::published()
-            ->get()
-            ->pluck('categories')
-            ->flatten()
-            ->filter()
-            ->unique()
-            ->values()
-            ->toArray();
-
-        $tags = LibraryItem::published()
-            ->get()
-            ->pluck('tags')
-            ->flatten()
-            ->filter()
-            ->unique()
-            ->values()
-            ->toArray();
-
-        return view('library.index', compact('items', 'categories', 'tags'))
-            ->with('activeTag', $tag);
-    }
-
-    /**
      * Show the form for creating a new resource.
+     * Admin only method
      */
     public function create()
     {
+        // No need to check admin here since it's done via middleware
         return view('library.create');
     }
 
     /**
      * Store a newly created resource in storage.
+     * Admin only method
      */
     public function store(Request $request)
     {
+        // No need to check admin here since it's done via middleware
+        
         // Log that we've entered the store method
         Log::info('Entered LibraryItemController@store method', [
             'request_method' => $request->method(),
@@ -252,14 +191,17 @@ class LibraryItemController extends Controller
      */
     public function show(string $id)
     {
-        // Check access first
-        if ($redirect = $this->checkLibraryAccess()) {
-            return $redirect;
+        // Check access for non-admin users
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            if ($redirect = $this->checkLibraryAccess()) {
+                return $redirect;
+            }
         }
 
         $item = LibraryItem::findOrFail($id);
 
-        if (!$item->is_published && !Auth::check()) {
+        // Non-admin users can only see published items
+        if (!$item->is_published && (!Auth::check() || !Auth::user()->is_admin)) {
             abort(404);
         }
 
@@ -271,14 +213,17 @@ class LibraryItemController extends Controller
      */
     public function download(string $id)
     {
-        // Check access first
-        if ($redirect = $this->checkLibraryAccess()) {
-            return $redirect;
+        // Check access for non-admin users
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            if ($redirect = $this->checkLibraryAccess()) {
+                return $redirect;
+            }
         }
 
         $item = LibraryItem::findOrFail($id);
 
-        if (!$item->is_published && !Auth::check()) {
+        // Non-admin users can only download published items
+        if (!$item->is_published && (!Auth::check() || !Auth::user()->is_admin)) {
             abort(404);
         }
 
@@ -306,9 +251,11 @@ class LibraryItemController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     * Admin only method
      */
     public function edit(string $id)
     {
+        // No need to check admin here since it's done via middleware
         $item = LibraryItem::findOrFail($id);
         
         return view('library.edit', compact('item'));
@@ -316,9 +263,11 @@ class LibraryItemController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * Admin only method
      */
     public function update(Request $request, string $id)
     {
+        // No need to check admin here since it's done via middleware
         try {
             $item = LibraryItem::findOrFail($id);
 
@@ -370,8 +319,8 @@ class LibraryItemController extends Controller
         } catch (\Exception $e) {
             Log::error('Error updating library item', [
                 'error' => $e->getMessage(),
-                'trace' => $e->getTraceAsString(),
-                'item_id' => $id
+                'item_id' => $id,
+                'trace' => $e->getTraceAsString()
             ]);
             
             return back()->withInput()->withErrors([
@@ -382,20 +331,21 @@ class LibraryItemController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * Admin only method
      */
     public function destroy(string $id)
     {
+        // No need to check admin here since it's done via middleware
         try {
             $item = LibraryItem::findOrFail($id);
-
-            // Delete the file if it's a document
+            
+            // If it's a document, delete the file from storage
             if ($item->type === 'document' && $item->file_path) {
                 Storage::disk('local')->delete($item->file_path);
             }
-
+            
             $item->delete();
-            Log::info('Library item deleted', ['item_id' => $id]);
-
+            
             return redirect()->route('library.index')
                 ->with('success', 'Library item deleted successfully.');
         } catch (\Exception $e) {
@@ -408,5 +358,85 @@ class LibraryItemController extends Controller
                 'error' => 'An error occurred while deleting the library item: ' . $e->getMessage()
             ]);
         }
+    }
+
+    /**
+     * Filter library items by category.
+     */
+    public function filterByCategory(string $category)
+    {
+        // Check access for non-admin users
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            if ($redirect = $this->checkLibraryAccess()) {
+                return $redirect;
+            }
+        }
+
+        $query = LibraryItem::whereJsonContains('categories', $category);
+        
+        // Admin users can see all items, others only see published
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            $query->where('is_published', true);
+        }
+        
+        $items = $query->orderBy('created_at', 'desc')->paginate(12);
+
+        // Get all unique categories and tags for the sidebar
+        $categories = LibraryItem::pluck('categories')
+            ->flatten()
+            ->filter()
+            ->unique()
+            ->values()
+            ->toArray();
+
+        $tags = LibraryItem::pluck('tags')
+            ->flatten()
+            ->filter()
+            ->unique()
+            ->values()
+            ->toArray();
+
+        return view('library.index', compact('items', 'categories', 'tags'))
+            ->with('activeCategory', $category);
+    }
+
+    /**
+     * Filter library items by tag.
+     */
+    public function filterByTag(string $tag)
+    {
+        // Check access for non-admin users
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            if ($redirect = $this->checkLibraryAccess()) {
+                return $redirect;
+            }
+        }
+
+        $query = LibraryItem::whereJsonContains('tags', $tag);
+        
+        // Admin users can see all items, others only see published
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            $query->where('is_published', true);
+        }
+        
+        $items = $query->orderBy('created_at', 'desc')->paginate(12);
+
+        // Get all unique categories and tags for the sidebar
+        $categories = LibraryItem::pluck('categories')
+            ->flatten()
+            ->filter()
+            ->unique()
+            ->values()
+            ->toArray();
+
+        $tags = LibraryItem::pluck('tags')
+            ->flatten()
+            ->filter()
+            ->unique()
+            ->values()
+            ->toArray();
+
+        return view('library.index', compact('items', 'categories', 'tags'))
+            ->with('activeTag', $tag);
     }
 }
