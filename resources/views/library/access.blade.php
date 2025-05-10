@@ -3,6 +3,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="max-w-xl mx-auto">
+                    <div class="flex justify-end mb-4">
+                        <x-language-switcher />
+                    </div>
+
                     <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
                         {{ __('Access the Therapist Library') }}
                     </h2>
@@ -50,6 +54,20 @@
                                 </span>
                             </label>
                             <x-input-error :messages="$errors->get('consent')" class="mt-2" />
+                        </div>
+                        
+                        <!-- Non-Disclosure Agreement Checkbox -->
+                        <div class="mt-4">
+                            <p class="mb-2 text-sm font-medium text-gray-800 dark:text-gray-300">
+                                {{ __('Warning! Access to the library is intended for your personal use only. By receiving it, you accept the non-disclosure agreement. In case of its publication in open sources, we will be forced to terminate this service.') }}
+                            </p>
+                            <label for="nda_consent" class="inline-flex items-center">
+                                <input id="nda_consent" type="checkbox" name="nda_consent" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" required>
+                                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">
+                                    {{ __('Yes, I agree to the non-disclosure terms') }}
+                                </span>
+                            </label>
+                            <x-input-error :messages="$errors->get('nda_consent')" class="mt-2" />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">

@@ -26,6 +26,7 @@ class LibraryAccessController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'consent' => 'required|accepted',
+            'nda_consent' => 'required|accepted',
         ]);
 
         // Generate a new access token

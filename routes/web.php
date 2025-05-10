@@ -5,7 +5,11 @@ use Livewire\Volt\Volt;
 use App\Http\Controllers\LibraryItemController;
 use App\Http\Controllers\LibraryAccessController;
 use App\Http\Controllers\StatsController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Middleware\AdminMiddleware;
+
+// Language switch route
+Route::get('/language/{locale}', [LanguageController::class, 'switchLanguage'])->name('language.switch');
 
 Route::get('/', function () {
     return view('welcome');
