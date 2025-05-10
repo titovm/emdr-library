@@ -11,12 +11,16 @@
                 <x-app-logo />
             </a>
 
-            <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Platform')" class="grid">
-                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
-                    <flux:navlist.item icon="book-open" :href="route('library.index')" :current="request()->routeIs('library.*')">{{ __('Library') }}</flux:navlist.item>
-                </flux:navlist.group>
-            </flux:navlist>
+            @auth
+                @if(auth()->user()->is_admin)
+                <flux:navlist variant="outline">
+                    <flux:navlist.group :heading="__('Platform')" class="grid">
+                        <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
+                        <flux:navlist.item icon="book-open" :href="route('library.index')" :current="request()->routeIs('library.*')">{{ __('Library') }}</flux:navlist.item>
+                    </flux:navlist.group>
+                </flux:navlist>
+                @endif
+            @endauth
 
             <flux:spacer />
 
