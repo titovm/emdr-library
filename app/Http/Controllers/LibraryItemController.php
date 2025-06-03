@@ -206,10 +206,10 @@ class LibraryItemController extends Controller
                         'mime_type' => $request->file('file')->getMimeType(),
                     ]);
                     
-                    // Use the local disk instead of Yandex
-                    $path = $request->file('file')->store('documents', 'local');
+                    // Use Yandex S3 storage
+                    $path = $request->file('file')->store('documents', 'yandex');
                     $data['file_path'] = $path;
-                    Log::info('File uploaded successfully', ['path' => $path]);
+                    Log::info('File uploaded successfully to Yandex S3', ['path' => $path]);
                 } catch (\Exception $e) {
                     Log::error('Failed to upload file', [
                         'error' => $e->getMessage(),
@@ -299,7 +299,7 @@ class LibraryItemController extends Controller
         $this->recordVisit('library.download.'.$id, $item);
 
         try {
-            return Storage::disk('local')->download(
+            return Storage::disk('yandex')->download(
                 $item->file_path,
                 $item->title . '.' . pathinfo($item->file_path, PATHINFO_EXTENSION)
             );
@@ -398,10 +398,10 @@ class LibraryItemController extends Controller
             if ($validated['type'] === 'document' && $request->hasFile('file')) {
                 // Delete old file if exists
                 if ($item->file_path) {
-                    Storage::disk('local')->delete($item->file_path);
+                    Storage::disk('yandex')->delete($item->file_path);
                 }
                 
-                $path = $request->file('file')->store('documents', 'local');
+                $path = $request->file('file')->store('documents', 'yandex');
                 $data['file_path'] = $path;
                 Log::info('File updated successfully', ['path' => $path]);
             } elseif ($validated['type'] === 'video') {
@@ -409,7 +409,7 @@ class LibraryItemController extends Controller
                 
                 // Clear file path if switching from document to video
                 if ($item->type === 'document' && $item->file_path) {
-                    Storage::disk('local')->delete($item->file_path);
+                    Storage::disk('yandex')->delete($item->file_path);
                     $data['file_path'] = null;
                 }
             }
@@ -450,19 +450,55 @@ class LibraryItemController extends Controller
         try {
             $item = LibraryItem::findOrFail($id);
             
+            Log::info('Attempting to delete library item', [
+                'item_id' => $id,
+                'item_type' => $item->type,
+                'file_path' => $item->file_path,
+                'title' => $item->title
+            ]);
+            
             // If it's a document, delete the file from storage
             if ($item->type === 'document' && $item->file_path) {
-                Storage::disk('local')->delete($item->file_path);
+                try {
+                    $deleted = Storage::disk('yandex')->delete($item->file_path);
+                    
+                    if ($deleted) {
+                        Log::info('File deleted successfully from Yandex S3', [
+                            'file_path' => $item->file_path,
+                            'item_id' => $id
+                        ]);
+                    } else {
+                        Log::warning('File deletion returned false (file may not exist)', [
+                            'file_path' => $item->file_path,
+                            'item_id' => $id
+                        ]);
+                    }
+                } catch (\Exception $fileError) {
+                    Log::error('Error deleting file from Yandex S3', [
+                        'error' => $fileError->getMessage(),
+                        'file_path' => $item->file_path,
+                        'item_id' => $id
+                    ]);
+                    
+                    // Don't stop the deletion process if file deletion fails
+                    // The database record should still be deleted
+                }
             }
             
             $item->delete();
             
+            Log::info('Library item deleted successfully', [
+                'item_id' => $id,
+                'title' => $item->title
+            ]);
+            
             return redirect()->route('library.index')
-                ->with('success', 'Library item deleted successfully.');
+                ->with('success', 'Library item and associated file deleted successfully.');
         } catch (\Exception $e) {
             Log::error('Error deleting library item', [
                 'error' => $e->getMessage(),
-                'item_id' => $id
+                'item_id' => $id,
+                'trace' => $e->getTraceAsString()
             ]);
             
             return back()->withErrors([

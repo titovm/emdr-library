@@ -11,6 +11,71 @@ use App\Http\Middleware\AdminMiddleware;
 // Language switch route
 Route::get('/language/{locale}', [LanguageController::class, 'switchLanguage'])->name('language.switch');
 
+// Test route for file deletion (temporary)
+Route::get('/test-file-deletion', function () {
+    if (!auth()->check() || !auth()->user()->is_admin) {
+        abort(403, 'Admin access required');
+    }
+    
+    try {
+        $disk = Storage::disk('yandex');
+        
+        $output = [];
+        $output[] = '=== File Deletion Test ===';
+        
+        // Create test file
+        $testFileName = 'test-deletion-' . time() . '.txt';
+        $testContent = 'This file will be deleted during testing';
+        
+        $output[] = 'Creating test file: ' . $testFileName;
+        $created = $disk->put($testFileName, $testContent);
+        
+        if ($created) {
+            $output[] = '✅ Test file created successfully';
+            
+            // Test deletion
+            $deleted = $disk->delete($testFileName);
+            
+            if ($deleted) {
+                $output[] = '✅ File deleted successfully';
+            } else {
+                $output[] = '❌ File deletion returned false';
+            }
+            
+            // Check if file still exists
+            if (!$disk->exists($testFileName)) {
+                $output[] = '✅ File confirmed deleted from storage';
+            } else {
+                $output[] = '❌ File still exists after deletion';
+            }
+        } else {
+            $output[] = '❌ Failed to create test file';
+        }
+        
+        // List existing library items with files
+        $output[] = '';
+        $output[] = '=== Existing Library Items with Files ===';
+        $items = \App\Models\LibraryItem::where('type', 'document')
+                                       ->whereNotNull('file_path')
+                                       ->where('file_path', '!=', '')
+                                       ->get();
+        
+        $output[] = 'Found ' . $items->count() . ' library items with files:';
+        
+        foreach ($items as $item) {
+            $exists = $disk->exists($item->file_path);
+            $status = $exists ? '✅ EXISTS' : '❌ MISSING';
+            $output[] = "ID {$item->id}: {$item->title}";
+            $output[] = "  File: {$item->file_path} [{$status}]";
+        }
+        
+    } catch (\Exception $e) {
+        $output = ['❌ Error: ' . $e->getMessage()];
+    }
+    
+    return response('<pre>' . implode("\n", $output) . '</pre>');
+})->middleware('auth');
+
 Route::get('/', function () {
     return view('welcome');
 })->name('home');

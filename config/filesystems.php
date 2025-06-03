@@ -66,10 +66,10 @@ return [
             'secret' => env('YANDEX_SECRET_ACCESS_KEY'),
             'region' => env('YANDEX_REGION', 'ru-central1'),
             'bucket' => env('YANDEX_BUCKET'),
-            'url' => env('YANDEX_URL', 'https://storage.yandexcloud.net'),
+            'url' => env('YANDEX_URL', null),
             'endpoint' => env('YANDEX_ENDPOINT', 'https://storage.yandexcloud.net'),
             'use_path_style_endpoint' => env('YANDEX_USE_PATH_STYLE_ENDPOINT', true),
-            'throw' => false,
+            'throw' => true,
             'report' => false,
         ],
 
