@@ -30,44 +30,40 @@
                             <x-input-error :messages="$errors->get('description')" class="mt-2" />
                         </div>
 
-                        <!-- Item Type -->
-                        <div>
-                            <x-input-label :value="__('Item Type')" />
-                            <div class="mt-2 space-y-2">
-                                <div class="flex items-center">
-                                    <input id="type_document" name="type" type="radio" value="document" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500" {{ old('type') == 'document' ? 'checked' : '' }} required>
-                                    <label for="type_document" class="ml-3 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        {{ __('Document (PDF, Office documents)') }}
-                                    </label>
-                                </div>
-                                <div class="flex items-center">
-                                    <input id="type_video" name="type" type="radio" value="video" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500" {{ old('type') == 'video' ? 'checked' : '' }}>
-                                    <label for="type_video" class="ml-3 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        {{ __('Video (YouTube, Vimeo, etc.)') }}
-                                    </label>
-                                </div>
+                        <!-- Document Files -->
+                        <div id="files_section">
+                            <div class="flex items-center justify-between">
+                                <x-input-label :value="__('app.documents')" />
+                                <button type="button" id="add_file_btn" class="px-3 py-1 text-xs bg-indigo-600 text-white rounded hover:bg-indigo-700">
+                                    {{ __('app.add_files') }}
+                                </button>
                             </div>
-                            <x-input-error :messages="$errors->get('type')" class="mt-2" />
+                            <div id="files_container" class="mt-2 space-y-3">
+                                <!-- File inputs will be added here dynamically -->
+                            </div>
+                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                                {{ __('Accepted formats: PDF, DOC, DOCX, PPT, PPTX, XLS, XLSX. Max size: 10MB per file.') }}
+                            </p>
+                            <x-input-error :messages="$errors->get('files')" class="mt-2" />
+                            <x-input-error :messages="$errors->get('files.*')" class="mt-2" />
                         </div>
 
-                        <!-- Document File Upload (shown only for document type) -->
-                        <div id="document_upload" class="{{ old('type') != 'document' ? 'hidden' : '' }}">
-                            <x-input-label for="file" :value="__('Document File')" />
-                            <input id="file" name="file" type="file" class="mt-1 block w-full text-sm text-gray-500 dark:text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 dark:file:bg-indigo-900 file:text-indigo-700 dark:file:text-indigo-300 hover:file:bg-indigo-100 dark:hover:file:bg-indigo-800">
+                        <!-- Video URLs -->
+                        <div id="videos_section">
+                            <div class="flex items-center justify-between">
+                                <x-input-label :value="__('app.videos')" />
+                                <button type="button" id="add_video_btn" class="px-3 py-1 text-xs bg-indigo-600 text-white rounded hover:bg-indigo-700">
+                                    {{ __('app.add_videos') }}
+                                </button>
+                            </div>
+                            <div id="videos_container" class="mt-2 space-y-3">
+                                <!-- Video inputs will be added here dynamically -->
+                            </div>
                             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                                {{ __('Accepted formats: PDF, DOC, DOCX, PPT, PPTX, XLS, XLSX. Max size: 10MB.') }}
+                                {{ __('Enter URLs for videos (YouTube, Vimeo, etc.).') }}
                             </p>
-                            <x-input-error :messages="$errors->get('file')" class="mt-2" />
-                        </div>
-
-                        <!-- External URL (shown only for video type) -->
-                        <div id="external_url_input" class="{{ old('type') != 'video' ? 'hidden' : '' }}">
-                            <x-input-label for="external_url" :value="__('Video URL')" />
-                            <x-text-input id="external_url" name="external_url" type="url" class="mt-1 block w-full" :value="old('external_url')" placeholder="https://www.youtube.com/watch?v=..." />
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                                {{ __('Enter the URL for the video (YouTube, Vimeo, etc.).') }}
-                            </p>
-                            <x-input-error :messages="$errors->get('external_url')" class="mt-2" />
+                            <x-input-error :messages="$errors->get('videos')" class="mt-2" />
+                            <x-input-error :messages="$errors->get('videos.*')" class="mt-2" />
                         </div>
 
                         <!-- Categories -->
@@ -120,27 +116,66 @@
     @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Toggle visibility of file upload and external URL based on item type
-            const typeRadios = document.querySelectorAll('input[name="type"]');
-            const documentUpload = document.getElementById('document_upload');
-            const externalUrlInput = document.getElementById('external_url_input');
+            // Add file input functionality
+            const addFileBtn = document.getElementById('add_file_btn');
+            const filesContainer = document.getElementById('files_container');
 
-            typeRadios.forEach(function(radio) {
-                radio.addEventListener('change', function() {
-                    if (this.value === 'document') {
-                        documentUpload.classList.remove('hidden');
-                        externalUrlInput.classList.add('hidden');
-                    } else {
-                        documentUpload.classList.add('hidden');
-                        externalUrlInput.classList.remove('hidden');
-                    }
+            addFileBtn.addEventListener('click', function() {
+                const fileDiv = document.createElement('div');
+                fileDiv.className = 'flex items-center space-x-3';
+                fileDiv.innerHTML = `
+                    <input type="file" name="files[]" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx" 
+                           class="flex-1 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                    <button type="button" class="remove-file-btn px-2 py-1 text-xs bg-red-600 text-white rounded hover:bg-red-700">
+                        {{ __('app.remove') }}
+                    </button>
+                `;
+                filesContainer.appendChild(fileDiv);
+
+                // Add remove functionality
+                fileDiv.querySelector('.remove-file-btn').addEventListener('click', function() {
+                    fileDiv.remove();
                 });
             });
-            
-            // Set an initial active radio button if none is selected
-            if (!$('input[name="type"]:checked').length) {
-                $('#type_document').prop('checked', true).trigger('change');
-            }
+
+            // Add video input functionality
+            const addVideoBtn = document.getElementById('add_video_btn');
+            const videosContainer = document.getElementById('videos_container');
+
+            addVideoBtn.addEventListener('click', function() {
+                const videoDiv = document.createElement('div');
+                videoDiv.className = 'flex items-center space-x-3';
+                videoDiv.innerHTML = `
+                    <input type="url" name="videos[]" placeholder="{{ __('Enter video URL...') }}"
+                           class="flex-1 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                    <button type="button" class="remove-video-btn px-2 py-1 text-xs bg-red-600 text-white rounded hover:bg-red-700">
+                        {{ __('app.remove') }}
+                    </button>
+                `;
+                videosContainer.appendChild(videoDiv);
+
+                // Add remove functionality
+                videoDiv.querySelector('.remove-video-btn').addEventListener('click', function() {
+                    videoDiv.remove();
+                });
+            });
+
+            // Add initial file and video inputs if there are old values
+            @if(old('files'))
+                @foreach(old('files') as $index => $file)
+                    addFileBtn.click();
+                @endforeach
+            @endif
+
+            @if(old('videos'))
+                @foreach(old('videos') as $index => $video)
+                    addVideoBtn.click();
+                    const lastVideoInput = videosContainer.lastElementChild.querySelector('input[type="url"]');
+                    if (lastVideoInput) {
+                        lastVideoInput.value = '{{ $video }}';
+                    }
+                @endforeach
+            @endif
         });
     </script>
     @endpush

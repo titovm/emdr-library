@@ -98,6 +98,33 @@
                                                         {{ $item->created_at->format('M d, Y') }}
                                                     </span>
                                                 </div>
+
+                                                <!-- File counts -->
+                                                @if($item->files && $item->files->count() > 0)
+                                                    @php 
+                                                        $documentCount = $item->files->where('type', 'document')->count();
+                                                        $videoCount = $item->files->where('type', 'video')->count();
+                                                    @endphp
+                                                    <div class="flex space-x-4 text-sm text-gray-500 dark:text-gray-400 mb-3">
+                                                        @if($documentCount > 0)
+                                                            <span class="flex items-center">
+                                                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
+                                                                </svg>
+                                                                {{ $documentCount }} {{ __('app.documents') }}
+                                                            </span>
+                                                        @endif
+                                                        @if($videoCount > 0)
+                                                            <span class="flex items-center">
+                                                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                                                    <path d="M2 6a2 2 0 012-2h6l2 2h6a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/>
+                                                                    <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 10l-4-4-6 6h8a1 1 0 001-1z"/>
+                                                                </svg>
+                                                                {{ $videoCount }} {{ __('app.videos') }}
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                @endif
                                                 
                                                 <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
                                                     {{ Str::limit($item->description, 100) }}

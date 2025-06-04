@@ -31,54 +31,84 @@
                             <x-input-error :messages="$errors->get('description')" class="mt-2" />
                         </div>
 
-                        <!-- Item Type -->
+                        <!-- Existing Files -->
+                        @if($item->files && $item->files->count() > 0)
                         <div>
-                            <x-input-label :value="__('Item Type')" />
+                            <x-input-label :value="__('Current Files')" />
                             <div class="mt-2 space-y-2">
-                                <div class="flex items-center">
-                                    <input id="type_document" name="type" type="radio" value="document" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500" {{ old('type', $item->type) == 'document' ? 'checked' : '' }} required>
-                                    <label for="type_document" class="ml-3 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        {{ __('Document (PDF, Office documents)') }}
-                                    </label>
+                                @foreach($item->files as $file)
+                                <div class="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-md">
+                                    <div class="flex items-center space-x-3">
+                                        @if($file->type === 'document')
+                                            <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
+                                            </svg>
+                                        @else
+                                            <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
+                                            </svg>
+                                        @endif
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">{{ $file->name }}</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">
+                                                {{ ucfirst($file->type) }}
+                                                @if($file->type === 'document' && $file->formatted_file_size)
+                                                    • {{ $file->formatted_file_size }}
+                                                @endif
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        @if($file->type === 'document')
+                                            <a href="{{ route('library.file.download', $file->id) }}" class="text-indigo-600 hover:text-indigo-800 text-sm">{{ __('Download') }}</a>
+                                        @else
+                                            <a href="{{ $file->external_url }}" target="_blank" class="text-indigo-600 hover:text-indigo-800 text-sm">{{ __('View') }}</a>
+                                        @endif
+                                        <label class="flex items-center">
+                                            <input type="checkbox" name="delete_files[]" value="{{ $file->id }}" class="rounded border-gray-300 text-red-600 shadow-sm focus:ring-red-500">
+                                            <span class="ml-1 text-xs text-red-600">{{ __('app.remove') }}</span>
+                                        </label>
+                                    </div>
                                 </div>
-                                <div class="flex items-center">
-                                    <input id="type_video" name="type" type="radio" value="video" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500" {{ old('type', $item->type) == 'video' ? 'checked' : '' }}>
-                                    <label for="type_video" class="ml-3 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        {{ __('Video (YouTube, Vimeo, etc.)') }}
-                                    </label>
-                                </div>
+                                @endforeach
                             </div>
-                            <x-input-error :messages="$errors->get('type')" class="mt-2" />
+                        </div>
+                        @endif
+
+                        <!-- Add New Document Files -->
+                        <div id="files_section">
+                            <div class="flex items-center justify-between">
+                                <x-input-label :value="__('Add New Documents')" />
+                                <button type="button" id="add_file_btn" class="px-3 py-1 text-xs bg-indigo-600 text-white rounded hover:bg-indigo-700">
+                                    {{ __('app.add_files') }}
+                                </button>
+                            </div>
+                            <div id="files_container" class="mt-2 space-y-3">
+                                <!-- File inputs will be added here dynamically -->
+                            </div>
+                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                                {{ __('Accepted formats: PDF, DOC, DOCX, PPT, PPTX, XLS, XLSX. Max size: 10MB per file.') }}
+                            </p>
+                            <x-input-error :messages="$errors->get('files')" class="mt-2" />
+                            <x-input-error :messages="$errors->get('files.*')" class="mt-2" />
                         </div>
 
-                        <!-- Document File Upload (shown only for document type) -->
-                        <div id="document_upload" class="{{ old('type', $item->type) != 'document' ? 'hidden' : '' }}">
-                            <x-input-label for="file" :value="__('Document File')" />
-                            
-                            @if($item->type == 'document' && $item->file_path)
-                                <div class="mb-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-md">
-                                    <p class="text-sm">
-                                        {{ __('Current file:') }} 
-                                        <span class="font-semibold">{{ basename($item->file_path) }}</span>
-                                    </p>
-                                </div>
-                            @endif
-                            
-                            <input id="file" name="file" type="file" class="mt-1 block w-full text-sm text-gray-500 dark:text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 dark:file:bg-indigo-900 file:text-indigo-700 dark:file:text-indigo-300 hover:file:bg-indigo-100 dark:hover:file:bg-indigo-800">
+                        <!-- Add New Video URLs -->
+                        <div id="videos_section">
+                            <div class="flex items-center justify-between">
+                                <x-input-label :value="__('Add New Videos')" />
+                                <button type="button" id="add_video_btn" class="px-3 py-1 text-xs bg-indigo-600 text-white rounded hover:bg-indigo-700">
+                                    {{ __('app.add_videos') }}
+                                </button>
+                            </div>
+                            <div id="videos_container" class="mt-2 space-y-3">
+                                <!-- Video inputs will be added here dynamically -->
+                            </div>
                             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                                {{ __('Leave empty to keep the current file. Accepted formats: PDF, DOC, DOCX, PPT, PPTX, XLS, XLSX. Max size: 10MB.') }}
+                                {{ __('Enter URLs for videos (YouTube, Vimeo, etc.).') }}
                             </p>
-                            <x-input-error :messages="$errors->get('file')" class="mt-2" />
-                        </div>
-
-                        <!-- External URL (shown only for video type) -->
-                        <div id="external_url_input" class="{{ old('type', $item->type) != 'video' ? 'hidden' : '' }}">
-                            <x-input-label for="external_url" :value="__('Video URL')" />
-                            <x-text-input id="external_url" name="external_url" type="url" class="mt-1 block w-full" :value="old('external_url', $item->external_url)" placeholder="https://www.youtube.com/watch?v=..." />
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                                {{ __('Enter the URL for the video (YouTube, Vimeo, etc.).') }}
-                            </p>
-                            <x-input-error :messages="$errors->get('external_url')" class="mt-2" />
+                            <x-input-error :messages="$errors->get('videos')" class="mt-2" />
+                            <x-input-error :messages="$errors->get('videos.*')" class="mt-2" />
                         </div>
 
                         <!-- Categories -->
@@ -135,20 +165,46 @@
     @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Toggle visibility of file upload and external URL based on item type
-            const typeRadios = document.querySelectorAll('input[name="type"]');
-            const documentUpload = document.getElementById('document_upload');
-            const externalUrlInput = document.getElementById('external_url_input');
+            let fileIndex = 0;
+            let videoIndex = 0;
 
-            typeRadios.forEach(function(radio) {
-                radio.addEventListener('change', function() {
-                    if (this.value === 'document') {
-                        documentUpload.classList.remove('hidden');
-                        externalUrlInput.classList.add('hidden');
-                    } else {
-                        documentUpload.classList.add('hidden');
-                        externalUrlInput.classList.remove('hidden');
-                    }
+            // Add file input functionality
+            document.getElementById('add_file_btn').addEventListener('click', function() {
+                const container = document.getElementById('files_container');
+                const fileDiv = document.createElement('div');
+                fileDiv.className = 'flex items-center space-x-3';
+                fileDiv.innerHTML = `
+                    <input type="file" name="files[]" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx" 
+                           class="flex-1 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                    <button type="button" class="remove-file-btn px-2 py-1 text-xs bg-red-600 text-white rounded hover:bg-red-700">
+                        {{ __('app.remove') }}
+                    </button>
+                `;
+                container.appendChild(fileDiv);
+
+                // Add remove functionality
+                fileDiv.querySelector('.remove-file-btn').addEventListener('click', function() {
+                    fileDiv.remove();
+                });
+            });
+
+            // Add video input functionality  
+            document.getElementById('add_video_btn').addEventListener('click', function() {
+                const container = document.getElementById('videos_container');
+                const videoDiv = document.createElement('div');
+                videoDiv.className = 'flex items-center space-x-3';
+                videoDiv.innerHTML = `
+                    <input type="url" name="videos[]" placeholder="{{ __('Enter video URL...') }}"
+                           class="flex-1 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                    <button type="button" class="remove-video-btn px-2 py-1 text-xs bg-red-600 text-white rounded hover:bg-red-700">
+                        {{ __('app.remove') }}
+                    </button>
+                `;
+                container.appendChild(videoDiv);
+
+                // Add remove functionality
+                videoDiv.querySelector('.remove-video-btn').addEventListener('click', function() {
+                    videoDiv.remove();
                 });
             });
         });

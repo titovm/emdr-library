@@ -53,12 +53,29 @@ return [
     // Library item messages
     'item_created_successfully' => 'Материал библиотеки успешно создан.',
     'item_updated_successfully' => 'Материал библиотеки успешно обновлен.',
-    'item_deleted_successfully' => 'Материал библиотеки и связанный файл успешно удалены.',
+    'item_deleted_successfully' => 'Материал библиотеки и связанные файлы успешно удалены.',
     'file_upload_failed' => 'Не удалось загрузить файл',
     'file_download_failed' => 'Не удалось скачать файл',
     'item_save_error' => 'Произошла ошибка при сохранении материала библиотеки',
     'item_update_error' => 'Произошла ошибка при обновлении материала библиотеки',
     'item_delete_error' => 'Произошла ошибка при удалении материала библиотеки',
+    
+    // File and video related
+    'add_files' => 'Добавить файлы',
+    'add_videos' => 'Добавить видео',
+    'file_name' => 'Название файла',
+    'video_name' => 'Название видео',
+    'video_url' => 'URL видео',
+    'documents' => 'Документы',
+    'videos' => 'Видео',
+    'files' => 'Файлы',
+    'no_files' => 'Файлы не найдены',
+    'remove' => 'Удалить',
+    'download' => 'Скачать',
+    'view' => 'Посмотреть',
+    'current_files' => 'Текущие файлы',
+    'add_new_documents' => 'Добавить новые документы',
+    'add_new_videos' => 'Добавить новые видео',
     
     // Dates
     'created_at' => 'Создано',

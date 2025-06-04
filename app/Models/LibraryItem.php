@@ -12,9 +12,6 @@ class LibraryItem extends Model
     protected $fillable = [
         'title',
         'description',
-        'type',
-        'file_path',
-        'external_url',
         'categories',
         'tags',
         'is_published',
@@ -34,26 +31,32 @@ class LibraryItem extends Model
     {
         parent::boot();
 
-        // Automatically delete associated file when model is deleted
-        static::deleting(function ($item) {
-            if ($item->type === 'document' && $item->file_path) {
-                try {
-                    $deleted = Storage::disk('yandex')->delete($item->file_path);
-                    
-                    Log::info('Model event: File deletion attempted', [
-                        'item_id' => $item->id,
-                        'file_path' => $item->file_path,
-                        'deleted' => $deleted
-                    ]);
-                } catch (\Exception $e) {
-                    Log::error('Model event: Failed to delete file during model deletion', [
-                        'item_id' => $item->id,
-                        'file_path' => $item->file_path,
-                        'error' => $e->getMessage()
-                    ]);
-                }
-            }
-        });
+        // When a library item is deleted, all associated files will be deleted automatically
+        // due to the cascade delete in the foreign key constraint and the LibraryItemFile model's boot method
+    }
+
+    /**
+     * Get the files associated with this library item.
+     */
+    public function files()
+    {
+        return $this->hasMany(LibraryItemFile::class)->ordered();
+    }
+
+    /**
+     * Get only document files.
+     */
+    public function documents()
+    {
+        return $this->files()->where('type', 'document');
+    }
+
+    /**
+     * Get only video files.
+     */
+    public function videos()
+    {
+        return $this->files()->where('type', 'video');
     }
 
     /**
@@ -90,17 +93,46 @@ class LibraryItem extends Model
 
     /**
      * Get the URL for viewing the library item.
+     * Since items can now have multiple files, this returns the show page URL.
      */
     public function url(): Attribute
     {
         return Attribute::make(
             get: function () {
-                if ($this->type === 'document') {
-                    return route('library.download', $this->id);
-                }
-                
-                return $this->external_url;
+                return route('library.show', $this->id);
             }
         );
+    }
+
+    /**
+     * Check if this item has any files.
+     */
+    public function hasFiles(): bool
+    {
+        return $this->files()->count() > 0;
+    }
+
+    /**
+     * Get the total file count.
+     */
+    public function fileCount(): int
+    {
+        return $this->files()->count();
+    }
+
+    /**
+     * Get the document count.
+     */
+    public function documentCount(): int
+    {
+        return $this->documents()->count();
+    }
+
+    /**
+     * Get the video count.
+     */
+    public function videoCount(): int
+    {
+        return $this->videos()->count();
     }
 }

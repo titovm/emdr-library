@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\LibraryItem;
+use App\Models\LibraryItemFile;
 use App\Models\VisitorStat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -162,33 +163,35 @@ class LibraryItemController extends Controller
         ]);
 
         try {
-            // Build validation rules - external_url only required for video type
+            // Basic validation for the library item
             $rules = [
                 'title' => 'required|string|max:255',
                 'description' => 'nullable|string',
-                'type' => 'required|in:document,video',
                 'categories' => 'required|string',
                 'tags' => 'nullable|array',
                 'is_published' => 'boolean',
+                
+                // File validation - support multiple files
+                'files' => 'nullable|array',
+                'files.*' => 'file|mimes:pdf,doc,docx,ppt,pptx,xls,xlsx|max:10240',
+                'file_names' => 'nullable|array',
+                'file_names.*' => 'nullable|string|max:255',
+                
+                // Video validation - support multiple videos
+                'videos' => 'nullable|array',
+                'videos.*' => 'url|max:255',
+                'video_names' => 'nullable|array',
+                'video_names.*' => 'nullable|string|max:255',
             ];
-            
-            // Add conditional rules based on type
-            if ($request->type === 'document') {
-                $rules['file'] = 'required|file|mimes:pdf,doc,docx,ppt,pptx,xls,xlsx|max:10240';
-                $rules['external_url'] = 'nullable'; // Not required for documents
-            } else if ($request->type === 'video') {
-                $rules['external_url'] = 'required|url|max:255';
-                $rules['file'] = 'nullable'; // Not required for videos
-            }
             
             $validated = $request->validate($rules);
             
             Log::info('Validation passed', ['validated' => $validated]);
 
+            // Create the library item first
             $data = [
                 'title' => $validated['title'],
                 'description' => $validated['description'] ?? null,
-                'type' => $validated['type'],
                 'categories' => [$validated['categories']], // Wrap category in array since DB expects array
                 'tags' => $validated['tags'] ?? [],
                 'is_published' => $request->has('is_published'),
@@ -197,36 +200,69 @@ class LibraryItemController extends Controller
 
             Log::info('Prepared data for database', ['data' => $data]);
 
-            // Handle file upload or external URL
-            if ($validated['type'] === 'document' && $request->hasFile('file')) {
-                try {
-                    Log::info('Uploading file', [
-                        'file' => $request->file('file')->getClientOriginalName(),
-                        'file_size' => $request->file('file')->getSize(),
-                        'mime_type' => $request->file('file')->getMimeType(),
-                    ]);
-                    
-                    // Use Yandex S3 storage
-                    $path = $request->file('file')->store('documents', 'yandex');
-                    $data['file_path'] = $path;
-                    Log::info('File uploaded successfully to Yandex S3', ['path' => $path]);
-                } catch (\Exception $e) {
-                    Log::error('Failed to upload file', [
-                        'error' => $e->getMessage(),
-                        'trace' => $e->getTraceAsString()
-                    ]);
-                    
-                    return back()->withInput()->withErrors([
-                        'file' => __('app.file_upload_failed') . ': ' . $e->getMessage()
-                    ]);
-                }
-            } elseif ($validated['type'] === 'video') {
-                $data['external_url'] = $validated['external_url'];
-                Log::info('Video URL added', ['url' => $validated['external_url']]);
-            }
-
             $item = LibraryItem::create($data);
             Log::info('Library item created', ['item_id' => $item->id, 'item' => $item]);
+
+            // Handle file uploads
+            if ($request->hasFile('files')) {
+                foreach ($request->file('files') as $index => $file) {
+                    try {
+                        Log::info('Uploading file', [
+                            'file' => $file->getClientOriginalName(),
+                            'file_size' => $file->getSize(),
+                            'mime_type' => $file->getMimeType(),
+                        ]);
+                        
+                        // Use Yandex S3 storage
+                        $path = $file->store('documents', 'yandex');
+                        
+                        // Get the display name from form or use original filename
+                        $displayName = $validated['file_names'][$index] ?? pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                        
+                        $item->files()->create([
+                            'type' => 'document',
+                            'name' => $displayName,
+                            'file_path' => $path,
+                            'original_filename' => $file->getClientOriginalName(),
+                            'mime_type' => $file->getMimeType(),
+                            'file_size' => $file->getSize(),
+                            'sort_order' => $index,
+                        ]);
+                        
+                        Log::info('File uploaded successfully to Yandex S3', ['path' => $path]);
+                    } catch (\Exception $e) {
+                        Log::error('Failed to upload file', [
+                            'error' => $e->getMessage(),
+                            'trace' => $e->getTraceAsString()
+                        ]);
+                        
+                        // Delete the item if file upload fails
+                        $item->delete();
+                        
+                        return back()->withInput()->withErrors([
+                            'files' => __('app.file_upload_failed') . ': ' . $e->getMessage()
+                        ]);
+                    }
+                }
+            }
+
+            // Handle video URLs
+            if (!empty($validated['videos'])) {
+                foreach ($validated['videos'] as $index => $videoUrl) {
+                    if (!empty($videoUrl)) {
+                        $displayName = $validated['video_names'][$index] ?? 'Video ' . ($index + 1);
+                        
+                        $item->files()->create([
+                            'type' => 'video',
+                            'name' => $displayName,
+                            'external_url' => $videoUrl,
+                            'sort_order' => ($request->hasFile('files') ? count($request->file('files')) : 0) + $index,
+                        ]);
+                        
+                        Log::info('Video URL added', ['url' => $videoUrl, 'name' => $displayName]);
+                    }
+                }
+            }
 
             return redirect()->route('library.index')
                 ->with('success', __('app.item_created_successfully'));
@@ -273,7 +309,7 @@ class LibraryItemController extends Controller
     }
 
     /**
-     * Download a document from the library.
+     * Download a document from the library (legacy method for backward compatibility).
      */
     public function download(string $id)
     {
@@ -291,7 +327,10 @@ class LibraryItemController extends Controller
             abort(404);
         }
 
-        if ($item->type !== 'document' || !$item->file_path) {
+        // Get the first document file for backward compatibility
+        $firstDocument = $item->documents()->first();
+        
+        if (!$firstDocument) {
             abort(404);
         }
 
@@ -300,14 +339,60 @@ class LibraryItemController extends Controller
 
         try {
             return Storage::disk('yandex')->download(
-                $item->file_path,
-                $item->title . '.' . pathinfo($item->file_path, PATHINFO_EXTENSION)
+                $firstDocument->file_path,
+                $firstDocument->name . '.' . pathinfo($firstDocument->file_path, PATHINFO_EXTENSION)
             );
         } catch (\Exception $e) {
             Log::error('Error downloading file', [
                 'error' => $e->getMessage(),
                 'item_id' => $id,
-                'file_path' => $item->file_path
+                'file_path' => $firstDocument->file_path
+            ]);
+            
+            return back()->withErrors([
+                'error' => __('app.file_download_failed') . ': ' . $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * Download a specific file.
+     */
+    public function downloadFile(string $fileId)
+    {
+        // Check access for non-admin users
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            if ($redirect = $this->checkLibraryAccess()) {
+                return $redirect;
+            }
+        }
+
+        $file = LibraryItemFile::findOrFail($fileId);
+        $item = $file->libraryItem;
+
+        // Non-admin users can only download files from published items
+        if (!$item->is_published && (!Auth::check() || !Auth::user()->is_admin)) {
+            abort(404);
+        }
+
+        // Only allow downloading document files
+        if ($file->type !== 'document' || !$file->file_path) {
+            abort(404);
+        }
+
+        // Record the download
+        $this->recordVisit('library.file.download.'.$fileId, $item);
+
+        try {
+            return Storage::disk('yandex')->download(
+                $file->file_path,
+                $file->name . '.' . pathinfo($file->file_path, PATHINFO_EXTENSION)
+            );
+        } catch (\Exception $e) {
+            Log::error('Error downloading file', [
+                'error' => $e->getMessage(),
+                'file_id' => $fileId,
+                'file_path' => $file->file_path
             ]);
             
             return back()->withErrors([
@@ -361,18 +446,30 @@ class LibraryItemController extends Controller
             Log::info('Update request data:', [
                 'all_data' => $request->all(),
                 'categories' => $request->input('categories'),
-                'raw_post' => file_get_contents('php://input')
             ]);
 
             $validated = $request->validate([
                 'title' => 'required|string|max:255',
                 'description' => 'nullable|string',
-                'type' => 'required|in:document,video',
-                'file' => 'nullable|file|mimes:pdf,doc,docx,ppt,pptx,xls,xlsx|max:10240',
-                'external_url' => 'required_if:type,video|url|max:255',
                 'categories' => 'required|string',
                 'tags' => 'nullable|array',
                 'is_published' => 'boolean',
+                
+                // File validation - support multiple files
+                'files' => 'nullable|array',
+                'files.*' => 'file|mimes:pdf,doc,docx,ppt,pptx,xls,xlsx|max:10240',
+                'file_names' => 'nullable|array',
+                'file_names.*' => 'nullable|string|max:255',
+                
+                // Video validation - support multiple videos
+                'videos' => 'nullable|array',
+                'videos.*' => 'url|max:255',
+                'video_names' => 'nullable|array',
+                'video_names.*' => 'nullable|string|max:255',
+                
+                // For managing existing files
+                'delete_files' => 'nullable|array',
+                'delete_files.*' => 'integer|exists:library_item_files,id',
             ]);
 
             // Log validated data
@@ -384,7 +481,6 @@ class LibraryItemController extends Controller
             $data = [
                 'title' => $validated['title'],
                 'description' => $validated['description'] ?? null,
-                'type' => $validated['type'],
                 'categories' => [$validated['categories']], // Wrap category in array since DB expects array
                 'tags' => $validated['tags'] ?? [],
                 'is_published' => $request->has('is_published'),
@@ -394,27 +490,80 @@ class LibraryItemController extends Controller
                 'data' => $data
             ]);
 
-            // Handle file upload or external URL
-            if ($validated['type'] === 'document' && $request->hasFile('file')) {
-                // Delete old file if exists
-                if ($item->file_path) {
-                    Storage::disk('yandex')->delete($item->file_path);
-                }
-                
-                $path = $request->file('file')->store('documents', 'yandex');
-                $data['file_path'] = $path;
-                Log::info('File updated successfully', ['path' => $path]);
-            } elseif ($validated['type'] === 'video') {
-                $data['external_url'] = $validated['external_url'];
-                
-                // Clear file path if switching from document to video
-                if ($item->type === 'document' && $item->file_path) {
-                    Storage::disk('yandex')->delete($item->file_path);
-                    $data['file_path'] = null;
+            $item->update($data);
+
+            // Handle file deletions
+            if (!empty($validated['delete_files'])) {
+                $filesToDelete = $item->files()->whereIn('id', $validated['delete_files'])->get();
+                foreach ($filesToDelete as $file) {
+                    $file->delete(); // This will trigger the model's deleting event to remove from storage
+                    Log::info('File deleted', ['file_id' => $file->id, 'file_path' => $file->file_path]);
                 }
             }
 
-            $item->update($data);
+            // Handle new file uploads
+            if ($request->hasFile('files')) {
+                $maxSortOrder = $item->files()->max('sort_order') ?? -1;
+                
+                foreach ($request->file('files') as $index => $file) {
+                    try {
+                        Log::info('Uploading new file', [
+                            'file' => $file->getClientOriginalName(),
+                            'file_size' => $file->getSize(),
+                            'mime_type' => $file->getMimeType(),
+                        ]);
+                        
+                        // Use Yandex S3 storage
+                        $path = $file->store('documents', 'yandex');
+                        
+                        // Get the display name from form or use original filename
+                        $displayName = $validated['file_names'][$index] ?? pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                        
+                        $item->files()->create([
+                            'type' => 'document',
+                            'name' => $displayName,
+                            'file_path' => $path,
+                            'original_filename' => $file->getClientOriginalName(),
+                            'mime_type' => $file->getMimeType(),
+                            'file_size' => $file->getSize(),
+                            'sort_order' => $maxSortOrder + 1 + $index,
+                        ]);
+                        
+                        Log::info('File uploaded successfully', ['path' => $path]);
+                    } catch (\Exception $e) {
+                        Log::error('Failed to upload file during update', [
+                            'error' => $e->getMessage(),
+                            'trace' => $e->getTraceAsString()
+                        ]);
+                        
+                        return back()->withInput()->withErrors([
+                            'files' => __('app.file_upload_failed') . ': ' . $e->getMessage()
+                        ]);
+                    }
+                }
+            }
+
+            // Handle new video URLs
+            if (!empty($validated['videos'])) {
+                $maxSortOrder = $item->files()->max('sort_order') ?? -1;
+                $fileOffset = $request->hasFile('files') ? count($request->file('files')) : 0;
+                
+                foreach ($validated['videos'] as $index => $videoUrl) {
+                    if (!empty($videoUrl)) {
+                        $displayName = $validated['video_names'][$index] ?? 'Video ' . ($index + 1);
+                        
+                        $item->files()->create([
+                            'type' => 'video',
+                            'name' => $displayName,
+                            'external_url' => $videoUrl,
+                            'sort_order' => $maxSortOrder + 1 + $fileOffset + $index,
+                        ]);
+                        
+                        Log::info('Video URL added during update', ['url' => $videoUrl, 'name' => $displayName]);
+                    }
+                }
+            }
+
             Log::info('Library item updated', [
                 'item_id' => $item->id,
                 'updated_categories' => $item->categories

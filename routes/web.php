@@ -59,7 +59,8 @@ Route::middleware(['auth'])->group(function () {
 // Public Library Routes - No Auth Required
 Route::get('/library', [LibraryItemController::class, 'index'])->name('library.index');
 Route::get('/library/items/{id}', [LibraryItemController::class, 'show'])->name('library.show');
-Route::get('/library/download/{id}', [LibraryItemController::class, 'download'])->name('library.download');
+Route::get('/library/download/{id}', [LibraryItemController::class, 'download'])->name('library.download'); // Legacy route for backward compatibility
+Route::get('/library/files/{fileId}/download', [LibraryItemController::class, 'downloadFile'])->name('library.file.download');
 Route::get('/library/category/{category}', [LibraryItemController::class, 'filterByCategory'])->name('library.category');
 Route::get('/library/tag/{tag}', [LibraryItemController::class, 'filterByTag'])->name('library.tag');
 
