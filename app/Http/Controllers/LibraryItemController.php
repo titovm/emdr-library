@@ -217,7 +217,7 @@ class LibraryItemController extends Controller
                     ]);
                     
                     return back()->withInput()->withErrors([
-                        'file' => 'Failed to upload file: ' . $e->getMessage()
+                        'file' => __('app.file_upload_failed') . ': ' . $e->getMessage()
                     ]);
                 }
             } elseif ($validated['type'] === 'video') {
@@ -229,7 +229,7 @@ class LibraryItemController extends Controller
             Log::info('Library item created', ['item_id' => $item->id, 'item' => $item]);
 
             return redirect()->route('library.index')
-                ->with('success', 'Library item created successfully.');
+                ->with('success', __('app.item_created_successfully'));
         } catch (\Illuminate\Validation\ValidationException $e) {
             Log::error('Validation failed', [
                 'errors' => $e->errors()
@@ -242,7 +242,7 @@ class LibraryItemController extends Controller
             ]);
             
             return back()->withInput()->withErrors([
-                'error' => 'An error occurred while saving the library item: ' . $e->getMessage()
+                'error' => __('app.item_save_error') . ': ' . $e->getMessage()
             ]);
         }
     }
@@ -311,7 +311,7 @@ class LibraryItemController extends Controller
             ]);
             
             return back()->withErrors([
-                'error' => 'Unable to download file: ' . $e->getMessage()
+                'error' => __('app.file_download_failed') . ': ' . $e->getMessage()
             ]);
         }
     }
@@ -421,7 +421,7 @@ class LibraryItemController extends Controller
             ]);
 
             return redirect()->route('library.index')
-                ->with('success', 'Library item updated successfully.');
+                ->with('success', __('app.item_updated_successfully'));
         } catch (\Illuminate\Validation\ValidationException $e) {
             Log::error('Validation error during update:', [
                 'errors' => $e->errors()
@@ -435,7 +435,7 @@ class LibraryItemController extends Controller
             ]);
             
             return back()->withInput()->withErrors([
-                'error' => 'An error occurred while updating the library item: ' . $e->getMessage()
+                'error' => __('app.item_update_error') . ': ' . $e->getMessage()
             ]);
         }
     }
@@ -493,7 +493,7 @@ class LibraryItemController extends Controller
             ]);
             
             return redirect()->route('library.index')
-                ->with('success', 'Library item and associated file deleted successfully.');
+                ->with('success', __('app.item_deleted_successfully'));
         } catch (\Exception $e) {
             Log::error('Error deleting library item', [
                 'error' => $e->getMessage(),
@@ -502,7 +502,7 @@ class LibraryItemController extends Controller
             ]);
             
             return back()->withErrors([
-                'error' => 'An error occurred while deleting the library item: ' . $e->getMessage()
+                'error' => __('app.item_delete_error') . ': ' . $e->getMessage()
             ]);
         }
     }
