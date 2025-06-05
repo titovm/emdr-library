@@ -19,6 +19,24 @@
                                     {{ __('Add New Item') }}
                                 </a>
                             @endif
+                            <!-- Search Form -->
+                            <form method="GET" action="{{ route('library.index') }}" class="flex items-center space-x-2">
+                                <input
+                                    type="text"
+                                    name="search"
+                                    value="{{ request('search') }}"
+                                    placeholder="{{ __('Search') }}"
+                                    class="border rounded-md py-1 px-2 text-sm"
+                                />
+                                <button type="submit" class="px-3 py-1 bg-blue-600 text-white rounded-md">
+                                    {{ __('Search') }}
+                                </button>
+                                @if(request()->filled('search'))
+                                    <a href="{{ route('library.index') }}" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">
+                                        {{ __('Reset Search') }}
+                                    </a>
+                                @endif
+                            </form>
                         </div>
                     </div>
 
@@ -170,7 +188,7 @@
                                 </div>
                                 
                                 <div class="mt-6">
-                                    {{ $items->links() }}
+                                    {{ $items->appends(request()->only('search'))->links() }}
                                 </div>
                             @endif
                         </div>

@@ -86,15 +86,38 @@ class LibraryItemController extends Controller
             }
         }
 
-        // All users see published items
+        // Prepare query (with published filter)
         $query = LibraryItem::query();
-        
-        // Admin users can see all items, others only see published
         if (!Auth::check() || !Auth::user()->is_admin) {
             $query->where('is_published', true);
         }
-        
-        $items = $query->orderBy('created_at', 'desc')->paginate(12);
+
+        // Handle search term
+        if ($request->filled('search')) {
+            $search = trim($request->input('search'));
+            // Get all matching scope (published/admin)
+            $allItems = $query->orderBy('created_at', 'desc')->get();
+            // Filter in PHP using multibyte case-insensitive match
+            $filtered = $allItems->filter(function ($item) use ($search) {
+                return mb_stripos(mb_strtolower($item->title, 'UTF-8'), mb_strtolower($search, 'UTF-8')) !== false;
+            });
+            // Manual pagination
+            $perPage = 12;
+            $page = $request->input('page', 1);
+            $items = new \Illuminate\Pagination\LengthAwarePaginator(
+                $filtered->forPage($page, $perPage),
+                $filtered->count(),
+                $perPage,
+                $page,
+                [
+                    'path' => $request->url(),
+                    'query' => $request->query(),
+                ]
+            );
+        } else {
+            // Default listing with pagination
+            $items = $query->orderBy('created_at', 'desc')->paginate(12);
+        }
 
         // Get all unique categories and tags for the sidebar
         $categories = LibraryItem::pluck('categories')
