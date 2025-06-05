@@ -26,25 +26,34 @@
                 </div>
                 
                 <!-- Title -->
-                <h1 class="text-4xl font-bold text-center">Welcome to the EMDR Library</h1>
+                <h1 class="text-4xl font-bold text-center">{{ __('Welcome to the EMDR Library') }}</h1>
                 
                 <!-- Description -->
                 <p class="text-xl text-center max-w-2xl">
-                    A comprehensive collection of resources for EMDR therapists.
+                    {{ __('A comprehensive collection of resources for EMDR therapists.') }}
                 </p>
                 
-                <!-- Login Button (without Register) -->
+                <!-- Access Library Button -->
                 <div class="mt-6">
                     @if (Route::has('login'))
-                        <div class="text-center">
+                        <div class="text-center space-y-4">
                             @auth
                                 <a href="{{ url('/dashboard') }}" class="px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md transition-colors">
-                                    Dashboard
+                                    {{ __('Dashboard') }}
                                 </a>
                             @else
-                                <a href="{{ route('login') }}" class="px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md transition-colors">
-                                    Log In
-                                </a>
+                                <div class="space-y-3">
+                                    <div>
+                                        <a href="{{ route('library.index') }}" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md transition-colors text-lg">
+                                            {{ __('Access Library') }}
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="{{ route('login') }}" class="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 underline">
+                                            {{ __('Staff Login') }}
+                                        </a>
+                                    </div>
+                                </div>
                             @endauth
                         </div>
                     @endif
@@ -54,7 +63,7 @@
         
         <!-- Footer -->
         <footer class="w-full py-6 text-center text-gray-600 dark:text-gray-400">
-            <p>&copy; {{ date('Y') }} EMDR Library. All rights reserved.</p>
+            <p>&copy; {{ date('Y') }} EMDR Library. {{ __('All rights reserved') }}.</p>
         </footer>
     </body>
 </html>

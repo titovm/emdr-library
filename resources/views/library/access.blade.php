@@ -10,6 +10,10 @@
                         </h2>
                     </div>
 
+                    <p class="my-2 text-sm font-medium text-gray-800 dark:text-gray-300">
+                        {{ __('Warning! Access to the library is intended for your personal use only. By receiving it, you accept the non-disclosure agreement. In case of its publication in open sources, we will be forced to terminate this service.') }}
+                    </p>
+
                     <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
                         {{ __('Please enter your name and email address to access the library resources.') }}
                     </p>
@@ -57,9 +61,6 @@
                         
                         <!-- Non-Disclosure Agreement Checkbox -->
                         <div class="mt-4">
-                            <p class="mb-2 text-sm font-medium text-gray-800 dark:text-gray-300">
-                                {{ __('Warning! Access to the library is intended for your personal use only. By receiving it, you accept the non-disclosure agreement. In case of its publication in open sources, we will be forced to terminate this service.') }}
-                            </p>
                             <label for="nda_consent" class="inline-flex items-center">
                                 <input id="nda_consent" type="checkbox" name="nda_consent" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" required>
                                 <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">

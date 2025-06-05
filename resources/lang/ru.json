@@ -54,5 +54,10 @@
     "Tag": "Тег",
     "Type": "Тип",
     "Create": "Создать",
-    "Update": "Обновить"
+    "Update": "Обновить",
+    
+    "Welcome to the EMDR Library": "Добро пожаловать в библиотеку EMDR",
+    "A comprehensive collection of resources for EMDR therapists.": "Обширная коллекция ресурсов для EMDR-терапевтов.",
+    "All rights reserved": "Все права защищены",
+    "Staff Login": "Вход для персонала"
 }
