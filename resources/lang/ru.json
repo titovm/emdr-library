@@ -103,8 +103,10 @@
     "Library Access": "Доступ к библиотеке",
     "Admin Panel": "Панель администратора",
     "Repository": "Репозиторий",
-    "Documentation": "Документация",
+    "Documentation": "Документация", 
     "Login": "Войти",
     "Manage your profile and account settings": "Управляйте своим профилем и настройками аккаунта",
-    "Saved.": "Сохранено."
+    "Saved.": "Сохранено.",
+    "Back": "Назад",
+    "Download": "Скачать"
 }
