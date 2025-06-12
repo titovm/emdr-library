@@ -120,61 +120,66 @@
             const addFileBtn = document.getElementById('add_file_btn');
             const filesContainer = document.getElementById('files_container');
 
-            addFileBtn.addEventListener('click', function() {
-                const fileDiv = document.createElement('div');
-                fileDiv.className = 'flex items-center space-x-3';
-                fileDiv.innerHTML = `
-                    <input type="file" name="files[]" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx" 
-                           class="flex-1 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
-                    <button type="button" class="remove-file-btn px-2 py-1 text-xs bg-red-600 text-white rounded hover:bg-red-700">
-                        {{ __('app.remove') }}
-                    </button>
-                `;
-                filesContainer.appendChild(fileDiv);
+            if (addFileBtn && filesContainer) {
+                addFileBtn.addEventListener('click', function() {
+                    const fileDiv = document.createElement('div');
+                    fileDiv.className = 'flex items-center space-x-3';
+                    fileDiv.innerHTML = `
+                        <input type="file" name="files[]" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx" 
+                               class="flex-1 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                        <button type="button" class="remove-file-btn px-2 py-1 text-xs bg-red-600 text-white rounded hover:bg-red-700">
+                            Remove
+                        </button>
+                    `;
+                    filesContainer.appendChild(fileDiv);
 
                 // Add remove functionality
                 fileDiv.querySelector('.remove-file-btn').addEventListener('click', function() {
                     fileDiv.remove();
                 });
             });
+            }
 
             // Add video input functionality
             const addVideoBtn = document.getElementById('add_video_btn');
             const videosContainer = document.getElementById('videos_container');
 
-            addVideoBtn.addEventListener('click', function() {
-                const videoDiv = document.createElement('div');
-                videoDiv.className = 'flex items-center space-x-3';
-                videoDiv.innerHTML = `
-                    <input type="url" name="videos[]" placeholder="{{ __('Enter video URL...') }}"
-                           class="flex-1 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
-                    <button type="button" class="remove-video-btn px-2 py-1 text-xs bg-red-600 text-white rounded hover:bg-red-700">
-                        {{ __('app.remove') }}
-                    </button>
-                `;
-                videosContainer.appendChild(videoDiv);
+            if (addVideoBtn && videosContainer) {
+                addVideoBtn.addEventListener('click', function() {
+                    const videoDiv = document.createElement('div');
+                    videoDiv.className = 'flex items-center space-x-3';
+                    videoDiv.innerHTML = `
+                        <input type="url" name="videos[]" placeholder="Enter video URL..."
+                               class="flex-1 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                        <button type="button" class="remove-video-btn px-2 py-1 text-xs bg-red-600 text-white rounded hover:bg-red-700">
+                            Remove
+                        </button>
+                    `;
+                    videosContainer.appendChild(videoDiv);
 
-                // Add remove functionality
-                videoDiv.querySelector('.remove-video-btn').addEventListener('click', function() {
-                    videoDiv.remove();
+                    // Add remove functionality
+                    videoDiv.querySelector('.remove-video-btn').addEventListener('click', function() {
+                        videoDiv.remove();
+                    });
                 });
-            });
+            }
 
             // Add initial file and video inputs if there are old values
             @if(old('files'))
-                @foreach(old('files') as $index => $file)
-                    addFileBtn.click();
-                @endforeach
+                @for($i = 0; $i < count(old('files')); $i++)
+                    if (addFileBtn) addFileBtn.click();
+                @endfor
             @endif
 
             @if(old('videos'))
-                @foreach(old('videos') as $index => $video)
-                    addVideoBtn.click();
+                const oldVideos = @json(old('videos'));
+                oldVideos.forEach(function(videoUrl) {
+                    if (addVideoBtn) addVideoBtn.click();
                     const lastVideoInput = videosContainer.lastElementChild.querySelector('input[type="url"]');
                     if (lastVideoInput) {
-                        lastVideoInput.value = '{{ $video }}';
+                        lastVideoInput.value = videoUrl;
                     }
-                @endforeach
+                });
             @endif
         });
     </script>

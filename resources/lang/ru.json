@@ -60,5 +60,20 @@
     "Welcome to the EMDR Library": "Добро пожаловать в библиотеку EMDR",
     "A comprehensive collection of resources for EMDR therapists.": "Обширная коллекция ресурсов для EMDR-терапевтов.",
     "All rights reserved": "Все права защищены",
-    "Staff Login": "Вход для персонала"
+    "Staff Login": "Вход для персонала",
+    
+    "Add New Library Item": "Добавить новый материал в библиотеку",
+    "Add a new document or video to the therapist library.": "Добавьте новый документ или видео в библиотеку терапевта.",
+    "Save Item": "Сохранить материал",
+    "app.documents": "Документы",
+    "app.videos": "Видео",
+    "app.add_files": "Добавить файлы",
+    "app.add_videos": "Добавить видео",
+    "Accepted formats: PDF, DOC, DOCX, PPT, PPTX, XLS, XLSX. Max size: 10MB per file.": "Принимаемые форматы: PDF, DOC, DOCX, PPT, PPTX, XLS, XLSX. Максимальный размер: 10МБ на файл.",
+    "Enter URLs for videos (YouTube, Vimeo, etc.).": "Введите URL-адреса видео (YouTube, Vimeo и т.д.).",
+    "Please select a category": "Пожалуйста, выберите категорию",
+    "Select a category...": "Выберите категорию...",
+    "Select a category or type to create a new one.": "Выберите категорию или введите новую.",
+    "You can select multiple tags or type to create a new one.": "Вы можете выбрать несколько тегов или ввести новые.",
+    "Publish this item (will be immediately visible in the library)": "Опубликовать этот материал (будет сразу виден в библиотеке)"
 }
