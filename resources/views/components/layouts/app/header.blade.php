@@ -25,9 +25,9 @@
 
                 <flux:spacer />
 
-                <flux:navbar class="me-1.5 space-x-0.5 rtl:space-x-reverse py-0!">
+                {{--<flux:navbar class="me-1.5 space-x-0.5 rtl:space-x-reverse py-0!">
                     <flux:navbar.item class="!h-10 [&>div>svg]:size-5" icon="magnifying-glass" href="#" :label="__('Search')" />
-                    {{-- <flux:tooltip :content="__('Repository')" position="bottom">
+                    <flux:tooltip :content="__('Repository')" position="bottom">
                         <flux:navbar.item
                             class="h-10 max-lg:hidden [&>div>svg]:size-5"
                             icon="folder-git-2"
@@ -44,8 +44,8 @@
                             target="_blank"
                             label="Documentation"
                         />
-                    </flux:tooltip> --}}
-                </flux:navbar>
+                    </flux:tooltip> 
+                </flux:navbar> --}}
 
                 <!-- Desktop User Menu -->
                 @auth

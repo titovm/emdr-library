@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div class="py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="py-4 sm:py-8">
+        <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
             <!-- Modern Card Container -->
             <div class="form-container">
                 <!-- Header Section -->
@@ -22,7 +22,7 @@
                 </header>
 
                 <!-- Action Bar -->
-                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-8 gap-4 p-6 bg-white dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 sm:mb-8 gap-4 p-3 sm:p-6 bg-white dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700">
                     @if(auth()->check() && auth()->user()->is_admin)
                         <a href="{{ route('library.create') }}" class="btn-primary inline-flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -42,24 +42,24 @@
                                 name="search"
                                 value="{{ request('search') }}"
                                 placeholder="{{ __('Search library...') }}"
-                                class="pl-10 pr-4 py-2 border-2 border-gray-200 dark:border-gray-600 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-all duration-200"
+                                class="w-32 sm:w-auto pl-10 pr-4 py-2 border-2 border-gray-200 dark:border-gray-600 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-all duration-200"
                             />
                             <svg class="absolute left-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                             </svg>
                         </div>
-                        <button type="submit" class="btn-primary">
-                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <button type="submit" class="btn-primary inline-flex items-center whitespace-nowrap">
+                            <svg class="w-4 h-4 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                             </svg>
-                            {{ __('Search') }}
+                            <span class="hidden sm:inline">{{ __('Search') }}</span>
                         </button>
                         @if(request()->filled('search'))
-                            <a href="{{ route('library.index') }}" class="btn-secondary">
-                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <a href="{{ route('library.index') }}" class="btn-secondary inline-flex items-center whitespace-nowrap">
+                                <svg class="w-4 h-4 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                                 </svg>
-                                {{ __('Reset') }}
+                                <span class="hidden sm:inline">{{ __('Reset') }}</span>
                             </a>
                         @endif
                     </form>
@@ -88,7 +88,7 @@
                     </div>
                 @endif
 
-                <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-8">
                     <!-- Sidebar with Filters -->
                     <div class="lg:col-span-1">
                         <!-- Categories Filter -->

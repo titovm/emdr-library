@@ -75,5 +75,36 @@
     "Select a category...": "Выберите категорию...",
     "Select a category or type to create a new one.": "Выберите категорию или введите новую.",
     "You can select multiple tags or type to create a new one.": "Вы можете выбрать несколько тегов или ввести новые.",
-    "Publish this item (will be immediately visible in the library)": "Опубликовать этот материал (будет сразу виден в библиотеке)"
+    "Publish this item (will be immediately visible in the library)": "Опубликовать этот материал (будет сразу виден в библиотеке)",
+    
+    "Manage and organize your EMDR therapy resources": "Управляйте и организуйте ваши ресурсы EMDR-терапии",
+    "Discover and access professional EMDR therapy resources": "Откройте для себя и получите доступ к профессиональным ресурсам EMDR-терапии",
+    "Search library...": "Поиск в библиотеке...",
+    "Reset": "Сбросить",
+    "No items found": "Материалы не найдены",
+    "Try adjusting your search or filters": "Попробуйте изменить поисковый запрос или фильтры",
+    
+    "Edit Library Item": "Редактировать материал библиотеки",
+    "Update the information for this library item.": "Обновите информацию для этого материала библиотеки.",
+    "Basic Information": "Основная информация",
+    "Categorization": "Категоризация",
+    "No documents or videos have been uploaded for this item": "Для этого материала не загружены документы или видео",
+    
+    "app.remove": "Удалить",
+    "app.view": "Просмотреть",
+    "app.files": "Файлы",
+    "app.download": "Скачать",
+    "app.no_files": "Нет файлов",
+    "app.created_at": "Создано",
+    "app.updated_at": "Обновлено",
+    
+    "Platform": "Платформа",
+    "Browse Library": "Просмотр библиотеки",
+    "Library Access": "Доступ к библиотеке",
+    "Admin Panel": "Панель администратора",
+    "Repository": "Репозиторий",
+    "Documentation": "Документация",
+    "Login": "Войти",
+    "Manage your profile and account settings": "Управляйте своим профилем и настройками аккаунта",
+    "Saved.": "Сохранено."
 }
