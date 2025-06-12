@@ -169,7 +169,7 @@ export default {
 }
 
 .multiselect-custom .multiselect__tag {
-    background-color: #4f46e5;
+    background-color: #65b136;
     color: white;
     border-radius: 0.25rem;
     margin-right: 5px;
@@ -180,7 +180,7 @@ export default {
 }
 
 .multiselect-custom .multiselect__tag-icon:hover {
-    background-color: #4338ca;
+    background-color: #529429;
 }
 
 .multiselect-custom .multiselect__input,
@@ -210,7 +210,7 @@ export default {
 }
 
 .multiselect-custom .multiselect__option--highlight {
-    background-color: #4f46e5;
+    background-color: #65b136;
     color: white;
 }
 
