@@ -12,13 +12,13 @@
                             📚 {{ __('EMDR Therapist Library') }}
                         @endif
                     </h1>
-                    <p class="form-subtitle">
+                    {{-- <p class="form-subtitle">
                         @if(auth()->check() && auth()->user()->is_admin)
                             {{ __('Manage and organize your EMDR therapy resources') }}
                         @else
                             {{ __('Discover and access professional EMDR therapy resources') }}
                         @endif
-                    </p>
+                    </p> --}}
                 </header>
 
                 <!-- Action Bar -->
