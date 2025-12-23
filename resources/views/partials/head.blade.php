@@ -1,7 +1,12 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="googlebot" content="noindex, nofollow" />
+<meta name="description" content="Библиотека EMDR терапевтов - профессиональные ресурсы и материалы для специалистов" />
+<meta name="keywords" content="EMDR, терапия, психология, ресурсы, материалы" />
+<meta name="author" content="Ассоциация EMDR России" />
 
-<title>{{ $title ?? config('app.name') }}</title>
+<title>Библиотека EMDR терапевтов</title>
 
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
