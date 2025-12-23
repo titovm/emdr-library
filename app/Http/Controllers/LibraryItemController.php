@@ -86,10 +86,22 @@ class LibraryItemController extends Controller
             }
         }
 
+        $activeCategory = $request->query('category');
+        $activeTag = $request->query('tag');
+
         // Prepare query (with published filter)
         $query = LibraryItem::query();
         if (!Auth::check() || !Auth::user()->is_admin) {
             $query->where('is_published', true);
+        }
+
+        // Apply category/tag filters (tags refine within category if both are present)
+        if ($activeCategory) {
+            $query->whereJsonContains('categories', $activeCategory);
+        }
+
+        if ($activeTag) {
+            $query->whereJsonContains('tags', $activeTag);
         }
 
         // Handle search term
@@ -120,24 +132,42 @@ class LibraryItemController extends Controller
         }
 
         // Get all unique categories and tags for the sidebar
-        $categories = LibraryItem::pluck('categories')
+        $sidebarBaseQuery = LibraryItem::query();
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            $sidebarBaseQuery->where('is_published', true);
+        }
+
+        $categories = $sidebarBaseQuery->pluck('categories')
             ->flatten()
             ->filter()
             ->unique()
             ->values()
             ->toArray();
 
-        $tags = LibraryItem::pluck('tags')
+        sort($categories);
+
+        // Tags are scoped to the selected category when a category is active
+        $tagsQuery = LibraryItem::query();
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            $tagsQuery->where('is_published', true);
+        }
+        if ($activeCategory) {
+            $tagsQuery->whereJsonContains('categories', $activeCategory);
+        }
+
+        $tags = $tagsQuery->pluck('tags')
             ->flatten()
             ->filter()
             ->unique()
             ->values()
             ->toArray();
+
+        sort($tags);
 
         // Record the visit
         $this->recordVisit('library.index');
 
-        return view('library.index', compact('items', 'categories', 'tags'));
+        return view('library.index', compact('items', 'categories', 'tags', 'activeCategory', 'activeTag'));
     }
 
     /**
@@ -684,42 +714,8 @@ class LibraryItemController extends Controller
      */
     public function filterByCategory(string $category)
     {
-        // Check access for non-admin users
-        if (!Auth::check() || !Auth::user()->is_admin) {
-            if ($redirect = $this->checkLibraryAccess()) {
-                return $redirect;
-            }
-        }
-
-        $query = LibraryItem::whereJsonContains('categories', $category);
-        
-        // Admin users can see all items, others only see published
-        if (!Auth::check() || !Auth::user()->is_admin) {
-            $query->where('is_published', true);
-        }
-        
-        $items = $query->orderBy('created_at', 'desc')->paginate(12);
-
-        // Get all unique categories and tags for the sidebar
-        $categories = LibraryItem::pluck('categories')
-            ->flatten()
-            ->filter()
-            ->unique()
-            ->values()
-            ->toArray();
-
-        $tags = LibraryItem::pluck('tags')
-            ->flatten()
-            ->filter()
-            ->unique()
-            ->values()
-            ->toArray();
-
-        // Record the visit
-        $this->recordVisit('library.category.'.$category);
-
-        return view('library.index', compact('items', 'categories', 'tags'))
-            ->with('activeCategory', $category);
+        // Legacy route: redirect into unified index filters
+        return redirect()->route('library.index', ['category' => $category]);
     }
 
     /**
@@ -727,41 +723,7 @@ class LibraryItemController extends Controller
      */
     public function filterByTag(string $tag)
     {
-        // Check access for non-admin users
-        if (!Auth::check() || !Auth::user()->is_admin) {
-            if ($redirect = $this->checkLibraryAccess()) {
-                return $redirect;
-            }
-        }
-
-        $query = LibraryItem::whereJsonContains('tags', $tag);
-        
-        // Admin users can see all items, others only see published
-        if (!Auth::check() || !Auth::user()->is_admin) {
-            $query->where('is_published', true);
-        }
-        
-        $items = $query->orderBy('created_at', 'desc')->paginate(12);
-
-        // Get all unique categories and tags for the sidebar
-        $categories = LibraryItem::pluck('categories')
-            ->flatten()
-            ->filter()
-            ->unique()
-            ->values()
-            ->toArray();
-
-        $tags = LibraryItem::pluck('tags')
-            ->flatten()
-            ->filter()
-            ->unique()
-            ->values()
-            ->toArray();
-
-        // Record the visit
-        $this->recordVisit('library.tag.'.$tag);
-
-        return view('library.index', compact('items', 'categories', 'tags'))
-            ->with('activeTag', $tag);
+        // Legacy route: redirect into unified index filters
+        return redirect()->route('library.index', ['tag' => $tag]);
     }
 }

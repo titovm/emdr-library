@@ -27,7 +27,7 @@
                     <div class="form-container text-center">
                         <!-- Logo -->
                         <div class="w-48 h-48 sm:w-64 sm:h-64 mx-auto mb-8 flex items-center justify-center">
-                            <img src="{{ asset('storage/logo.png') }}" alt="EMDR Library Logo" class="max-w-full max-h-full rounded-2xl shadow-lg dark:shadow-2xl dark:shadow-gray-900/50 transition-shadow duration-300">
+                            <img src="{{ asset('logo.png') }}" alt="EMDR Library Logo" class="max-w-full max-h-full rounded-2xl shadow-lg dark:shadow-2xl dark:shadow-gray-900/50 transition-shadow duration-300">
                         </div>
                         
                         <!-- Title -->

@@ -104,7 +104,7 @@
                             <ul class="space-y-3">
                                 @foreach($categories as $category)
                                     <li>
-                                        <a href="{{ route('library.category', $category) }}" 
+                                        <a href="{{ route('library.index', array_filter(['category' => $category, 'search' => request('search')])) }}" 
                                            class="flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700 {{ isset($activeCategory) && $activeCategory === $category ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 font-semibold' : 'text-gray-700 dark:text-gray-300' }}">
                                             <svg class="w-4 h-4 mr-2 {{ isset($activeCategory) && $activeCategory === $category ? 'text-primary-500' : 'text-gray-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -116,7 +116,7 @@
                                 
                                 @if(isset($activeCategory) || isset($activeTag))
                                     <li class="pt-3 border-t border-gray-200 dark:border-gray-700">
-                                        <a href="{{ route('library.index') }}" 
+                                        <a href="{{ route('library.index', request()->filled('search') ? ['search' => request('search')] : []) }}" 
                                            class="flex items-center p-3 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200">
                                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -140,7 +140,7 @@
                             </div>
                             <div class="flex flex-wrap gap-2">
                                 @foreach($tags as $tag)
-                                    <a href="{{ route('library.tag', $tag) }}" 
+                                    <a href="{{ route('library.index', array_filter(['category' => $activeCategory ?? null, 'tag' => $tag, 'search' => request('search')])) }}" 
                                        class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 {{ isset($activeTag) && $activeTag === $tag ? 'bg-primary-500 text-white shadow-lg' : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600' }}">
                                         #{{ $tag }}
                                     </a>

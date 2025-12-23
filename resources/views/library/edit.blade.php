@@ -172,7 +172,7 @@
                             </h3>
                         </div>
 
-                        <div class="grid md:grid-cols-2 gap-6">
+                        <div id="vue-app" class="grid md:grid-cols-2 gap-6">
                             <!-- Categories -->
                             <div class="form-field">
                                 <taxonomy-selector 

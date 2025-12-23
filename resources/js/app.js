@@ -13,5 +13,10 @@ app.component('line-chart', LineChart);
 app.component('multiselect', Multiselect);
 app.component('taxonomy-selector', TaxonomySelector);
 
-// Mount the application
-app.mount('#app');
+// Mount Vue only on pages that opt-in.
+// Mounting onto the global "#app" container can interfere with Livewire/Flux.
+const vueRoot = document.getElementById('vue-app');
+
+if (vueRoot) {
+	app.mount(vueRoot);
+}
