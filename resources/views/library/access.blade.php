@@ -5,7 +5,7 @@
                 <div class="max-w-xl mx-auto">
                     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
                         
-                        <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white">
+                        <h2 class="mt-10 mb-8 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white">
                             {{ __('Access the Therapist Library') }}
                         </h2>
                     </div>
@@ -50,10 +50,11 @@
 
                         <!-- Consent Checkbox -->
                         <div class="mt-4">
-                            <label for="consent" class="inline-flex items-center">
-                                <input id="consent" type="checkbox" name="consent" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" required>
+                            <label for="consent" class="inline-flex items-start">
+                                <input id="consent" type="checkbox" name="consent" class="mt-0.5 rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" required>
                                 <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">
-                                    {{ __('I agree that my data will be stored for statistical purposes. This data will only be used internally to improve the library services.') }}
+                                    Даю согласие на обработку моих персональных данных (имя, e-mail) для предоставления доступа к онлайн-библиотеке и сервисных уведомлений.
+                                    <a href="{{ route('privacy-consent') }}" class="text-indigo-600 dark:text-indigo-400 hover:underline">{{ __('Подробнее') }}</a>
                                 </span>
                             </label>
                             <x-input-error :messages="$errors->get('consent')" class="mt-2" />
@@ -61,10 +62,11 @@
                         
                         <!-- Non-Disclosure Agreement Checkbox -->
                         <div class="mt-4">
-                            <label for="nda_consent" class="inline-flex items-center">
-                                <input id="nda_consent" type="checkbox" name="nda_consent" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" required>
+                            <label for="nda_consent" class="inline-flex items-start">
+                                <input id="nda_consent" type="checkbox" name="nda_consent" class="mt-0.5 rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" required>
                                 <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">
-                                    {{ __('Yes, I agree to the non-disclosure terms') }}
+                                    Я принимаю Условия использования и нераспространения материалов: не буду передавать файлы/ссылки третьим лицам, публиковать материалы или их части (включая скриншоты/записи экрана).
+                                    <a href="{{ route('terms') }}" class="text-indigo-600 dark:text-indigo-400 hover:underline">{{ __('Читать условия') }}</a>
                                 </span>
                             </label>
                             <x-input-error :messages="$errors->get('nda_consent')" class="mt-2" />

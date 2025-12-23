@@ -15,6 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+// Terms and Conditions page
+Route::get('/terms', function () {
+    return view('terms');
+})->name('terms');
+
+// Privacy Consent page
+Route::get('/privacy-consent', function () {
+    return view('privacy-consent');
+})->name('privacy-consent');
+
 // Admin Dashboard Route - Admin Only
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified', AdminMiddleware::class])
