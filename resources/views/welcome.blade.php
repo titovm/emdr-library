@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="color-scheme" content="light dark">
 
         <title>EMDR Library</title>
 
@@ -17,7 +18,7 @@
         <!-- Styles -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100">
+    <body class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100 transition-colors duration-300">
         <div class="min-h-screen flex flex-col">
             <!-- Main Content -->
             <div class="flex-1 flex items-center justify-center py-8 px-4 sm:py-12 sm:px-6 lg:px-8">
@@ -26,7 +27,7 @@
                     <div class="form-container text-center">
                         <!-- Logo -->
                         <div class="w-48 h-48 sm:w-64 sm:h-64 mx-auto mb-8 flex items-center justify-center">
-                            <img src="{{ asset('storage/logo.png') }}" alt="EMDR Library Logo" class="max-w-full max-h-full rounded-2xl shadow-lg">
+                            <img src="{{ asset('storage/logo.png') }}" alt="EMDR Library Logo" class="max-w-full max-h-full rounded-2xl shadow-lg dark:shadow-2xl dark:shadow-gray-900/50 transition-shadow duration-300">
                         </div>
                         
                         <!-- Title -->
@@ -117,9 +118,9 @@
             </div>
             
             <!-- Footer -->
-            <footer class="py-6 border-t border-gray-200 dark:border-gray-700 bg-white/50 dark:bg-gray-900/50">
+            <footer class="py-6 border-t border-gray-200 dark:border-gray-700 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm transition-colors duration-300">
                 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                    <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
                         &copy; {{ date('Y') }} EMDR Library. {{ __('All rights reserved') }}.
                     </p>
                 </div>
