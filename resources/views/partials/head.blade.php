@@ -15,6 +15,3 @@
 
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 @fluxAppearance
-
-<!-- jQuery (still needed for other functionality) -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
