@@ -245,7 +245,7 @@ class LibraryItemController extends Controller
             $data = [
                 'title' => $validated['title'],
                 'description' => $validated['description'] ?? null,
-                'categories' => [$validated['categories']], // Wrap category in array since DB expects array
+                'categories' => is_array($validated['categories']) ? $validated['categories'] : [$validated['categories']], // Ensure it's an array
                 'tags' => $validated['tags'] ?? [],
                 'is_published' => $request->has('is_published'),
                 'added_by' => Auth::id(),
@@ -534,7 +534,7 @@ class LibraryItemController extends Controller
             $data = [
                 'title' => $validated['title'],
                 'description' => $validated['description'] ?? null,
-                'categories' => [$validated['categories']], // Wrap category in array since DB expects array
+                'categories' => is_array($validated['categories']) ? $validated['categories'] : [$validated['categories']], // Ensure it's an array
                 'tags' => $validated['tags'] ?? [],
                 'is_published' => $request->has('is_published'),
             ];
