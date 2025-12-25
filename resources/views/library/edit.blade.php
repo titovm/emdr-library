@@ -13,7 +13,7 @@
                     </p>
                 </header>
 
-                <form method="POST" action="{{ route('library.update', $item->id) }}" class="space-y-8" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('library.update', $item->id) }}" class="space-y-8" enctype="multipart/form-data" id="library-form">
                     @csrf
                     @method('PUT')
 
@@ -257,6 +257,28 @@
         document.addEventListener('DOMContentLoaded', function() {
             let fileIndex = 0;
             let videoIndex = 0;
+            
+            // Handle form submission - remove empty file inputs
+            const form = document.getElementById('library-form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    // Remove empty file inputs before submission
+                    const fileInputs = form.querySelectorAll('input[type="file"][name="files[]"]');
+                    fileInputs.forEach(input => {
+                        if (!input.files || input.files.length === 0) {
+                            input.remove();
+                        }
+                    });
+                    
+                    // Remove empty video inputs before submission
+                    const videoInputs = form.querySelectorAll('input[type="url"][name="videos[]"]');
+                    videoInputs.forEach(input => {
+                        if (!input.value || input.value.trim() === '') {
+                            input.remove();
+                        }
+                    });
+                });
+            }
 
             // Add file input functionality
             document.getElementById('add_file_btn').addEventListener('click', function() {

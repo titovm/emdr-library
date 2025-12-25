@@ -226,7 +226,7 @@ class LibraryItemController extends Controller
                 
                 // File validation - support multiple files
                 'files' => 'nullable|array',
-                'files.*' => 'file|mimes:pdf,doc,docx,ppt,pptx,xls,xlsx|max:10240',
+                'files.*' => 'nullable|file|mimes:pdf,doc,docx,ppt,pptx,xls,xlsx|max:10240',
                 'file_names' => 'nullable|array',
                 'file_names.*' => 'nullable|string|max:255',
                 
@@ -259,6 +259,11 @@ class LibraryItemController extends Controller
             // Handle file uploads
             if ($request->hasFile('files')) {
                 foreach ($request->file('files') as $index => $file) {
+                    // Skip null or invalid files
+                    if (!$file || !$file->isValid()) {
+                        continue;
+                    }
+                    
                     try {
                         Log::info('Uploading file', [
                             'file' => $file->getClientOriginalName(),
@@ -510,7 +515,7 @@ class LibraryItemController extends Controller
                 
                 // File validation - support multiple files
                 'files' => 'nullable|array',
-                'files.*' => 'file|mimes:pdf,doc,docx,ppt,pptx,xls,xlsx|max:10240',
+                'files.*' => 'nullable|file|mimes:pdf,doc,docx,ppt,pptx,xls,xlsx|max:10240',
                 'file_names' => 'nullable|array',
                 'file_names.*' => 'nullable|string|max:255',
                 
@@ -559,6 +564,11 @@ class LibraryItemController extends Controller
                 $maxSortOrder = $item->files()->max('sort_order') ?? -1;
                 
                 foreach ($request->file('files') as $index => $file) {
+                    // Skip null or invalid files
+                    if (!$file || !$file->isValid()) {
+                        continue;
+                    }
+                    
                     try {
                         Log::info('Uploading new file', [
                             'file' => $file->getClientOriginalName(),
