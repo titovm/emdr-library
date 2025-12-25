@@ -212,7 +212,19 @@ class LibraryItemController extends Controller
         Log::info('Entered LibraryItemController@store method', [
             'request_method' => $request->method(),
             'content_type' => $request->header('Content-Type'),
-            'request_all' => $request->all()
+            'content_length' => $request->header('Content-Length'),
+            'has_files' => $request->hasFile('files'),
+            'file_count' => $request->hasFile('files') ? count($request->file('files')) : 0,
+        ]);
+        
+        // Check PHP upload limits
+        $postMaxSize = ini_get('post_max_size');
+        $uploadMaxFilesize = ini_get('upload_max_filesize');
+        Log::info('PHP upload configuration', [
+            'post_max_size' => $postMaxSize,
+            'upload_max_filesize' => $uploadMaxFilesize,
+            'max_execution_time' => ini_get('max_execution_time'),
+            'memory_limit' => ini_get('memory_limit'),
         ]);
 
         try {
@@ -258,26 +270,39 @@ class LibraryItemController extends Controller
 
             // Handle file uploads
             if ($request->hasFile('files')) {
+                Log::info('Starting file upload process', ['file_count' => count($request->file('files'))]);
+                
                 foreach ($request->file('files') as $index => $file) {
                     // Skip null or invalid files
                     if (!$file || !$file->isValid()) {
+                        Log::warning('Skipping invalid file', ['index' => $index, 'file' => $file]);
                         continue;
                     }
                     
                     try {
-                        Log::info('Uploading file', [
+                        Log::info('Starting file upload', [
+                            'index' => $index,
                             'file' => $file->getClientOriginalName(),
                             'file_size' => $file->getSize(),
+                            'file_size_mb' => round($file->getSize() / 1024 / 1024, 2),
                             'mime_type' => $file->getMimeType(),
+                            'temp_path' => $file->getRealPath(),
                         ]);
                         
+                        $startTime = microtime(true);
+                        
                         // Use Yandex S3 storage
+                        Log::info('Calling Storage::disk(yandex)->store()', ['file' => $file->getClientOriginalName()]);
                         $path = $file->store('documents', 'yandex');
+                        
+                        $uploadTime = round(microtime(true) - $startTime, 2);
+                        Log::info('File store() completed', ['path' => $path, 'upload_time_seconds' => $uploadTime]);
                         
                         // Get the display name from form or use original filename
                         $displayName = $validated['file_names'][$index] ?? pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
                         
-                        $item->files()->create([
+                        Log::info('Creating database record for file');
+                        $fileRecord = $item->files()->create([
                             'type' => 'document',
                             'name' => $displayName,
                             'file_path' => $path,
@@ -287,18 +312,34 @@ class LibraryItemController extends Controller
                             'sort_order' => $index,
                         ]);
                         
-                        Log::info('File uploaded successfully to Yandex S3', ['path' => $path]);
+                        Log::info('File uploaded successfully to Yandex S3', [
+                            'path' => $path,
+                            'file_record_id' => $fileRecord->id,
+                            'upload_time_seconds' => $uploadTime,
+                        ]);
                     } catch (\Exception $e) {
                         Log::error('Failed to upload file', [
+                            'index' => $index,
+                            'file' => $file->getClientOriginalName(),
+                            'file_size' => $file->getSize(),
                             'error' => $e->getMessage(),
+                            'error_class' => get_class($e),
                             'trace' => $e->getTraceAsString()
                         ]);
                         
                         // Delete the item if file upload fails
+                        Log::info('Deleting library item due to file upload failure', ['item_id' => $item->id]);
                         $item->delete();
                         
+                        $errorMessage = __('app.file_upload_failed') . ': ' . $e->getMessage();
+                        
+                        // Check if it's a file size issue
+                        if ($file->getSize() > 2 * 1024 * 1024) {
+                            $errorMessage .= ' (Note: File size is ' . round($file->getSize() / 1024 / 1024, 2) . 'MB. PHP upload limits may need adjustment.)';
+                        }
+                        
                         return back()->withInput()->withErrors([
-                            'files' => __('app.file_upload_failed') . ': ' . $e->getMessage()
+                            'files' => $errorMessage
                         ]);
                     }
                 }
@@ -497,6 +538,16 @@ class LibraryItemController extends Controller
     public function update(Request $request, string $id)
     {
         // No need to check admin here since it's done via middleware
+        
+        Log::info('Entered LibraryItemController@update method', [
+            'item_id' => $id,
+            'request_method' => $request->method(),
+            'content_type' => $request->header('Content-Type'),
+            'content_length' => $request->header('Content-Length'),
+            'has_files' => $request->hasFile('files'),
+            'file_count' => $request->hasFile('files') ? count($request->file('files')) : 0,
+        ]);
+        
         try {
             $item = LibraryItem::findOrFail($id);
 
@@ -561,28 +612,40 @@ class LibraryItemController extends Controller
 
             // Handle new file uploads
             if ($request->hasFile('files')) {
+                Log::info('Starting file upload process in update', ['file_count' => count($request->file('files'))]);
                 $maxSortOrder = $item->files()->max('sort_order') ?? -1;
                 
                 foreach ($request->file('files') as $index => $file) {
                     // Skip null or invalid files
                     if (!$file || !$file->isValid()) {
+                        Log::warning('Skipping invalid file in update', ['index' => $index, 'file' => $file]);
                         continue;
                     }
                     
                     try {
-                        Log::info('Uploading new file', [
+                        Log::info('Starting file upload in update', [
+                            'index' => $index,
                             'file' => $file->getClientOriginalName(),
                             'file_size' => $file->getSize(),
+                            'file_size_mb' => round($file->getSize() / 1024 / 1024, 2),
                             'mime_type' => $file->getMimeType(),
+                            'temp_path' => $file->getRealPath(),
                         ]);
                         
+                        $startTime = microtime(true);
+                        
                         // Use Yandex S3 storage
+                        Log::info('Calling Storage::disk(yandex)->store() in update', ['file' => $file->getClientOriginalName()]);
                         $path = $file->store('documents', 'yandex');
+                        
+                        $uploadTime = round(microtime(true) - $startTime, 2);
+                        Log::info('File store() completed in update', ['path' => $path, 'upload_time_seconds' => $uploadTime]);
                         
                         // Get the display name from form or use original filename
                         $displayName = $validated['file_names'][$index] ?? pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
                         
-                        $item->files()->create([
+                        Log::info('Creating database record for file in update');
+                        $fileRecord = $item->files()->create([
                             'type' => 'document',
                             'name' => $displayName,
                             'file_path' => $path,
@@ -592,18 +655,35 @@ class LibraryItemController extends Controller
                             'sort_order' => $maxSortOrder + 1 + $index,
                         ]);
                         
-                        Log::info('File uploaded successfully', ['path' => $path]);
+                        Log::info('File uploaded successfully in update', [
+                            'path' => $path,
+                            'file_record_id' => $fileRecord->id,
+                            'upload_time_seconds' => $uploadTime,
+                        ]);
                     } catch (\Exception $e) {
                         Log::error('Failed to upload file during update', [
+                            'index' => $index,
+                            'file' => $file->getClientOriginalName(),
+                            'file_size' => $file->getSize(),
                             'error' => $e->getMessage(),
+                            'error_class' => get_class($e),
                             'trace' => $e->getTraceAsString()
                         ]);
                         
+                        $errorMessage = __('app.file_upload_failed') . ': ' . $e->getMessage();
+                        
+                        // Check if it's a file size issue
+                        if ($file->getSize() > 2 * 1024 * 1024) {
+                            $errorMessage .= ' (Note: File size is ' . round($file->getSize() / 1024 / 1024, 2) . 'MB. PHP upload limits may need adjustment.)';
+                        }
+                        
                         return back()->withInput()->withErrors([
-                            'files' => __('app.file_upload_failed') . ': ' . $e->getMessage()
+                            'files' => $errorMessage
                         ]);
                     }
                 }
+                
+                Log::info('All files uploaded successfully in store method');
             }
 
             // Handle new video URLs

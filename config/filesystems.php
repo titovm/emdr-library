@@ -71,6 +71,12 @@ return [
             'use_path_style_endpoint' => env('YANDEX_USE_PATH_STYLE_ENDPOINT', true),
             'throw' => true,
             'report' => false,
+            'options' => [
+                'http' => [
+                    'timeout' => 300,  // 5 minutes for upload timeout
+                    'connect_timeout' => 60,  // 1 minute for connection timeout
+                ],
+            ],
         ],
 
     ],
