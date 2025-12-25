@@ -238,7 +238,7 @@ class LibraryItemController extends Controller
                 
                 // File validation - support multiple files
                 'files' => 'nullable|array',
-                'files.*' => 'nullable|file|mimes:pdf,doc,docx,ppt,pptx,xls,xlsx|max:10240',
+                'files.*' => 'nullable|file|mimes:pdf,doc,docx,ppt,pptx,xls,xlsx|max:40960',
                 'file_names' => 'nullable|array',
                 'file_names.*' => 'nullable|string|max:255',
                 
