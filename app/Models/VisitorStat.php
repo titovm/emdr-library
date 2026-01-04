@@ -36,12 +36,24 @@ class VisitorStat extends Model
     ];
 
     /**
-     * Record a new visitor statistic.
+     * Record a new visitor statistic asynchronously.
+     *
+     * @param array $data
+     * @return void
+     */
+    public static function recordVisit(array $data): void
+    {
+        // Dispatch async job to avoid blocking the request
+        \App\Jobs\RecordVisitorStatJob::dispatch($data);
+    }
+
+    /**
+     * Record a new visitor statistic synchronously (for testing or specific cases).
      *
      * @param array $data
      * @return VisitorStat
      */
-    public static function recordVisit(array $data): VisitorStat
+    public static function recordVisitSync(array $data): VisitorStat
     {
         return self::create(array_merge($data, [
             'visited_at' => now(),

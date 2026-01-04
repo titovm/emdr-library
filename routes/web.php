@@ -56,6 +56,7 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(func
     
     // Statistics Dashboard - Admin Only
     Route::get('/stats', [StatsController::class, 'index'])->name('admin.stats');
+    Route::post('/stats/refresh', [StatsController::class, 'refresh'])->name('admin.stats.refresh');
 });
 
 // User Setting Routes - Auth Only

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\VisitorStat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 
 class StatsController extends Controller
 {
@@ -13,13 +14,34 @@ class StatsController extends Controller
      */
     public function index()
     {
-        // Get total number of visitors
-        $totalVisitors = VisitorStat::count();
+        // Cache stats for 5 minutes to reduce database load
+        $cacheKey = 'admin_stats_dashboard';
+        $cacheDuration = now()->addMinutes(5);
         
-        // Get unique visitors count
-        $uniqueVisitors = VisitorStat::distinct('email')->count('email');
+        $stats = Cache::remember($cacheKey, $cacheDuration, function () {
+            return $this->computeStats();
+        });
         
-        // Get visitors per day for the last 30 days
+        return view('admin.stats', $stats);
+    }
+    
+    /**
+     * Compute all statistics (heavy operations).
+     */
+    private function computeStats(): array
+    {
+        // Use a single query to get basic counts instead of multiple queries
+        $basicStats = DB::table('visitor_stats')
+            ->select([
+                DB::raw('COUNT(*) as total_visitors'),
+                DB::raw('COUNT(DISTINCT email) as unique_visitors'),
+            ])
+            ->first();
+        
+        $totalVisitors = $basicStats->total_visitors;
+        $uniqueVisitors = $basicStats->unique_visitors;
+        
+        // Get visitors per day for the last 30 days (with index on visited_at)
         $visitorsPerDay = VisitorStat::select(
             DB::raw('DATE(visited_at) as date'),
             DB::raw('COUNT(*) as count')
@@ -29,20 +51,20 @@ class StatsController extends Controller
             ->orderBy('date')
             ->get();
         
-        // Get top visitors
+        // Get top visitors (with index on email)
         $topVisitors = VisitorStat::select('name', 'email', DB::raw('COUNT(*) as visits'))
             ->groupBy('name', 'email')
             ->orderByDesc('visits')
             ->limit(10)
             ->get();
         
-        // Access methods breakdown
+        // Access methods breakdown (with index on access_method)
         $accessMethods = VisitorStat::select('access_method', DB::raw('COUNT(*) as count'))
             ->groupBy('access_method')
             ->orderByDesc('count')
             ->get();
         
-        // Recent visitors with formatted page names
+        // Recent visitors with formatted page names (with index on visited_at)
         $recentVisitors = VisitorStat::latest('visited_at')
             ->limit(10)
             ->get()
@@ -51,7 +73,7 @@ class StatsController extends Controller
                 return $visitor;
             });
         
-        // Most popular pages
+        // Most popular pages (with index on page_visited)
         $popularPages = VisitorStat::select('page_visited', DB::raw('COUNT(*) as visits'))
             ->groupBy('page_visited')
             ->orderByDesc('visits')
@@ -68,7 +90,7 @@ class StatsController extends Controller
             'counts' => $visitorsPerDay->pluck('count'),
         ];
         
-        return view('admin.stats', compact(
+        return compact(
             'totalVisitors',
             'uniqueVisitors',
             'visitorsPerDay',
@@ -77,7 +99,18 @@ class StatsController extends Controller
             'recentVisitors',
             'popularPages',
             'chartData'
-        ));
+        );
+    }
+    
+    /**
+     * Refresh cached statistics.
+     */
+    public function refresh()
+    {
+        Cache::forget('admin_stats_dashboard');
+        
+        return redirect()->route('admin.stats')
+            ->with('success', 'Statistics cache cleared. Fresh data loaded.');
     }
     
     /**
