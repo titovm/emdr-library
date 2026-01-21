@@ -19,10 +19,30 @@ class LibraryItem extends Model
     ];
 
     protected $casts = [
-        'categories' => 'array',
-        'tags' => 'array',
         'is_published' => 'boolean',
     ];
+
+    /**
+     * Get the categories attribute with proper Unicode decoding.
+     */
+    protected function categories(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => json_decode($value, true) ?: [],
+            set: fn ($value) => json_encode($value, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+        );
+    }
+
+    /**
+     * Get the tags attribute with proper Unicode decoding.
+     */
+    protected function tags(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => json_decode($value, true) ?: [],
+            set: fn ($value) => json_encode($value, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+        );
+    }
 
     /**
      * Boot the model and register model events.
