@@ -1,27 +1,27 @@
 <x-app-layout>
-    <div class="py-8">
+    <div class="py-4 sm:py-6">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Modern Card Container -->
             <div class="form-container">
                 <!-- Header Section -->
-                <header class="form-header">
-                    <h1 class="form-title">
-                        ✏️ {{ __('Edit Library Item') }}
+                <header class="mb-4">
+                    <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1">
+                        {{ __('Edit Library Item') }}
                     </h1>
-                    <p class="form-subtitle">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
                         {{ __('Update the information for this library item.') }}
                     </p>
                 </header>
 
-                <form method="POST" action="{{ route('library.update', $item->id) }}" class="space-y-8" enctype="multipart/form-data" id="library-form">
+                <form method="POST" action="{{ route('library.update', $item->id) }}" class="space-y-6" enctype="multipart/form-data" id="library-form">
                     @csrf
                     @method('PUT')
 
                     <!-- Basic Information Section -->
                     <div class="field-section">
                         <div class="section-header">
-                            <h3 class="section-title">
-                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                                 {{ __('Basic Information') }}
@@ -38,7 +38,7 @@
                         <!-- Description -->
                         <div class="form-field">
                             <x-input-label for="description" :value="__('Description')" />
-                            <textarea id="description" name="description" class="mt-1 block w-full border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 focus:border-primary-500 dark:focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 rounded-lg px-4 py-3 transition-all duration-200" rows="4" placeholder="Enter a detailed description of the library item...">{{ old('description', $item->description) }}</textarea>
+                            <textarea id="description" name="description" class="mt-1 block w-full border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 focus:border-primary-500 dark:focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 rounded-lg px-4 py-3 transition-all duration-200" rows="4" placeholder="{{ __('Enter a detailed description of the library item...') }}">{{ old('description', $item->description) }}</textarea>
                             <x-input-error :messages="$errors->get('description')" class="mt-2" />
                         </div>
                     </div>
@@ -47,50 +47,74 @@
                     @if($item->files && $item->files->count() > 0)
                     <div class="field-section">
                         <div class="section-header">
-                            <h3 class="section-title">
-                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                 </svg>
                                 {{ __('Current Files') }}
                             </h3>
                         </div>
 
-                        <div class="space-y-4">
+                        <div class="space-y-3">
                             @foreach($item->files as $file)
                             <div class="dynamic-input-group">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center space-x-3">
-                                        @if($file->type === 'document')
-                                            <svg class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                                @if($file->type === 'document')
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 20 20">
                                                 <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
                                             </svg>
-                                        @else
-                                            <svg class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
-                                            </svg>
-                                        @endif
-                                        <div>
-                                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">{{ $file->name }}</p>
-                                            <p class="text-xs text-gray-500 dark:text-gray-400">
-                                                {{ ucfirst($file->type) }}
-                                                @if($file->type === 'document' && $file->formatted_file_size)
-                                                    • {{ $file->formatted_file_size }}
-                                                @endif
-                                            </p>
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-900 dark:text-gray-100">{{ $file->name }}</p>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400">
+                                                    {{ ucfirst($file->type) }}
+                                                    @if($file->formatted_file_size)
+                                                        • {{ $file->formatted_file_size }}
+                                                    @endif
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <a href="{{ route('library.file.download', $file->id) }}" class="text-primary-600 hover:text-primary-800 text-sm font-medium">{{ __('Download') }}</a>
+                                            <label class="flex items-center cursor-pointer">
+                                                <input type="checkbox" name="delete_files[]" value="{{ $file->id }}" class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded">
+                                                <span class="ml-2 text-xs text-red-600 font-medium">{{ __('app.remove') }}</span>
+                                            </label>
                                         </div>
                                     </div>
-                                    <div class="flex items-center space-x-3">
-                                        @if($file->type === 'document')
-                                            <a href="{{ route('library.file.download', $file->id) }}" class="text-primary-600 hover:text-primary-800 text-sm font-medium">{{ __('Download') }}</a>
-                                        @else
-                                            <a href="{{ $file->external_url }}" target="_blank" class="text-primary-600 hover:text-primary-800 text-sm font-medium">{{ __('View') }}</a>
-                                        @endif
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="checkbox" name="delete_files[]" value="{{ $file->id }}" class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded">
-                                            <span class="ml-2 text-xs text-red-600 font-medium">{{ __('app.remove') }}</span>
-                                        </label>
+                                @else
+                                    <!-- Editable Video -->
+                                    <div class="space-y-2 p-3 bg-gray-50 dark:bg-gray-900/50 rounded-lg border border-gray-200 dark:border-gray-700">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <div class="flex items-center space-x-2">
+                                                <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
+                                                </svg>
+                                                <span class="text-xs text-gray-500 dark:text-gray-400">{{ __('Video') }}</span>
+                                            </div>
+                                            <label class="flex items-center cursor-pointer">
+                                                <input type="checkbox" name="delete_files[]" value="{{ $file->id }}" class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded">
+                                                <span class="ml-2 text-xs text-red-600 font-medium">{{ __('app.remove') }}</span>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">{{ __('Video Title') }}</label>
+                                            <input type="text" name="existing_video_names[{{ $file->id }}]" value="{{ old('existing_video_names.' . $file->id, $file->name) }}"
+                                                   class="block w-full px-3 py-2 text-sm border-2 border-gray-200 dark:border-gray-600 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">{{ __('Video URL') }}</label>
+                                            <input type="url" name="existing_video_urls[{{ $file->id }}]" value="{{ old('existing_video_urls.' . $file->id, $file->external_url) }}"
+                                                   class="block w-full px-3 py-2 text-sm border-2 border-gray-200 dark:border-gray-600 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
+                                        </div>
+                                        <a href="{{ $file->external_url }}" target="_blank" class="inline-flex items-center text-xs text-primary-600 hover:text-primary-800 font-medium">
+                                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                            </svg>
+                                            {{ __('View Current Video') }}
+                                        </a>
                                     </div>
-                                </div>
+                                @endif
                             </div>
                             @endforeach
                         </div>
@@ -98,27 +122,27 @@
                     @endif                    <!-- Document Files Section -->
                     <div class="field-section" id="files_section">
                         <div class="section-header">
-                            <h3 class="section-title">
-                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                 </svg>
                                 {{ __('Add New Documents') }}
                             </h3>
-                            <button type="button" id="add_file_btn" class="btn-secondary">
-                                <svg class="icon inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <button type="button" id="add_file_btn" class="btn-secondary text-sm py-1.5 px-3">
+                                <svg class="w-3.5 h-3.5 inline mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                                 </svg>
                                 {{ __('app.add_files') }}
                             </button>
                         </div>
 
-                        <div id="files_container" class="space-y-4">
+                        <div id="files_container" class="space-y-3">
                             <!-- File inputs will be added here dynamically -->
                         </div>
 
                         <div class="help-text">
                             <div class="flex items-center gap-2">
-                                <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                                 {{ __('Accepted formats: PDF, DOC, DOCX, PPT, PPTX, XLS, XLSX. Max size: 40MB per file.') }}
@@ -131,27 +155,27 @@
                     <!-- Video URLs Section -->
                     <div class="field-section" id="videos_section">
                         <div class="section-header">
-                            <h3 class="section-title">
-                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                                 </svg>
                                 {{ __('Add New Videos') }}
                             </h3>
-                            <button type="button" id="add_video_btn" class="btn-secondary">
-                                <svg class="icon inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <button type="button" id="add_video_btn" class="btn-secondary text-sm py-1.5 px-3">
+                                <svg class="w-3.5 h-3.5 inline mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                                 </svg>
                                 {{ __('app.add_videos') }}
                             </button>
                         </div>
 
-                        <div id="videos_container" class="space-y-4">
+                        <div id="videos_container" class="space-y-3">
                             <!-- Video inputs will be added here dynamically -->
                         </div>
 
                         <div class="help-text">
                             <div class="flex items-center gap-2">
-                                <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                                 {{ __('Enter URLs for videos (YouTube, Vimeo, etc.).') }}
@@ -164,15 +188,15 @@
                     <!-- Categories and Tags Section -->
                     <div class="field-section">
                         <div class="section-header">
-                            <h3 class="section-title">
-                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
                                 </svg>
                                 {{ __('Categorization') }}
                             </h3>
                         </div>
 
-                        <div id="vue-app" class="grid md:grid-cols-2 gap-6">
+                        <div id="vue-app" class="grid md:grid-cols-2 gap-4">
                             <!-- Categories -->
                             <div class="form-field">
                                 <taxonomy-selector 
@@ -208,8 +232,8 @@
                     <!-- Publishing Options Section -->
                     <div class="field-section">
                         <div class="section-header">
-                            <h3 class="section-title">
-                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
                                 </svg>
                                 {{ __('Publishing Options') }}
@@ -217,12 +241,12 @@
                         </div>
 
                         <!-- Publish Status -->
-                        <div class="flex items-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+                        <div class="flex items-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
                             <input id="is_published" name="is_published" type="checkbox" 
-                                   class="h-5 w-5 text-primary-600 focus:ring-primary-500 border-gray-300 rounded" 
+                                   class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded" 
                                    value="1" {{ old('is_published', $item->is_published) ? 'checked' : '' }}>
-                            <label for="is_published" class="ml-3 flex items-center cursor-pointer">
-                                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <label for="is_published" class="ml-2.5 flex items-center cursor-pointer">
+                                <svg class="w-3.5 h-3.5 text-green-500 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                                 <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -233,15 +257,15 @@
                     </div>
 
                     <!-- Submit Section -->
-                    <div class="flex items-center justify-between pt-6 border-t border-gray-200 dark:border-gray-700">
-                        <a href="{{ route('library.show', $item->id) }}" class="btn-secondary">
-                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
+                        <a href="{{ route('library.show', $item->id) }}" class="btn-secondary text-sm py-1.5 px-3">
+                            <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                             </svg>
                             {{ __('Cancel') }}
                         </a>
-                        <x-primary-button class="btn-primary">
-                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <x-primary-button class="btn-primary text-sm py-1.5 px-4">
+                            <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
                             {{ __('Update Item') }}
@@ -317,17 +341,21 @@
                 const videoDiv = document.createElement('div');
                 videoDiv.className = 'dynamic-input-group';
                 videoDiv.innerHTML = `
-                    <div class="flex items-center space-x-3">
-                        <div class="flex-1">
-                            <input type="url" name="videos[]" placeholder="https://youtube.com/watch?v=... or https://vimeo.com/..."
-                                   class="block w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500">
+                    <div class="space-y-2">
+                        <div class="flex items-center space-x-3">
+                            <div class="flex-1">
+                                <input type="text" name="video_names[]" placeholder="{{ __('Video title (e.g., Introduction to EMDR)') }}"
+                                       class="block w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500">
+                            </div>
+                            <button type="button" class="btn-danger remove-video-btn flex items-center gap-1">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                </svg>
+                                {{ __('app.remove') }}
+                            </button>
                         </div>
-                        <button type="button" class="btn-danger remove-video-btn flex items-center gap-1">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                            </svg>
-                            {{ __('app.remove') }}
-                        </button>
+                        <input type="url" name="videos[]" placeholder="{{ __('https://youtube.com/watch?v=... or https://vimeo.com/...') }}"
+                               class="block w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500">
                     </div>
                 `;
                 container.appendChild(videoDiv);

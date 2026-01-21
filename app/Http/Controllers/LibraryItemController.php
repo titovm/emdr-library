@@ -576,6 +576,12 @@ class LibraryItemController extends Controller
                 'video_names' => 'nullable|array',
                 'video_names.*' => 'nullable|string|max:255',
                 
+                // For editing existing videos
+                'existing_video_names' => 'nullable|array',
+                'existing_video_names.*' => 'nullable|string|max:255',
+                'existing_video_urls' => 'nullable|array',
+                'existing_video_urls.*' => 'nullable|url|max:255',
+                
                 // For managing existing files
                 'delete_files' => 'nullable|array',
                 'delete_files.*' => 'integer|exists:library_item_files,id',
@@ -600,6 +606,35 @@ class LibraryItemController extends Controller
             ]);
 
             $item->update($data);
+
+            // Handle existing video updates
+            if (!empty($validated['existing_video_names']) || !empty($validated['existing_video_urls'])) {
+                foreach ($item->files()->where('type', 'video')->get() as $videoFile) {
+                    $fileId = $videoFile->id;
+                    $updated = false;
+                    
+                    // Update video name if provided
+                    if (!empty($validated['existing_video_names'][$fileId])) {
+                        $videoFile->name = $validated['existing_video_names'][$fileId];
+                        $updated = true;
+                    }
+                    
+                    // Update video URL if provided
+                    if (!empty($validated['existing_video_urls'][$fileId])) {
+                        $videoFile->external_url = $validated['existing_video_urls'][$fileId];
+                        $updated = true;
+                    }
+                    
+                    if ($updated) {
+                        $videoFile->save();
+                        Log::info('Existing video updated', [
+                            'file_id' => $fileId,
+                            'name' => $videoFile->name,
+                            'url' => $videoFile->external_url
+                        ]);
+                    }
+                }
+            }
 
             // Handle file deletions
             if (!empty($validated['delete_files'])) {
