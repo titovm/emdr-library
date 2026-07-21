@@ -2,10 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Database\Eloquent\Model;
 
 class LibraryItem extends Model
 {
@@ -51,8 +49,11 @@ class LibraryItem extends Model
     {
         parent::boot();
 
-        // When a library item is deleted, all associated files will be deleted automatically
-        // due to the cascade delete in the foreign key constraint and the LibraryItemFile model's boot method
+        // Database cascades do not dispatch Eloquent model events. Delete each
+        // file model explicitly so its deleting hook can remove the S3 object.
+        static::deleting(function (LibraryItem $item) {
+            $item->files()->get()->each->delete();
+        });
     }
 
     /**

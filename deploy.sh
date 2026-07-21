@@ -115,7 +115,7 @@ log "Installing/Updating Composer dependencies"
 composer install --no-dev --optimize-autoloader --no-interaction
 
 # Generate application key if not set
-if ! grep -q "APP_KEY=" .env || grep -q "APP_KEY=$" .env || grep -q "APP_KEY=base64:" .env; then
+if ! grep -Eq '^APP_KEY=.+$' .env; then
     log "Generating application key"
     php artisan key:generate --force
 fi

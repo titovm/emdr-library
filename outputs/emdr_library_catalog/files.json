@@ -1,0 +1,2232 @@
+[
+  {
+    "resource_id": "EMDR-001",
+    "title": "EMDR aккредитация - отчет о 50 сессиях (форма)",
+    "filename": "EMDR aккредитация - отчет о 50 сессиях (форма).doc",
+    "path": "Админ/Бланки/EMDR aккредитация - отчет о 50 сессиях (форма).doc",
+    "format": "DOC",
+    "size_bytes": 379392,
+    "exact_duplicate": "Нет",
+    "fingerprint": "06f67dd7845c"
+  },
+  {
+    "resource_id": "EMDR-002",
+    "title": "РАБОЧИЙ БЛАНК ОЦЕНКИ И ПЕРЕРАБОТКИ",
+    "filename": "РАБОЧИЙ БЛАНК ОЦЕНКИ И ПЕРЕРАБОТКИ.docx",
+    "path": "Админ/Бланки/РАБОЧИЙ БЛАНК ОЦЕНКИ И ПЕРЕРАБОТКИ.docx",
+    "format": "DOCX",
+    "size_bytes": 30828,
+    "exact_duplicate": "Нет",
+    "fingerprint": "e0d5e911ce5d"
+  },
+  {
+    "resource_id": "EMDR-003",
+    "title": "Логотипы Ассоциации EMDR России и EMDR Europe",
+    "filename": "emdr assoc.jpg",
+    "path": "Админ/логотипы Ассоциации/emdr assoc.jpg",
+    "format": "JPG",
+    "size_bytes": 16708,
+    "exact_duplicate": "Нет",
+    "fingerprint": "bbd80670f365"
+  },
+  {
+    "resource_id": "EMDR-003",
+    "title": "Логотипы Ассоциации EMDR России и EMDR Europe",
+    "filename": "emdr_31_10.eps",
+    "path": "Админ/логотипы Ассоциации/emdr_31_10.eps",
+    "format": "EPS",
+    "size_bytes": 238958,
+    "exact_duplicate": "Нет",
+    "fingerprint": "8a7c52d00d60"
+  },
+  {
+    "resource_id": "EMDR-003",
+    "title": "Логотипы Ассоциации EMDR России и EMDR Europe",
+    "filename": "emdr_31_10_rus.eps",
+    "path": "Админ/логотипы Ассоциации/emdr_31_10_rus.eps",
+    "format": "EPS",
+    "size_bytes": 238448,
+    "exact_duplicate": "Нет",
+    "fingerprint": "e4b3f6207b8d"
+  },
+  {
+    "resource_id": "EMDR-003",
+    "title": "Логотипы Ассоциации EMDR России и EMDR Europe",
+    "filename": "emdr_logo.ai",
+    "path": "Админ/логотипы Ассоциации/emdr_logo.ai",
+    "format": "AI",
+    "size_bytes": 71664,
+    "exact_duplicate": "Нет",
+    "fingerprint": "9a0588b25472"
+  },
+  {
+    "resource_id": "EMDR-003",
+    "title": "Логотипы Ассоциации EMDR России и EMDR Europe",
+    "filename": "logo emdr europe.eps",
+    "path": "Админ/логотипы Ассоциации/logo emdr europe.eps",
+    "format": "EPS",
+    "size_bytes": 10627,
+    "exact_duplicate": "Нет",
+    "fingerprint": "b1618b9b6f77"
+  },
+  {
+    "resource_id": "EMDR-003",
+    "title": "Логотипы Ассоциации EMDR России и EMDR Europe",
+    "filename": "logo emdr europe.jpg",
+    "path": "Админ/логотипы Ассоциации/logo emdr europe.jpg",
+    "format": "JPG",
+    "size_bytes": 23453,
+    "exact_duplicate": "Нет",
+    "fingerprint": "36cbe7ac1b21"
+  },
+  {
+    "resource_id": "EMDR-004",
+    "title": "Многофакторный опросник диссоциации (MID): комплект диагностики и интерпретации",
+    "filename": "Blank_MID_Analysis_V3_8 (1).xlsx",
+    "path": "Диагностика (тесты)/Диагностика Диссоциации (MID)/Blank_MID_Analysis_V3_8 (1).xlsx",
+    "format": "XLSX",
+    "size_bytes": 123558,
+    "exact_duplicate": "Нет",
+    "fingerprint": "d2f931c91836"
+  },
+  {
+    "resource_id": "EMDR-004",
+    "title": "Многофакторный опросник диссоциации (MID): комплект диагностики и интерпретации",
+    "filename": "Blank_MID_Analysis_V3_8.xls",
+    "path": "Диагностика (тесты)/Диагностика Диссоциации (MID)/Blank_MID_Analysis_V3_8.xls",
+    "format": "XLS",
+    "size_bytes": 443392,
+    "exact_duplicate": "Нет",
+    "fingerprint": "8952ebbc9450"
+  },
+  {
+    "resource_id": "EMDR-004",
+    "title": "Многофакторный опросник диссоциации (MID): комплект диагностики и интерпретации",
+    "filename": "Blank_MID_Analysis_V3_8.xlsx",
+    "path": "Диагностика (тесты)/Диагностика Диссоциации (MID)/Blank_MID_Analysis_V3_8.xlsx",
+    "format": "XLSX",
+    "size_bytes": 123867,
+    "exact_duplicate": "Нет",
+    "fingerprint": "3ee426be3d2a"
+  },
+  {
+    "resource_id": "EMDR-004",
+    "title": "Многофакторный опросник диссоциации (MID): комплект диагностики и интерпретации",
+    "filename": "Interpreting_MID_Results.doc",
+    "path": "Диагностика (тесты)/Диагностика Диссоциации (MID)/Interpreting_MID_Results.doc",
+    "format": "DOC",
+    "size_bytes": 33792,
+    "exact_duplicate": "Нет",
+    "fingerprint": "886691161f98"
+  },
+  {
+    "resource_id": "EMDR-004",
+    "title": "Многофакторный опросник диссоциации (MID): комплект диагностики и интерпретации",
+    "filename": "MID-Print-Version-UPDATED-5-2015.docx",
+    "path": "Диагностика (тесты)/Диагностика Диссоциации (MID)/MID-Print-Version-UPDATED-5-2015.docx",
+    "format": "DOCX",
+    "size_bytes": 47155,
+    "exact_duplicate": "Нет",
+    "fingerprint": "b6f355f40258"
+  },
+  {
+    "resource_id": "EMDR-004",
+    "title": "Многофакторный опросник диссоциации (MID): комплект диагностики и интерпретации",
+    "filename": "MID_6_0_reformatted.doc",
+    "path": "Диагностика (тесты)/Диагностика Диссоциации (MID)/MID_6_0_reformatted.doc",
+    "format": "DOC",
+    "size_bytes": 258048,
+    "exact_duplicate": "Нет",
+    "fingerprint": "164e7c6e2613"
+  },
+  {
+    "resource_id": "EMDR-005",
+    "title": "Шкала диссоциации DES: бланк, русская версия и ключи",
+    "filename": "DES.docx",
+    "path": "Диагностика (тесты)/Диссоциация DES/DES.docx",
+    "format": "DOCX",
+    "size_bytes": 118206,
+    "exact_duplicate": "Нет",
+    "fingerprint": "8d72b00a7f1c"
+  },
+  {
+    "resource_id": "EMDR-005",
+    "title": "Шкала диссоциации DES: бланк, русская версия и ключи",
+    "filename": "ключи_к_шкале_диссо циации.pdf",
+    "path": "Диагностика (тесты)/Диссоциация DES/ключи_к_шкале_диссо циации.pdf",
+    "format": "PDF",
+    "size_bytes": 280311,
+    "exact_duplicate": "Нет",
+    "fingerprint": "d31a9ca0ce12"
+  },
+  {
+    "resource_id": "EMDR-005",
+    "title": "Шкала диссоциации DES: бланк, русская версия и ключи",
+    "filename": "Шкала диссоциации russian Copy.pdf",
+    "path": "Диагностика (тесты)/Диссоциация DES/Шкала диссоциации russian Copy.pdf",
+    "format": "PDF",
+    "size_bytes": 89394,
+    "exact_duplicate": "Нет",
+    "fingerprint": "9405cb4022ef"
+  },
+  {
+    "resource_id": "EMDR-006",
+    "title": "опросник Бека",
+    "filename": "опросник Бека.docx",
+    "path": "Диагностика (тесты)/опросник Бека.docx",
+    "format": "DOCX",
+    "size_bytes": 125180,
+    "exact_duplicate": "Нет",
+    "fingerprint": "f7d866b09c0f"
+  },
+  {
+    "resource_id": "EMDR-007",
+    "title": "Опросник Забота о себе",
+    "filename": "Опросник Забота о себе.docx",
+    "path": "Диагностика (тесты)/Опросник Забота о себе.docx",
+    "format": "DOCX",
+    "size_bytes": 497630,
+    "exact_duplicate": "Нет",
+    "fingerprint": "31d88b97d333"
+  },
+  {
+    "resource_id": "EMDR-008",
+    "title": "Симптоматический опросник",
+    "filename": "Симптоматический опросник.doc",
+    "path": "Диагностика (тесты)/Симптоматический опросник.doc",
+    "format": "DOC",
+    "size_bytes": 100864,
+    "exact_duplicate": "Нет",
+    "fingerprint": "0e8538231d0f"
+  },
+  {
+    "resource_id": "EMDR-009",
+    "title": "Шкала ранний опыт отношений в семье",
+    "filename": "Шкала ранний опыт отношений в семье.pdf",
+    "path": "Диагностика (тесты)/Шкала ранний опыт отношений в семье.pdf",
+    "format": "PDF",
+    "size_bytes": 111723,
+    "exact_duplicate": "Нет",
+    "fingerprint": "d1c479d3fe4a"
+  },
+  {
+    "resource_id": "EMDR-010",
+    "title": "Вторая Российская конференция EMDR, Москва, 2015: комплект материалов",
+    "filename": "Видео выступлений_ссылки.docx",
+    "path": "Конференции/2 конференция (Москва, 2015)/Видео выступлений_ссылки.docx",
+    "format": "DOCX",
+    "size_bytes": 17788,
+    "exact_duplicate": "Нет",
+    "fingerprint": "bbb8de321f1a"
+  },
+  {
+    "resource_id": "EMDR-010",
+    "title": "Вторая Российская конференция EMDR, Москва, 2015: комплект материалов",
+    "filename": "Конференция EMDR 2015_1-2 день Анонсы.docx",
+    "path": "Конференции/2 конференция (Москва, 2015)/Конференция EMDR 2015_1-2 день Анонсы.docx",
+    "format": "DOCX",
+    "size_bytes": 61111,
+    "exact_duplicate": "Нет",
+    "fingerprint": "acda6efe1f8d"
+  },
+  {
+    "resource_id": "EMDR-010",
+    "title": "Вторая Российская конференция EMDR, Москва, 2015: комплект материалов",
+    "filename": "Конференция EMDR 2015_программа.docx",
+    "path": "Конференции/2 конференция (Москва, 2015)/Конференция EMDR 2015_программа.docx",
+    "format": "DOCX",
+    "size_bytes": 24622,
+    "exact_duplicate": "Нет",
+    "fingerprint": "a7cc624b8ae4"
+  },
+  {
+    "resource_id": "EMDR-010",
+    "title": "Вторая Российская конференция EMDR, Москва, 2015: комплект материалов",
+    "filename": "Материалы -Вторая российская конференция EMDR 2015.zip",
+    "path": "Конференции/2 конференция (Москва, 2015)/Материалы -Вторая российская конференция EMDR 2015.zip",
+    "format": "ZIP",
+    "size_bytes": 22304626,
+    "exact_duplicate": "Нет",
+    "fingerprint": "e16c7d7a9318"
+  },
+  {
+    "resource_id": "EMDR-011",
+    "title": "EMDR при суицидальности: раздаточные материалы — Анна Коган",
+    "filename": "emdr for si 5_21_17 handouts Kogan.pdf",
+    "path": "Конференции/3 конференция 2017 Питер/Презентации/emdr for si 5_21_17 handouts Kogan.pdf",
+    "format": "PDF",
+    "size_bytes": 1614276,
+    "exact_duplicate": "Нет",
+    "fingerprint": "8fce499875e0"
+  },
+  {
+    "resource_id": "EMDR-012",
+    "title": "EMDR при фобиях",
+    "filename": "EMDR фобии2 — копия.ppt",
+    "path": "Конференции/3 конференция 2017 Питер/Презентации/EMDR фобии2 — копия.ppt",
+    "format": "PPT",
+    "size_bytes": 7248896,
+    "exact_duplicate": "Нет",
+    "fingerprint": "4b0bc1b10a37"
+  },
+  {
+    "resource_id": "EMDR-013",
+    "title": "EMDR и счастливое детство — Зотова",
+    "filename": "EMDR_Happy Childhood_ZotovaRev.pptx",
+    "path": "Конференции/3 конференция 2017 Питер/Презентации/EMDR_Happy Childhood_ZotovaRev.pptx",
+    "format": "PPTX",
+    "size_bytes": 753316,
+    "exact_duplicate": "Нет",
+    "fingerprint": "9fb20f6f001d"
+  },
+  {
+    "resource_id": "EMDR-014",
+    "title": "Применение EMDR в условиях экстремальной ситуации — Екатерина Протопопова",
+    "filename": "Возможности применения EMDR в условиях экстремальной ситуации - короткая версия (1) (1).pptx",
+    "path": "Конференции/3 конференция 2017 Питер/Презентации/Возможности применения EMDR в условиях экстремальной ситуации - короткая версия (1) (1).pptx",
+    "format": "PPTX",
+    "size_bytes": 5132987,
+    "exact_duplicate": "Нет",
+    "fingerprint": "4b4ba88f2481"
+  },
+  {
+    "resource_id": "EMDR-015",
+    "title": "Сочетание EMDR и арт-терапии у детей и подростков — Е. В. Михайлова",
+    "filename": "Возможности сочетания EMDR и арт-терапии у детей и.pptx",
+    "path": "Конференции/3 конференция 2017 Питер/Презентации/Возможности сочетания EMDR и арт-терапии у детей и.pptx",
+    "format": "PPTX",
+    "size_bytes": 1891855,
+    "exact_duplicate": "Нет",
+    "fingerprint": "3e9b33e22e0d"
+  },
+  {
+    "resource_id": "EMDR-016",
+    "title": "EMDR-терапия: адаптивная переработка информации и встреча с Глубинной Самостью — Светлана Сафарова",
+    "filename": "Емдр.pptx",
+    "path": "Конференции/3 конференция 2017 Питер/Презентации/Емдр.pptx",
+    "format": "PPTX",
+    "size_bytes": 78075,
+    "exact_duplicate": "Нет",
+    "fingerprint": "a78d4b9be0d7"
+  },
+  {
+    "resource_id": "EMDR-017",
+    "title": "Пелешок",
+    "filename": "Пелешок.ppt",
+    "path": "Конференции/3 конференция 2017 Питер/Презентации/Пелешок.ppt",
+    "format": "PPT",
+    "size_bytes": 790016,
+    "exact_duplicate": "Нет",
+    "fingerprint": "e59bd9ade542"
+  },
+  {
+    "resource_id": "EMDR-018",
+    "title": "Национальная Ассоциация EMDR: презентация, 2017",
+    "filename": "Преза представление ассоц 2017.pdf",
+    "path": "Конференции/3 конференция 2017 Питер/Презентации/Преза представление ассоц 2017.pdf",
+    "format": "PDF",
+    "size_bytes": 945039,
+    "exact_duplicate": "Нет",
+    "fingerprint": "e2c4d020530f"
+  },
+  {
+    "resource_id": "EMDR-019",
+    "title": "Применение EMDR при шизофрении: возможности и перспективы — Н. Н. Фролова",
+    "filename": "Презентация ЕМДР Шцх.pptx",
+    "path": "Конференции/3 конференция 2017 Питер/Презентации/Презентация ЕМДР Шцх.pptx",
+    "format": "PPTX",
+    "size_bytes": 2579662,
+    "exact_duplicate": "Нет",
+    "fingerprint": "eedf06f6d4cc"
+  },
+  {
+    "resource_id": "EMDR-020",
+    "title": "Работа с ранней травмой в EMDR-терапии — Юлия Сорокина",
+    "filename": "работа с ранней травмой.pptx",
+    "path": "Конференции/3 конференция 2017 Питер/Презентации/работа с ранней травмой.pptx",
+    "format": "PPTX",
+    "size_bytes": 5165128,
+    "exact_duplicate": "Нет",
+    "fingerprint": "8b53bb332b37"
+  },
+  {
+    "resource_id": "EMDR-021",
+    "title": "Работа с хронической болью в EMDR-терапии",
+    "filename": "Работа с хронической болью в EMDR - терапии.pptx",
+    "path": "Конференции/3 конференция 2017 Питер/Презентации/Работа с хронической болью в EMDR - терапии.pptx",
+    "format": "PPTX",
+    "size_bytes": 665654,
+    "exact_duplicate": "Нет",
+    "fingerprint": "942d1d6f4ca1"
+  },
+  {
+    "resource_id": "EMDR-022",
+    "title": "Интервенции при интенсивных эмоциональных переживаниях",
+    "filename": "Эмоции.pptx",
+    "path": "Конференции/3 конференция 2017 Питер/Презентации/Эмоции.pptx",
+    "format": "PPTX",
+    "size_bytes": 69024,
+    "exact_duplicate": "Нет",
+    "fingerprint": "e7a3e3c8b132"
+  },
+  {
+    "resource_id": "EMDR-023",
+    "title": "Этика и новости EMDR",
+    "filename": "Этика новости EMDR.pps",
+    "path": "Конференции/3 конференция 2017 Питер/Презентации/Этика новости EMDR.pps",
+    "format": "PPS",
+    "size_bytes": 740352,
+    "exact_duplicate": "Нет",
+    "fingerprint": "2926d257f803"
+  },
+  {
+    "resource_id": "EMDR-024",
+    "title": "Круглый стол конференции EMDR 2018",
+    "filename": "15 Круглый стол.mp4",
+    "path": "Конференции/4 конференция (Москва, 2018)/Видео/15 Круглый стол.mp4",
+    "format": "MP4",
+    "size_bytes": 468181182,
+    "exact_duplicate": "Нет",
+    "fingerprint": "35c4d6642a31"
+  },
+  {
+    "resource_id": "EMDR-025",
+    "title": "Лекция Уди Орена на конференции EMDR 2018",
+    "filename": "21 Уди Орен_лекция.mp4",
+    "path": "Конференции/4 конференция (Москва, 2018)/Видео/21 Уди Орен_лекция.mp4",
+    "format": "MP4",
+    "size_bytes": 1392844502,
+    "exact_duplicate": "Нет",
+    "fingerprint": "0c46c80929ec"
+  },
+  {
+    "resource_id": "EMDR-026",
+    "title": "Выступление Елены Казенной и Локковой на конференции EMDR 2018",
+    "filename": "22 Локкова Казенная.mp4",
+    "path": "Конференции/4 конференция (Москва, 2018)/Видео/22 Локкова Казенная.mp4",
+    "format": "MP4",
+    "size_bytes": 518774522,
+    "exact_duplicate": "Нет",
+    "fingerprint": "d51c51df2b91"
+  },
+  {
+    "resource_id": "EMDR-026",
+    "title": "Выступление Елены Казенной и Локковой на конференции EMDR 2018",
+    "filename": "Елена Казенная 2018 .pdf",
+    "path": "Конференции/4 конференция (Москва, 2018)/Презентации/Елена Казенная 2018 .pdf",
+    "format": "PDF",
+    "size_bytes": 28782663,
+    "exact_duplicate": "Нет",
+    "fingerprint": "b9b13a977a85"
+  },
+  {
+    "resource_id": "EMDR-027",
+    "title": "Самосострадание и EMDR — Надежда Градовская",
+    "filename": "23 Градовская.mp4",
+    "path": "Конференции/4 конференция (Москва, 2018)/Видео/23 Градовская.mp4",
+    "format": "MP4",
+    "size_bytes": 844501347,
+    "exact_duplicate": "Нет",
+    "fingerprint": "6abcf6db76ea"
+  },
+  {
+    "resource_id": "EMDR-027",
+    "title": "Самосострадание и EMDR — Надежда Градовская",
+    "filename": "Градовская Н._- Самосострадание&EMDR.pdf",
+    "path": "Конференции/4 конференция (Москва, 2018)/Презентации/Градовская Н._- Самосострадание&EMDR.pdf",
+    "format": "PDF",
+    "size_bytes": 1098383,
+    "exact_duplicate": "Нет",
+    "fingerprint": "88c902d552bf"
+  },
+  {
+    "resource_id": "EMDR-028",
+    "title": "Доклад Андрея Пелешка на конференции EMDR 2018",
+    "filename": "25 Пелешок.mp4",
+    "path": "Конференции/4 конференция (Москва, 2018)/Видео/25 Пелешок.mp4",
+    "format": "MP4",
+    "size_bytes": 758738992,
+    "exact_duplicate": "Нет",
+    "fingerprint": "b3cebcf7bd92"
+  },
+  {
+    "resource_id": "EMDR-028",
+    "title": "Доклад Андрея Пелешка на конференции EMDR 2018",
+    "filename": "Доклад Москва конференция Пелешок 2018г.pdf",
+    "path": "Конференции/4 конференция (Москва, 2018)/Презентации/Доклад Москва конференция Пелешок 2018г.pdf",
+    "format": "PDF",
+    "size_bytes": 553998,
+    "exact_duplicate": "Нет",
+    "fingerprint": "fb9264c6d2c4"
+  },
+  {
+    "resource_id": "EMDR-029",
+    "title": "Выступление Екатерины Винник на конференции EMDR 2018",
+    "filename": "26 Винник.mp4",
+    "path": "Конференции/4 конференция (Москва, 2018)/Видео/26 Винник.mp4",
+    "format": "MP4",
+    "size_bytes": 306249898,
+    "exact_duplicate": "Нет",
+    "fingerprint": "a5ff63d46110"
+  },
+  {
+    "resource_id": "EMDR-029",
+    "title": "Выступление Екатерины Винник на конференции EMDR 2018",
+    "filename": "Екатерина Винник.avi",
+    "path": "Конференции/4 конференция (Москва, 2018)/Презентации/Екатерина Винник.avi",
+    "format": "AVI",
+    "size_bytes": 218196690,
+    "exact_duplicate": "Нет",
+    "fingerprint": "17e5a5ccdd2e"
+  },
+  {
+    "resource_id": "EMDR-030",
+    "title": "EMDR и треугольник Карпмана — Юлия Сорокина",
+    "filename": "28 Сорокина.mp4",
+    "path": "Конференции/4 конференция (Москва, 2018)/Видео/28 Сорокина.mp4",
+    "format": "MP4",
+    "size_bytes": 1166635310,
+    "exact_duplicate": "Нет",
+    "fingerprint": "85cf8520e884"
+  },
+  {
+    "resource_id": "EMDR-030",
+    "title": "EMDR и треугольник Карпмана — Юлия Сорокина",
+    "filename": "EMDR и Треугольник Карпмана_Сорокина.pdf",
+    "path": "Конференции/4 конференция (Москва, 2018)/Презентации/EMDR и Треугольник Карпмана_Сорокина.pdf",
+    "format": "PDF",
+    "size_bytes": 1306859,
+    "exact_duplicate": "Нет",
+    "fingerprint": "68b61f491806"
+  },
+  {
+    "resource_id": "EMDR-031",
+    "title": "Тяжелый детский опыт и феномен вспышки — Малик",
+    "filename": "31 Малик.mp4",
+    "path": "Конференции/4 конференция (Москва, 2018)/Видео/31 Малик.mp4",
+    "format": "MP4",
+    "size_bytes": 617946193,
+    "exact_duplicate": "Нет",
+    "fingerprint": "7a4f71fab5d3"
+  },
+  {
+    "resource_id": "EMDR-031",
+    "title": "Тяжелый детский опыт и феномен вспышки — Малик",
+    "filename": "Вспышка_Малик.pdf",
+    "path": "Конференции/4 конференция (Москва, 2018)/Презентации/Вспышка_Малик.pdf",
+    "format": "PDF",
+    "size_bytes": 278360,
+    "exact_duplicate": "Нет",
+    "fingerprint": "40efbcff9bed"
+  },
+  {
+    "resource_id": "EMDR-031",
+    "title": "Тяжелый детский опыт и феномен вспышки — Малик",
+    "filename": "Тяжелый детский опыт_Малик.pdf",
+    "path": "Конференции/4 конференция (Москва, 2018)/Презентации/Тяжелый детский опыт_Малик.pdf",
+    "format": "PDF",
+    "size_bytes": 2129621,
+    "exact_duplicate": "Нет",
+    "fingerprint": "19367597c6ff"
+  },
+  {
+    "resource_id": "EMDR-032",
+    "title": "Выступление Е. Г. Протопоповой на конференции EMDR 2018",
+    "filename": "32 Протопопова.mp4",
+    "path": "Конференции/4 конференция (Москва, 2018)/Видео/32 Протопопова.mp4",
+    "format": "MP4",
+    "size_bytes": 471421623,
+    "exact_duplicate": "Нет",
+    "fingerprint": "5a54d7228fe8"
+  },
+  {
+    "resource_id": "EMDR-032",
+    "title": "Выступление Е. Г. Протопоповой на конференции EMDR 2018",
+    "filename": "Протопопова ЕГ.pdf",
+    "path": "Конференции/4 конференция (Москва, 2018)/Презентации/Протопопова ЕГ.pdf",
+    "format": "PDF",
+    "size_bytes": 3238344,
+    "exact_duplicate": "Нет",
+    "fingerprint": "f94cd33ecc6b"
+  },
+  {
+    "resource_id": "EMDR-033",
+    "title": "EMDR при обсессивно-компульсивном расстройстве — Волкова",
+    "filename": "34 Волкова.mp4",
+    "path": "Конференции/4 конференция (Москва, 2018)/Видео/34 Волкова.mp4",
+    "format": "MP4",
+    "size_bytes": 461150847,
+    "exact_duplicate": "Нет",
+    "fingerprint": "8fd0d3b7c49b"
+  },
+  {
+    "resource_id": "EMDR-033",
+    "title": "EMDR при обсессивно-компульсивном расстройстве — Волкова",
+    "filename": "ОКР_Волкова.pdf",
+    "path": "Конференции/4 конференция (Москва, 2018)/Презентации/ОКР_Волкова.pdf",
+    "format": "PDF",
+    "size_bytes": 214226,
+    "exact_duplicate": "Нет",
+    "fingerprint": "bcfea0f62939"
+  },
+  {
+    "resource_id": "EMDR-034",
+    "title": "Невидимые травмы — Ольга Лови",
+    "filename": "35 Лови.mp4",
+    "path": "Конференции/4 конференция (Москва, 2018)/Видео/35 Лови.mp4",
+    "format": "MP4",
+    "size_bytes": 715874549,
+    "exact_duplicate": "Нет",
+    "fingerprint": "2d372bc70cca"
+  },
+  {
+    "resource_id": "EMDR-034",
+    "title": "Невидимые травмы — Ольга Лови",
+    "filename": "Невидимые травмы Ольга Лови.pdf",
+    "path": "Конференции/4 конференция (Москва, 2018)/Презентации/Невидимые травмы Ольга Лови.pdf",
+    "format": "PDF",
+    "size_bytes": 1447049,
+    "exact_duplicate": "Нет",
+    "fingerprint": "20a1d5ae03ba"
+  },
+  {
+    "resource_id": "EMDR-035",
+    "title": "Будущее EMDR — Зотова",
+    "filename": "36 Зотова.mp4",
+    "path": "Конференции/4 конференция (Москва, 2018)/Видео/36 Зотова.mp4",
+    "format": "MP4",
+    "size_bytes": 883547810,
+    "exact_duplicate": "Нет",
+    "fingerprint": "85df11615688"
+  },
+  {
+    "resource_id": "EMDR-035",
+    "title": "Будущее EMDR — Зотова",
+    "filename": "EMDR_future_Zotova_May2018.pdf",
+    "path": "Конференции/4 конференция (Москва, 2018)/Презентации/EMDR_future_Zotova_May2018.pdf",
+    "format": "PDF",
+    "size_bytes": 6609139,
+    "exact_duplicate": "Нет",
+    "fingerprint": "369d523e714f"
+  },
+  {
+    "resource_id": "EMDR-036",
+    "title": "Выступление Лебедевой на конференции EMDR 2018",
+    "filename": "37 Лебедева.mp4",
+    "path": "Конференции/4 конференция (Москва, 2018)/Видео/37 Лебедева.mp4",
+    "format": "MP4",
+    "size_bytes": 838326479,
+    "exact_duplicate": "Нет",
+    "fingerprint": "d0016302273a"
+  },
+  {
+    "resource_id": "EMDR-037",
+    "title": "Клиническая форма ТЭС в рамках EMDR Аксенов",
+    "filename": "Клиническая форма ТЭС в рамках EMDR_Аксенов.pdf",
+    "path": "Конференции/4 конференция (Москва, 2018)/Презентации/Клиническая форма ТЭС в рамках EMDR_Аксенов.pdf",
+    "format": "PDF",
+    "size_bytes": 239457,
+    "exact_duplicate": "Нет",
+    "fingerprint": "b77456869774"
+  },
+  {
+    "resource_id": "EMDR-038",
+    "title": "Конференция EMDR 2018: анонсы и расписание",
+    "filename": "Конференция EMDR 2018_1-2 день Анонсы.docx",
+    "path": "Конференции/4 конференция (Москва, 2018)/Презентации/Конференция EMDR 2018_1-2 день Анонсы.docx",
+    "format": "DOCX",
+    "size_bytes": 35070,
+    "exact_duplicate": "Нет",
+    "fingerprint": "545880a1d3f8"
+  },
+  {
+    "resource_id": "EMDR-038",
+    "title": "Конференция EMDR 2018: анонсы и расписание",
+    "filename": "Расписание_конференция EMDR 2018 a.pdf",
+    "path": "Конференции/4 конференция (Москва, 2018)/Презентации/Расписание_конференция EMDR 2018 a.pdf",
+    "format": "PDF",
+    "size_bytes": 108341,
+    "exact_duplicate": "Нет",
+    "fingerprint": "5ad169f55684"
+  },
+  {
+    "resource_id": "EMDR-039",
+    "title": "Меридианные техники БЛС для самопомощи Аксенов",
+    "filename": "Меридианные техники БЛС для самопомощи_Аксенов.pdf",
+    "path": "Конференции/4 конференция (Москва, 2018)/Презентации/Меридианные техники БЛС для самопомощи_Аксенов.pdf",
+    "format": "PDF",
+    "size_bytes": 5890904,
+    "exact_duplicate": "Нет",
+    "fingerprint": "c0a4e8b30866"
+  },
+  {
+    "resource_id": "EMDR-040",
+    "title": "В поисках идеального ресурса: возвращение к источнику — Андрей Пелешок",
+    "filename": "Андрей Пелешок.pptx",
+    "path": "Конференции/5 конференция (Питер 2019)/Презентации/Андрей Пелешок.pptx",
+    "format": "PPTX",
+    "size_bytes": 1244627,
+    "exact_duplicate": "Нет",
+    "fingerprint": "20ae514dd371"
+  },
+  {
+    "resource_id": "EMDR-041",
+    "title": "EMDR-терапия при синдроме хронической тазовой боли — Сергей Бардышев",
+    "filename": "Бардышев.pptx",
+    "path": "Конференции/5 конференция (Питер 2019)/Презентации/Бардышев.pptx",
+    "format": "PPTX",
+    "size_bytes": 688070,
+    "exact_duplicate": "Нет",
+    "fingerprint": "9b038ba68a89"
+  },
+  {
+    "resource_id": "EMDR-042",
+    "title": "Некогнитивные переплетения в EMDR: телесно-ориентированные интервенции — Надежда Градовская",
+    "filename": "Градовская.pptx",
+    "path": "Конференции/5 конференция (Питер 2019)/Презентации/Градовская.pptx",
+    "format": "PPTX",
+    "size_bytes": 2225900,
+    "exact_duplicate": "Нет",
+    "fingerprint": "c57ffadd6044"
+  },
+  {
+    "resource_id": "EMDR-043",
+    "title": "Терапевтические отношения при нарушениях привязанности — Елена Дорош",
+    "filename": "Дорош.pptx",
+    "path": "Конференции/5 конференция (Питер 2019)/Презентации/Дорош.pptx",
+    "format": "PPTX",
+    "size_bytes": 178693,
+    "exact_duplicate": "Нет",
+    "fingerprint": "884c242291d4"
+  },
+  {
+    "resource_id": "EMDR-044",
+    "title": "EMDR и когнитивно-поведенческая терапия: общность подходов — Ю. А. Ерухимович",
+    "filename": "Ерухимович.pptx",
+    "path": "Конференции/5 конференция (Питер 2019)/Презентации/Ерухимович.pptx",
+    "format": "PPTX",
+    "size_bytes": 681383,
+    "exact_duplicate": "Нет",
+    "fingerprint": "0ead5643915d"
+  },
+  {
+    "resource_id": "EMDR-045",
+    "title": "Интеграция EMDR и транзактного анализа — Алина Лаврищева",
+    "filename": "Лаврищева А.pptx",
+    "path": "Конференции/5 конференция (Питер 2019)/Презентации/Лаврищева А.pptx",
+    "format": "PPTX",
+    "size_bytes": 344995,
+    "exact_duplicate": "Нет",
+    "fingerprint": "ff1ee303573b"
+  },
+  {
+    "resource_id": "EMDR-046",
+    "title": "Адаптация базового протокола EMDR для клиентов с проблемами привязанности",
+    "filename": "Малик.pptx",
+    "path": "Конференции/5 конференция (Питер 2019)/Презентации/Малик.pptx",
+    "format": "PPTX",
+    "size_bytes": 125352,
+    "exact_duplicate": "Нет",
+    "fingerprint": "5774207bb834"
+  },
+  {
+    "resource_id": "EMDR-047",
+    "title": "Как трансформировать терапевтические оплошности в возможности с помощью EMDR — Елена Пелешок",
+    "filename": "Пелешок Алена.pptx",
+    "path": "Конференции/5 конференция (Питер 2019)/Презентации/Пелешок Алена.pptx",
+    "format": "PPTX",
+    "size_bytes": 458917,
+    "exact_duplicate": "Нет",
+    "fingerprint": "d59c98537a43"
+  },
+  {
+    "resource_id": "EMDR-048",
+    "title": "Сочетание EMDR и гипноза — Павел Слободской",
+    "filename": "Слободской.pdf",
+    "path": "Конференции/5 конференция (Питер 2019)/Презентации/Слободской.pdf",
+    "format": "PDF",
+    "size_bytes": 1745714,
+    "exact_duplicate": "Нет",
+    "fingerprint": "848f94f93e63"
+  },
+  {
+    "resource_id": "EMDR-049",
+    "title": "Работа с «невидимым» флешбеком в EMDR — Юлия Сорокина",
+    "filename": "Сорокина1.pdf",
+    "path": "Конференции/5 конференция (Питер 2019)/Презентации/Сорокина1.pdf",
+    "format": "PDF",
+    "size_bytes": 992131,
+    "exact_duplicate": "Нет",
+    "fingerprint": "9ff7fce8b3d9"
+  },
+  {
+    "resource_id": "EMDR-050",
+    "title": "Техника «Слайд-шоу» — Юлия Сорокина",
+    "filename": "Сорокина2.pdf",
+    "path": "Конференции/5 конференция (Питер 2019)/Презентации/Сорокина2.pdf",
+    "format": "PDF",
+    "size_bytes": 185501,
+    "exact_duplicate": "Нет",
+    "fingerprint": "12a1cc27cd33"
+  },
+  {
+    "resource_id": "EMDR-051",
+    "title": "Конференция 2020",
+    "filename": "Конференция 2020.docx",
+    "path": "Конференции/Конференция 2020.docx",
+    "format": "DOCX",
+    "size_bytes": 21995,
+    "exact_duplicate": "Нет",
+    "fingerprint": "9028f6ed3f4c"
+  },
+  {
+    "resource_id": "EMDR-052",
+    "title": "Конференция 2021",
+    "filename": "Конференция 2021.docx",
+    "path": "Конференции/Конференция 2021.docx",
+    "format": "DOCX",
+    "size_bytes": 21957,
+    "exact_duplicate": "Нет",
+    "fingerprint": "dee9bf5bde70"
+  },
+  {
+    "resource_id": "EMDR-053",
+    "title": "EMDR-терапия зависимостей — конференция 2021",
+    "filename": "33. Терапия_зависимостей_конференция_2021.pdf",
+    "path": "Конференции/Конференция 2021/33. Терапия_зависимостей_конференция_2021.pdf",
+    "format": "PDF",
+    "size_bytes": 1752952,
+    "exact_duplicate": "Нет",
+    "fingerprint": "d001d70239f8"
+  },
+  {
+    "resource_id": "EMDR-054",
+    "title": "Работа с частями личности — Сергей Бардышев, конференция 2021",
+    "filename": "34. Части 2021 Бардышев.pdf",
+    "path": "Конференции/Конференция 2021/34. Части 2021 Бардышев.pdf",
+    "format": "PDF",
+    "size_bytes": 173871,
+    "exact_duplicate": "Нет",
+    "fingerprint": "a38b0bb6d10e"
+  },
+  {
+    "resource_id": "EMDR-055",
+    "title": "EMDR и роды — конференция 2021",
+    "filename": "36. EMDR и роды.pdf",
+    "path": "Конференции/Конференция 2021/36. EMDR и роды.pdf",
+    "format": "PDF",
+    "size_bytes": 1490236,
+    "exact_duplicate": "Нет",
+    "fingerprint": "79dad6eeb5db"
+  },
+  {
+    "resource_id": "EMDR-056",
+    "title": "Работа с домашним насилием — Фатеева, конференция 2021",
+    "filename": "37. Фатеева_Работа_с_домашним_насилием_NEW.pdf",
+    "path": "Конференции/Конференция 2021/37. Фатеева_Работа_с_домашним_насилием_NEW.pdf",
+    "format": "PDF",
+    "size_bytes": 4600645,
+    "exact_duplicate": "Нет",
+    "fingerprint": "11d4baa9a30d"
+  },
+  {
+    "resource_id": "EMDR-057",
+    "title": "Конференция 2022",
+    "filename": "Конференция 2022.docx",
+    "path": "Конференции/Конференция 2022.docx",
+    "format": "DOCX",
+    "size_bytes": 21965,
+    "exact_duplicate": "Нет",
+    "fingerprint": "ad3097732ffb"
+  },
+  {
+    "resource_id": "EMDR-058",
+    "title": "Конференция 2023",
+    "filename": "Конференция 2023.docx",
+    "path": "Конференции/Конференция 2023.docx",
+    "format": "DOCX",
+    "size_bytes": 21987,
+    "exact_duplicate": "Нет",
+    "fingerprint": "ea3cb006907d"
+  },
+  {
+    "resource_id": "EMDR-059",
+    "title": "EMDR: сценарные протоколы",
+    "filename": "Eye_Movement_Desensitization_and_Reprocessing_EMDR_Scripted_Protocols.pdf",
+    "path": "Литература (книги и статьи)/Книги/Книги на английском/Eye_Movement_Desensitization_and_Reprocessing_EMDR_Scripted_Protocols.pdf",
+    "format": "PDF",
+    "size_bytes": 1601834,
+    "exact_duplicate": "Нет",
+    "fingerprint": "0fe3699a7bbe"
+  },
+  {
+    "resource_id": "EMDR-060",
+    "title": "Основы EMDR-терапии",
+    "filename": "Eye_Movement_Desensitization_and_Reprocessing_EMDR_Therapy_Basic.pdf",
+    "path": "Литература (книги и статьи)/Книги/Книги на английском/Eye_Movement_Desensitization_and_Reprocessing_EMDR_Therapy_Basic.pdf",
+    "format": "PDF",
+    "size_bytes": 3686375,
+    "exact_duplicate": "Нет",
+    "fingerprint": "239f54f1a133"
+  },
+  {
+    "resource_id": "EMDR-061",
+    "title": "EMDR-терапия: сценарные вмешательства",
+    "filename": "Eye_movement_desensitization_and_reprocessing_EMDR_therapy_scripted.pdf",
+    "path": "Литература (книги и статьи)/Книги/Книги на английском/Eye_movement_desensitization_and_reprocessing_EMDR_therapy_scripted.pdf",
+    "format": "PDF",
+    "size_bytes": 4130350,
+    "exact_duplicate": "Нет",
+    "fingerprint": "5b3701649c9e"
+  },
+  {
+    "resource_id": "EMDR-062",
+    "title": "Терапия интеграции движений глаз: клиническое руководство",
+    "filename": "Eye_Movement_Integration_Therapy_The_Comprehensive_Clinical_Guide.pdf",
+    "path": "Литература (книги и статьи)/Книги/Книги на английском/Eye_Movement_Integration_Therapy_The_Comprehensive_Clinical_Guide.pdf",
+    "format": "PDF",
+    "size_bytes": 26097180,
+    "exact_duplicate": "Нет",
+    "fingerprint": "de6fb1638e74"
+  },
+  {
+    "resource_id": "EMDR-063",
+    "title": "Руководство по EMDR и семейной терапии",
+    "filename": "Handbook_of_EMDR_and_family_therapy_processes_by_Francine_Shapiro.pdf",
+    "path": "Литература (книги и статьи)/Книги/Книги на английском/Handbook_of_EMDR_and_family_therapy_processes_by_Francine_Shapiro.pdf",
+    "format": "PDF",
+    "size_bytes": 3441301,
+    "exact_duplicate": "Нет",
+    "fingerprint": "8831d0788044"
+  },
+  {
+    "resource_id": "EMDR-064",
+    "title": "Интеграция EMDR в клиническую практику",
+    "filename": "Liz Royle MA  MBACP, Catherine Kerr BSc(Hons)  MBACP - Integrating EMDR Into Your Practice-Springer Publishing Company (2010).pdf",
+    "path": "Литература (книги и статьи)/Книги/Книги на английском/Liz Royle MA  MBACP, Catherine Kerr BSc(Hons)  MBACP - Integrating EMDR Into Your Practice-Springer Publishing Company (2010).pdf",
+    "format": "PDF",
+    "size_bytes": 2223483,
+    "exact_duplicate": "Нет",
+    "fingerprint": "d674534caa70"
+  },
+  {
+    "resource_id": "EMDR-065",
+    "title": "Нарциссизм и травма — Долорес Москуэра: презентация и статьи",
+    "filename": "Презентация_Narcissism Russia 2020_RUS.pdf",
+    "path": "Литература (книги и статьи)/Книги/Книги на английском/Нарциссизм_Долорес Маскуэра/Презентация_Narcissism Russia 2020_RUS.pdf",
+    "format": "PDF",
+    "size_bytes": 1451259,
+    "exact_duplicate": "Да",
+    "fingerprint": "fa40b059020a"
+  },
+  {
+    "resource_id": "EMDR-065",
+    "title": "Нарциссизм и травма — Долорес Москуэра: презентация и статьи",
+    "filename": "Статья_Narcissism_Mosquera_and_Knipe_Journal_EM.pdf",
+    "path": "Литература (книги и статьи)/Книги/Книги на английском/Нарциссизм_Долорес Маскуэра/Статья_Narcissism_Mosquera_and_Knipe_Journal_EM.pdf",
+    "format": "PDF",
+    "size_bytes": 241143,
+    "exact_duplicate": "Да",
+    "fingerprint": "61c91e342b20"
+  },
+  {
+    "resource_id": "EMDR-065",
+    "title": "Нарциссизм и травма — Долорес Москуэра: презентация и статьи",
+    "filename": "Статья_NarcissismandtraumaESTDNewsletter2011.pdf",
+    "path": "Литература (книги и статьи)/Книги/Книги на английском/Нарциссизм_Долорес Маскуэра/Статья_NarcissismandtraumaESTDNewsletter2011.pdf",
+    "format": "PDF",
+    "size_bytes": 83601,
+    "exact_duplicate": "Да",
+    "fingerprint": "7f1420f3017d"
+  },
+  {
+    "resource_id": "EMDR-066",
+    "title": "EMDR в коучинге",
+    "filename": "Книга_EMDR в коучинге.pdf",
+    "path": "Литература (книги и статьи)/Книги/Книги на русском/Книга_EMDR в коучинге.pdf",
+    "format": "PDF",
+    "size_bytes": 6342005,
+    "exact_duplicate": "Нет",
+    "fingerprint": "39d28fd82b58"
+  },
+  {
+    "resource_id": "EMDR-067",
+    "title": "Преодолевая прошлое — Фрэнсин Шапиро",
+    "filename": "Преодолевая_прошлое_Фрэнсин_Шапиро.pdf",
+    "path": "Литература (книги и статьи)/Книги/Книги на русском/Преодолевая_прошлое_Фрэнсин_Шапиро.pdf",
+    "format": "PDF",
+    "size_bytes": 43208528,
+    "exact_duplicate": "Нет",
+    "fingerprint": "81ad53e8dbe1"
+  },
+  {
+    "resource_id": "EMDR-068",
+    "title": "Изменения ЭЭГ в ходе терапии EMDR",
+    "filename": "2015 FRONTIERS IN PSYCHOLOGY EMDR EEG S.GIULIANO.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/2015 FRONTIERS IN PSYCHOLOGY EMDR EEG S.GIULIANO.pdf",
+    "format": "PDF",
+    "size_bytes": 1304981,
+    "exact_duplicate": "Нет",
+    "fingerprint": "ecd368bd4da5"
+  },
+  {
+    "resource_id": "EMDR-069",
+    "title": "EMDR и когнитивно-поведенческая терапия при ОКР: рандомизированное контролируемое исследование",
+    "filename": "A randomized controlled trial comparing EMDR and CBT for obsessive–compulsive disorder.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/A randomized controlled trial comparing EMDR and CBT for obsessive–compulsive disorder.pdf",
+    "format": "PDF",
+    "size_bytes": 470880,
+    "exact_duplicate": "Нет",
+    "fingerprint": "c61195b0e865"
+  },
+  {
+    "resource_id": "EMDR-070",
+    "title": "EMDR при симптомах ПТСР у сирийских беженцев: пилотное рандомизированное исследование",
+    "filename": "Acarturk 2015 EMDR for Syrian refugees with ptsd symptoms pilot rct.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Acarturk 2015 EMDR for Syrian refugees with ptsd symptoms pilot rct.pdf",
+    "format": "PDF",
+    "size_bytes": 420413,
+    "exact_duplicate": "Нет",
+    "fingerprint": "7f738b0b8580"
+  },
+  {
+    "resource_id": "EMDR-071",
+    "title": "Десенсибилизация во время быстрого сна как новый метод терапии ПТСР: рандомизированное исследование",
+    "filename": "Ahmadi 2015 REM Desensitization as a New Therapeutic Method for Ptsd RCT.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Ahmadi 2015 REM Desensitization as a New Therapeutic Method for Ptsd RCT.pdf",
+    "format": "PDF",
+    "size_bytes": 333790,
+    "exact_duplicate": "Нет",
+    "fingerprint": "eb96e31de7de"
+  },
+  {
+    "resource_id": "EMDR-072",
+    "title": "Модель адаптивной переработки информации, выбор мишени и стандартный протокол: стратегии успешной терапии",
+    "filename": "AIP, Targeting, Standard Protocol, strategies for successful outcomes.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/AIP, Targeting, Standard Protocol, strategies for successful outcomes.pdf",
+    "format": "PDF",
+    "size_bytes": 195074,
+    "exact_duplicate": "Нет",
+    "fingerprint": "8ecc04227a48"
+  },
+  {
+    "resource_id": "EMDR-073",
+    "title": "Диссоциация как предиктор ответа на EMDR-терапию при ПТСР",
+    "filename": "Bae 2015 Dissociation Predicts Treatment Response in EMDR for PTSD.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Bae 2015 Dissociation Predicts Treatment Response in EMDR for PTSD.pdf",
+    "format": "PDF",
+    "size_bytes": 15909453,
+    "exact_duplicate": "Нет",
+    "fingerprint": "99d11036062d"
+  },
+  {
+    "resource_id": "EMDR-074",
+    "title": "Эффективность методов лечения тревожных расстройств",
+    "filename": "Bandelow-2015-Efficacy of treatments for anxiety disorders.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Bandelow-2015-Efficacy of treatments for anxiety disorders.pdf",
+    "format": "PDF",
+    "size_bytes": 266212,
+    "exact_duplicate": "Нет",
+    "fingerprint": "228276049aa0"
+  },
+  {
+    "resource_id": "EMDR-075",
+    "title": "Влияние EMDR на депрессию у пациентов после инфаркта миокарда",
+    "filename": "Behnammoghadam 2015 Effect of EMDR on Depression in Patients With Myocardial Infarction.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Behnammoghadam 2015 Effect of EMDR on Depression in Patients With Myocardial Infarction.pdf",
+    "format": "PDF",
+    "size_bytes": 137650,
+    "exact_duplicate": "Нет",
+    "fingerprint": "9d516cdcb04e"
+  },
+  {
+    "resource_id": "EMDR-076",
+    "title": "EMDR при синдроме фантомной молочной железы: клинический случай",
+    "filename": "Brennstuhl 2015 Using EMDR as a treatment for phantom breast syndrome Case study .pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Brennstuhl 2015 Using EMDR as a treatment for phantom breast syndrome Case study .pdf",
+    "format": "PDF",
+    "size_bytes": 1043890,
+    "exact_duplicate": "Нет",
+    "fingerprint": "f7990672c358"
+  },
+  {
+    "resource_id": "EMDR-077",
+    "title": "Применение EMDR при хронической боли",
+    "filename": "Brennstuhl 2016 Utilisation de la thérapie EMDR - dans le cadre de la douleur chronique .pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Brennstuhl 2016 Utilisation de la thérapie EMDR - dans le cadre de la douleur chronique .pdf",
+    "format": "PDF",
+    "size_bytes": 432300,
+    "exact_duplicate": "Нет",
+    "fingerprint": "dac84df1da38"
+  },
+  {
+    "resource_id": "EMDR-078",
+    "title": "EMDR при ПТСР: систематический обзор",
+    "filename": "Brunnet et al. - 2014 - Dessensibilizac ão e reprocessamento por movimentos.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Brunnet et al. - 2014 - Dessensibilizac ão e reprocessamento por movimentos.pdf",
+    "format": "PDF",
+    "size_bytes": 495113,
+    "exact_duplicate": "Нет",
+    "fingerprint": "e8e7405fb1fa"
+  },
+  {
+    "resource_id": "EMDR-079",
+    "title": "Направляемые движения глаз в терапии травмы: предполагаемые неврологические пути и первые результаты",
+    "filename": "Campagne 2016 Guided Eye Movement (GEM) in Trauma Therapy Hypothetical Neurological Routes and Initial Results of a Sample N = 35.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Campagne 2016 Guided Eye Movement (GEM) in Trauma Therapy Hypothetical Neurological Routes and Initial Results of a Sample N = 35.pdf",
+    "format": "PDF",
+    "size_bytes": 99431,
+    "exact_duplicate": "Нет",
+    "fingerprint": "5cd9dc0afb83"
+  },
+  {
+    "resource_id": "EMDR-080",
+    "title": "EMDR при ПТСР у пациентов с рассеянным склерозом: сравнение с релаксационной терапией",
+    "filename": "Carletto 2016 Treating Ptsd in Patients with Multiple Sclerosis RCT Comparing the Efficacy of EMDR and Relaxation Therapy.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Carletto 2016 Treating Ptsd in Patients with Multiple Sclerosis RCT Comparing the Efficacy of EMDR and Relaxation Therapy.pdf",
+    "format": "PDF",
+    "size_bytes": 487943,
+    "exact_duplicate": "Нет",
+    "fingerprint": "6dafd1aa05e5"
+  },
+  {
+    "resource_id": "EMDR-081",
+    "title": "Тренировка движений глаз при остром ишемическом инсульте: изменения ЭЭГ и шкалы NIHSS",
+    "filename": "Carrick 2016 Eye-Movement Training Results in Changes in qEEG and NIH Stroke Scale in Subjects Suffering from Acute Middle Cerebral Artery Ischemic Stroke RCT.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Carrick 2016 Eye-Movement Training Results in Changes in qEEG and NIH Stroke Scale in Subjects Suffering from Acute Middle Cerebral Artery Ischemic Stroke RCT.pdf",
+    "format": "PDF",
+    "size_bytes": 891805,
+    "exact_duplicate": "Нет",
+    "fingerprint": "ebc92a1c0e1e"
+  },
+  {
+    "resource_id": "EMDR-082",
+    "title": "Эффективность EMDR при ПТСР: метаанализ",
+    "filename": "Chen et al  2014 Efficacy of EMDR for Patients with PTSD Meta-analysis.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Chen et al  2014 Efficacy of EMDR for Patients with PTSD Meta-analysis.pdf",
+    "format": "PDF",
+    "size_bytes": 1848006,
+    "exact_duplicate": "Нет",
+    "fingerprint": "8510f1892e49"
+  },
+  {
+    "resource_id": "EMDR-083",
+    "title": "Психологические и фМРТ-характеристики пожарных с частичным ПТСР и эффект EMDR-терапии",
+    "filename": "Chung 2014 The Psychological Characteristics and FMRI Findings in Firefi....pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Chung 2014 The Psychological Characteristics and FMRI Findings in Firefi....pdf",
+    "format": "PDF",
+    "size_bytes": 1084681,
+    "exact_duplicate": "Нет",
+    "fingerprint": "24b830386395"
+  },
+  {
+    "resource_id": "EMDR-084",
+    "title": "Интегративная модель нейронного механизма EMDR",
+    "filename": "Coubard 2016 An Integrative Model for the Neural Mechanism of EMDR.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Coubard 2016 An Integrative Model for the Neural Mechanism of EMDR.pdf",
+    "format": "PDF",
+    "size_bytes": 479702,
+    "exact_duplicate": "Нет",
+    "fingerprint": "9ed20952da3e"
+  },
+  {
+    "resource_id": "EMDR-085",
+    "title": "Создание клиента, способного создавать самого себя",
+    "filename": "Creating the client who can create himself.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Creating the client who can create himself.pdf",
+    "format": "PDF",
+    "size_bytes": 376646,
+    "exact_duplicate": "Нет",
+    "fingerprint": "ee226114e9d8"
+  },
+  {
+    "resource_id": "EMDR-086",
+    "title": "Критический анализ современных рекомендаций по лечению комплексного ПТСР",
+    "filename": "CRITICAL ANALYSIS OF THE CURRENT TREATMENT GUIDELINES FOR CPTSD (De Jongh et al., 2016).pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/CRITICAL ANALYSIS OF THE CURRENT TREATMENT GUIDELINES FOR CPTSD (De Jongh et al., 2016).pdf",
+    "format": "PDF",
+    "size_bytes": 133291,
+    "exact_duplicate": "Нет",
+    "fingerprint": "d40eacb00128"
+  },
+  {
+    "resource_id": "EMDR-087",
+    "title": "Психологическое лечение ПТСР у взрослых: систематический обзор и метаанализ",
+    "filename": "Cusack 2015 Psychological treatments for adults with ptsd systematic review and meta-analysis.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Cusack 2015 Psychological treatments for adults with ptsd systematic review and meta-analysis.pdf",
+    "format": "PDF",
+    "size_bytes": 1957467,
+    "exact_duplicate": "Нет",
+    "fingerprint": "bf30dd132068"
+  },
+  {
+    "resource_id": "EMDR-088",
+    "title": "Результаты лечения ПТСР по оценке пациентов: психологическая терапия",
+    "filename": "d' Ardenne & Heke 2014 Patient-reported outcomes in post-traumatic stres....pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/d' Ardenne & Heke 2014 Patient-reported outcomes in post-traumatic stres....pdf",
+    "format": "PDF",
+    "size_bytes": 1128769,
+    "exact_duplicate": "Нет",
+    "fingerprint": "51b08f848b37"
+  },
+  {
+    "resource_id": "EMDR-089",
+    "title": "Движения глаз нарушают эпизодическое представление будущего",
+    "filename": "De Vito 2015 Eye movements disrupt episodic future thinking.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/De Vito 2015 Eye movements disrupt episodic future thinking.pdf",
+    "format": "PDF",
+    "size_bytes": 248524,
+    "exact_duplicate": "Нет",
+    "fingerprint": "e321d60b01a9"
+  },
+  {
+    "resource_id": "EMDR-090",
+    "title": "Изменения ЭЭГ покоя после EMDR-терапии",
+    "filename": "Di  Lorenzo 2015 Emdr Therapy Changes the Resting-state EEG.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Di  Lorenzo 2015 Emdr Therapy Changes the Resting-state EEG.pdf",
+    "format": "PDF",
+    "size_bytes": 53162,
+    "exact_duplicate": "Да",
+    "fingerprint": "dc884977cdb7"
+  },
+  {
+    "resource_id": "EMDR-090",
+    "title": "Изменения ЭЭГ покоя после EMDR-терапии",
+    "filename": "Di Lorenzo 2015 Emdr Therapy Changes the Resting-state Eeg.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Di Lorenzo 2015 Emdr Therapy Changes the Resting-state Eeg.pdf",
+    "format": "PDF",
+    "size_bytes": 53162,
+    "exact_duplicate": "Да",
+    "fingerprint": "dc884977cdb7"
+  },
+  {
+    "resource_id": "EMDR-091",
+    "title": "Травма-фокусированная КПТ и EMDR у детей с посттравматическим стрессом",
+    "filename": "Diehle 2014 Trauma-focused CBT or EMDR in children with posttraumatic st....pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Diehle 2014 Trauma-focused CBT or EMDR in children with posttraumatic st....pdf",
+    "format": "PDF",
+    "size_bytes": 289066,
+    "exact_duplicate": "Нет",
+    "fingerprint": "716a3d69c45d"
+  },
+  {
+    "resource_id": "EMDR-092",
+    "title": "Диссоциативный подтип ПТСР",
+    "filename": "Dissociative subtype (Wolff, 2015).ppt",
+    "path": "Литература (книги и статьи)/Статьи на английском/Dissociative subtype (Wolff, 2015).ppt",
+    "format": "PPT",
+    "size_bytes": 599552,
+    "exact_duplicate": "Нет",
+    "fingerprint": "9025f8d7c7f5"
+  },
+  {
+    "resource_id": "EMDR-093",
+    "title": "EMDR в работе с горем",
+    "filename": "EMDR and Grief.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/EMDR and Grief.pdf",
+    "format": "PDF",
+    "size_bytes": 169370,
+    "exact_duplicate": "Нет",
+    "fingerprint": "e64735993b80"
+  },
+  {
+    "resource_id": "EMDR-094",
+    "title": "EMDR и обычная стабилизация: сравнительные материалы",
+    "filename": "EMDR vs Stabilisation as usual-1.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/EMDR vs Stabilisation as usual-1.pdf",
+    "format": "PDF",
+    "size_bytes": 625451,
+    "exact_duplicate": "Да",
+    "fingerprint": "36045e88b1b9"
+  },
+  {
+    "resource_id": "EMDR-094",
+    "title": "EMDR и обычная стабилизация: сравнительные материалы",
+    "filename": "EMDR vs Stabilisation as usual.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/EMDR vs Stabilisation as usual.pdf",
+    "format": "PDF",
+    "size_bytes": 625451,
+    "exact_duplicate": "Да",
+    "fingerprint": "36045e88b1b9"
+  },
+  {
+    "resource_id": "EMDR-095",
+    "title": "Нейрофизиологические корреляты сессий EMDR",
+    "filename": "Farina et al 2014 Neurophysiological correlates of EMDR sessions.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Farina et al 2014 Neurophysiological correlates of EMDR sessions.pdf",
+    "format": "PDF",
+    "size_bytes": 1051917,
+    "exact_duplicate": "Нет",
+    "fingerprint": "fcf5aa682638"
+  },
+  {
+    "resource_id": "EMDR-096",
+    "title": "Эффективность EMDR-терапии при зависимостях",
+    "filename": "Franklin 2015 The Effectiveness of EMDR Therapy on Clients with Addictions.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Franklin 2015 The Effectiveness of EMDR Therapy on Clients with Addictions.pdf",
+    "format": "PDF",
+    "size_bytes": 1460616,
+    "exact_duplicate": "Нет",
+    "fingerprint": "39b59a067ac9"
+  },
+  {
+    "resource_id": "EMDR-097",
+    "title": "От общего к частному: выбор целевого воспоминания",
+    "filename": "From general to specific - selecting target memory.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/From general to specific - selecting target memory.pdf",
+    "format": "PDF",
+    "size_bytes": 120428,
+    "exact_duplicate": "Нет",
+    "fingerprint": "d83b37e1e126"
+  },
+  {
+    "resource_id": "EMDR-098",
+    "title": "Эффективность рекомендованных методов лечения ПТСР у ветеранов: метарегрессионный анализ",
+    "filename": "Haagen 2015 The efficacy of recommended treatments for veterans with PTSD metaregression analysis.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Haagen 2015 The efficacy of recommended treatments for veterans with PTSD metaregression analysis.pdf",
+    "format": "PDF",
+    "size_bytes": 1521385,
+    "exact_duplicate": "Нет",
+    "fingerprint": "44bf79470eea"
+  },
+  {
+    "resource_id": "EMDR-099",
+    "title": "Исцеление системы заботы с помощью EMDR",
+    "filename": "Healing the Caregiver System with EMDR.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Healing the Caregiver System with EMDR.pdf",
+    "format": "PDF",
+    "size_bytes": 120348,
+    "exact_duplicate": "Нет",
+    "fingerprint": "4286c20ae717"
+  },
+  {
+    "resource_id": "EMDR-100",
+    "title": "Облегчение доступа к эмоциям: нейронная сигнатура стимуляции EMDR",
+    "filename": "Herkt 2014 Facilitating Access to Emotions Neural Signature of EMDR Stim....pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Herkt 2014 Facilitating Access to Emotions Neural Signature of EMDR Stim....pdf",
+    "format": "PDF",
+    "size_bytes": 465624,
+    "exact_duplicate": "Нет",
+    "fingerprint": "dfd0f10f913d"
+  },
+  {
+    "resource_id": "EMDR-101",
+    "title": "Негативные образы при страхе публичных выступлений и нагрузка на зрительно-пространственную рабочую память",
+    "filename": "Homer 2016 Negative mental imagery in public speaking anxiety Forming cognitive resistance by taxing visuospatial working memory.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Homer 2016 Negative mental imagery in public speaking anxiety Forming cognitive resistance by taxing visuospatial working memory.pdf",
+    "format": "PDF",
+    "size_bytes": 281095,
+    "exact_duplicate": "Нет",
+    "fingerprint": "2d1f40f67abd"
+  },
+  {
+    "resource_id": "EMDR-102",
+    "title": "Выбор лечения ПТСР: влияние характеристик пациента и терапевта",
+    "filename": "Hundt 2016 Treatment Decision-Making for Ptsd The Impact of Patient and Therapist Characteristics.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Hundt 2016 Treatment Decision-Making for Ptsd The Impact of Patient and Therapist Characteristics.pdf",
+    "format": "PDF",
+    "size_bytes": 101847,
+    "exact_duplicate": "Нет",
+    "fingerprint": "060e30f94d24"
+  },
+  {
+    "resource_id": "EMDR-103",
+    "title": "Влияние диссоциативного подтипа ПТСР на лечение",
+    "filename": "Influence of dissociative subtype of PTSD (Wolff et al., 2015).pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Influence of dissociative subtype of PTSD (Wolff et al., 2015).pdf",
+    "format": "PDF",
+    "size_bytes": 198615,
+    "exact_duplicate": "Нет",
+    "fingerprint": "8d9302b2920d"
+  },
+  {
+    "resource_id": "EMDR-104",
+    "title": "Интеграция EMDR и терапии эго-состояний",
+    "filename": "Integrating EMDR and Ego State Treatment.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Integrating EMDR and Ego State Treatment.pdf",
+    "format": "PDF",
+    "size_bytes": 124672,
+    "exact_duplicate": "Нет",
+    "fingerprint": "7c61c68a98b1"
+  },
+  {
+    "resource_id": "EMDR-105",
+    "title": "Введение в нейробиологические основы EMDR",
+    "filename": "Intro to foundations of neurobiology of emdr.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Intro to foundations of neurobiology of emdr.pdf",
+    "format": "PDF",
+    "size_bytes": 84315,
+    "exact_duplicate": "Нет",
+    "fingerprint": "667995d0fe18"
+  },
+  {
+    "resource_id": "EMDR-106",
+    "title": "Интегративный групповой протокол EMDR для детей — жертв тяжелого межличностного насилия",
+    "filename": "Jarero 2014 Third Research Study on the Provision of the EMDR Integrativ...-1.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Jarero 2014 Third Research Study on the Provision of the EMDR Integrativ...-1.pdf",
+    "format": "PDF",
+    "size_bytes": 450736,
+    "exact_duplicate": "Да",
+    "fingerprint": "0b9d475dec15"
+  },
+  {
+    "resource_id": "EMDR-106",
+    "title": "Интегративный групповой протокол EMDR для детей — жертв тяжелого межличностного насилия",
+    "filename": "Jarero 2014 Third Research Study on the Provision of the EMDR Integrativ....pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Jarero 2014 Third Research Study on the Provision of the EMDR Integrativ....pdf",
+    "format": "PDF",
+    "size_bytes": 450736,
+    "exact_duplicate": "Да",
+    "fingerprint": "0b9d475dec15"
+  },
+  {
+    "resource_id": "EMDR-107",
+    "title": "EMDR при ПТСР у взрослых с интеллектуальными нарушениями: клинический обзор",
+    "filename": "Jowett 2016 EMDR for DSM-5 PTSD in Adults With Intellectual disabilities Case Study Review..pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Jowett 2016 EMDR for DSM-5 PTSD in Adults With Intellectual disabilities Case Study Review..pdf",
+    "format": "PDF",
+    "size_bytes": 116060,
+    "exact_duplicate": "Нет",
+    "fingerprint": "f48010e7cd96"
+  },
+  {
+    "resource_id": "EMDR-108",
+    "title": "Канадские клинические рекомендации по тревожным расстройствам, ПТСР и ОКР",
+    "filename": "Katzman 2014 Canadian clinical practice guidelines for the management of....pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Katzman 2014 Canadian clinical practice guidelines for the management of....pdf",
+    "format": "PDF",
+    "size_bytes": 1212171,
+    "exact_duplicate": "Нет",
+    "fingerprint": "42e8f8b01c77"
+  },
+  {
+    "resource_id": "EMDR-109",
+    "title": "Движения глаз и образы будущих неудач при страхе публичных выступлений",
+    "filename": "Kearns and Engelhard 2015 Psychophysiological responsivity to script-driven imagery exploratory study of the effects of eye movements on public speaking flashforwards.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Kearns and Engelhard 2015 Psychophysiological responsivity to script-driven imagery exploratory study of the effects of eye movements on public speaking flashforwards.pdf",
+    "format": "PDF",
+    "size_bytes": 170832,
+    "exact_duplicate": "Нет",
+    "fingerprint": "24bb4cbef892"
+  },
+  {
+    "resource_id": "EMDR-110",
+    "title": "Психотерапия и фармакотерапия ПТСР: систематический обзор методов первой линии",
+    "filename": "Lee et al. 2016 Psychotherapy versus Pharmacotherapy for Ptsd Systemic Review and Meta-Analyses to Determine First-Line Treatments.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Lee et al. 2016 Psychotherapy versus Pharmacotherapy for Ptsd Systemic Review and Meta-Analyses to Determine First-Line Treatments.pdf",
+    "format": "PDF",
+    "size_bytes": 1324542,
+    "exact_duplicate": "Нет",
+    "fingerprint": "95407bc27076"
+  },
+  {
+    "resource_id": "EMDR-111",
+    "title": "EMDR при депрессии и стрессе у онкологических пациентов",
+    "filename": "Majidzadeh 2015 Study descriptive static of desensitization technic efficiency with eye movement and reprocessed of cancer patient depression stress.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Majidzadeh 2015 Study descriptive static of desensitization technic efficiency with eye movement and reprocessed of cancer patient depression stress.pdf",
+    "format": "PDF",
+    "size_bytes": 176005,
+    "exact_duplicate": "Нет",
+    "fingerprint": "e5fef4a4f6f0"
+  },
+  {
+    "resource_id": "EMDR-112",
+    "title": "Влияние EMDR на послеоперационную боль у подростков: рандомизированное исследование",
+    "filename": "Maroufi_et_al-2016-Investigating the effect of EMDR on postoperative pain intensity in adolescents undergoing surgery RCT.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Maroufi_et_al-2016-Investigating the effect of EMDR on postoperative pain intensity in adolescents undergoing surgery RCT.pdf",
+    "format": "PDF",
+    "size_bytes": 186291,
+    "exact_duplicate": "Нет",
+    "fingerprint": "a5f0e43bc1c7"
+  },
+  {
+    "resource_id": "EMDR-113",
+    "title": "Влияние горизонтальных движений глаз на свободное воспроизведение",
+    "filename": "Matzke 2015 The effect of horizontal eye movements on free recall.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Matzke 2015 The effect of horizontal eye movements on free recall.pdf",
+    "format": "PDF",
+    "size_bytes": 224817,
+    "exact_duplicate": "Нет",
+    "fingerprint": "6e786ca6898d"
+  },
+  {
+    "resource_id": "EMDR-114",
+    "title": "Эффективность EMDR при военной травме",
+    "filename": "McLay--EMDRMilitary effectiveness.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/McLay--EMDRMilitary effectiveness.pdf",
+    "format": "PDF",
+    "size_bytes": 103304,
+    "exact_duplicate": "Нет",
+    "fingerprint": "2e18f636e850"
+  },
+  {
+    "resource_id": "EMDR-115",
+    "title": "Расширенная модель этики в практической работе",
+    "filename": "Merlinda Weinberg.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Merlinda Weinberg.pdf",
+    "format": "PDF",
+    "size_bytes": 406663,
+    "exact_duplicate": "Нет",
+    "fingerprint": "d8f8e2b40988"
+  },
+  {
+    "resource_id": "EMDR-116",
+    "title": "Применение EMDR у пожилых людей с историей психической травмы",
+    "filename": "Mikhilova 2015 Application of EMDR in the Treatment of Older People with a History of Psychical Trauma.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Mikhilova 2015 Application of EMDR in the Treatment of Older People with a History of Psychical Trauma.pdf",
+    "format": "PDF",
+    "size_bytes": 51521,
+    "exact_duplicate": "Нет",
+    "fingerprint": "49728a1637d5"
+  },
+  {
+    "resource_id": "EMDR-117",
+    "title": "Ответ на психотерапию ПТСР: роль вербальной памяти до лечения",
+    "filename": "Nijdam 2015 Response to Psychotherapy for Ptsd  role of pretreatment verbal memory perfomance.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Nijdam 2015 Response to Psychotherapy for Ptsd  role of pretreatment verbal memory perfomance.pdf",
+    "format": "PDF",
+    "size_bytes": 234495,
+    "exact_duplicate": "Нет",
+    "fingerprint": "51d09adb2cd0"
+  },
+  {
+    "resource_id": "EMDR-118",
+    "title": "25 лет EMDR: протокол, гипотезы механизмов и обзор эффективности при ПТСР",
+    "filename": "Novo et al, 2016.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Novo et al, 2016.pdf",
+    "format": "PDF",
+    "size_bytes": 1108211,
+    "exact_duplicate": "Нет",
+    "fingerprint": "67534190ad61"
+  },
+  {
+    "resource_id": "EMDR-119",
+    "title": "EMDR при ПТСР у пациентов с биполярным расстройством",
+    "filename": "Oh & Kim 2014 EMDR for PTSD in bipolar disorder.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Oh & Kim 2014 EMDR for PTSD in bipolar disorder.pdf",
+    "format": "PDF",
+    "size_bytes": 528378,
+    "exact_duplicate": "Нет",
+    "fingerprint": "86761a2516fa"
+  },
+  {
+    "resource_id": "EMDR-120",
+    "title": "Десенсибилизация триггеров и снижение позыва при парурезе: клинический случай",
+    "filename": "Park 2016 Desensitization of Triggers and Urge Reduction for Paruresis Case Report.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Park 2016 Desensitization of Triggers and Urge Reduction for Paruresis Case Report.pdf",
+    "format": "PDF",
+    "size_bytes": 378972,
+    "exact_duplicate": "Нет",
+    "fingerprint": "ea93f8b663e7"
+  },
+  {
+    "resource_id": "EMDR-121",
+    "title": "Как движения глаз помогают понять развитие эпизодической памяти",
+    "filename": "Pathman Ghetti 2016 More to it than meets the eye how eye movements can elucidate the development of episodic memory.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Pathman Ghetti 2016 More to it than meets the eye how eye movements can elucidate the development of episodic memory.pdf",
+    "format": "PDF",
+    "size_bytes": 1954089,
+    "exact_duplicate": "Нет",
+    "fingerprint": "54375ad12184"
+  },
+  {
+    "resource_id": "EMDR-122",
+    "title": "Оценка эффективности EMDR при сексуальной травме",
+    "filename": "Paylor 2016 Assessing the Effectiveness of EMDR in the Treatment of Sexual Trauma.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Paylor 2016 Assessing the Effectiveness of EMDR in the Treatment of Sexual Trauma.pdf",
+    "format": "PDF",
+    "size_bytes": 183270,
+    "exact_duplicate": "Нет",
+    "fingerprint": "8ac9b3effa49"
+  },
+  {
+    "resource_id": "EMDR-123",
+    "title": "Лечение травмы при зависимости с помощью EMDR: пилотное исследование",
+    "filename": "Perez-Dandieu & Tapia 2014.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Perez-Dandieu & Tapia 2014.pdf",
+    "format": "PDF",
+    "size_bytes": 131021,
+    "exact_duplicate": "Нет",
+    "fingerprint": "5837fa6f5ceb"
+  },
+  {
+    "resource_id": "EMDR-124",
+    "title": "Шестиступенчатая модель безопасной EMDR-терапии комплексной травмы",
+    "filename": "PosterDellucci 6 gear mechanics text.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/PosterDellucci 6 gear mechanics text.pdf",
+    "format": "PDF",
+    "size_bytes": 144550,
+    "exact_duplicate": "Нет",
+    "fingerprint": "941897df8397"
+  },
+  {
+    "resource_id": "EMDR-125",
+    "title": "Протокол EMDR для работы с чрезмерным горем",
+    "filename": "Protocol for Excessive Grief.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Protocol for Excessive Grief.pdf",
+    "format": "PDF",
+    "size_bytes": 102171,
+    "exact_duplicate": "Нет",
+    "fingerprint": "723ae2cdf325"
+  },
+  {
+    "resource_id": "EMDR-126",
+    "title": "Улучшение настроения и сна у пациентов с ПТСР после EMDR-терапии",
+    "filename": "Raboni 2014 Improvement of mood and sleep alterations in ptsd patients b....pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Raboni 2014 Improvement of mood and sleep alterations in ptsd patients b....pdf",
+    "format": "PDF",
+    "size_bytes": 1958153,
+    "exact_duplicate": "Нет",
+    "fingerprint": "f94850b16607"
+  },
+  {
+    "resource_id": "EMDR-127",
+    "title": "Депрессивные симптомы в рандомизированных исследованиях лечения ПТСР: метаанализ",
+    "filename": "Ronconi 2015 A Meta-Analysis of Depressive Symptom Outcomes in Randomized, Controlled Trials for PTSD..pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Ronconi 2015 A Meta-Analysis of Depressive Symptom Outcomes in Randomized, Controlled Trials for PTSD..pdf",
+    "format": "PDF",
+    "size_bytes": 1103426,
+    "exact_duplicate": "Нет",
+    "fingerprint": "a073a4dd7264"
+  },
+  {
+    "resource_id": "EMDR-128",
+    "title": "Профессиональная нетрудоспособность вследствие ПТСР",
+    "filename": "Seliger 2015 Wird es eine Berufsunfahigke it infolge PTBS bald nicht mehr geben.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Seliger 2015 Wird es eine Berufsunfahigke it infolge PTBS bald nicht mehr geben.pdf",
+    "format": "PDF",
+    "size_bytes": 79643,
+    "exact_duplicate": "Нет",
+    "fingerprint": "dda854b3c543"
+  },
+  {
+    "resource_id": "EMDR-129",
+    "title": "Модель адаптивной переработки информации Фрэнсин Шапиро",
+    "filename": "ShapiroAIP2007.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/ShapiroAIP2007.pdf",
+    "format": "PDF",
+    "size_bytes": 252676,
+    "exact_duplicate": "Нет",
+    "fingerprint": "d678607f0b60"
+  },
+  {
+    "resource_id": "EMDR-130",
+    "title": "Предпочтения пациентов при выборе терапии травмы: систематический обзор",
+    "filename": "Simiola 2015 Preferences for Trauma Treatment Systematic Review.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Simiola 2015 Preferences for Trauma Treatment Systematic Review.pdf",
+    "format": "PDF",
+    "size_bytes": 135915,
+    "exact_duplicate": "Нет",
+    "fingerprint": "a36c17c6c145"
+  },
+  {
+    "resource_id": "EMDR-131",
+    "title": "Специальные вопросы применения EMDR с детьми",
+    "filename": "Specialty topics on Using EMDR with Children.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Specialty topics on Using EMDR with Children.pdf",
+    "format": "PDF",
+    "size_bytes": 133079,
+    "exact_duplicate": "Нет",
+    "fingerprint": "55897d0ef8de"
+  },
+  {
+    "resource_id": "EMDR-132",
+    "title": "EMDR и COMET для повышения самооценки при тревожных расстройствах",
+    "filename": "Staring et al 2016 Self-esteem treatment in anxiety randomized controlled crossover trial of EMDR versus COMET in patients with anxiety disorders.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Staring et al 2016 Self-esteem treatment in anxiety randomized controlled crossover trial of EMDR versus COMET in patients with anxiety disorders.pdf",
+    "format": "PDF",
+    "size_bytes": 594885,
+    "exact_duplicate": "Нет",
+    "fingerprint": "0baf35f7b978"
+  },
+  {
+    "resource_id": "EMDR-133",
+    "title": "Психотерапия ПТСР, связанного с военной службой",
+    "filename": "Steenkamp 2015 Psychotherapy for Military-Related PTSD.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Steenkamp 2015 Psychotherapy for Military-Related PTSD.pdf",
+    "format": "PDF",
+    "size_bytes": 358999,
+    "exact_duplicate": "Нет",
+    "fingerprint": "5178099fefa3"
+  },
+  {
+    "resource_id": "EMDR-134",
+    "title": "EMDR для подростков после тайфуна Моракот",
+    "filename": "Tang 2015 EMDR for treating psychological disturbances in Taiwanese adolescents who experienced Typhoon Morakot.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Tang 2015 EMDR for treating psychological disturbances in Taiwanese adolescents who experienced Typhoon Morakot.pdf",
+    "format": "PDF",
+    "size_bytes": 312552,
+    "exact_duplicate": "Нет",
+    "fingerprint": "582f0e83c8a8"
+  },
+  {
+    "resource_id": "EMDR-135",
+    "title": "EMDR при синдромах хронической боли: обзор литературы",
+    "filename": "Tefft & Jodan 2016 EMDR as Treatment for Chronic Pain Syndromes Literature Review.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Tefft & Jodan 2016 EMDR as Treatment for Chronic Pain Syndromes Literature Review.pdf",
+    "format": "PDF",
+    "size_bytes": 370411,
+    "exact_duplicate": "Нет",
+    "fingerprint": "6dd2d395e156"
+  },
+  {
+    "resource_id": "EMDR-136",
+    "title": "Лечение табачной зависимости с помощью протокола FSAP",
+    "filename": "Tsoutsa 2014 Treatment of tobacco addiction using the Feeling-State Addi....pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Tsoutsa 2014 Treatment of tobacco addiction using the Feeling-State Addi....pdf",
+    "format": "PDF",
+    "size_bytes": 150469,
+    "exact_duplicate": "Нет",
+    "fingerprint": "b0af54f3ce8a"
+  },
+  {
+    "resource_id": "EMDR-137",
+    "title": "Паническое расстройство и агорафобия",
+    "filename": "Txt of Panic Do and Agoraphobia.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Txt of Panic Do and Agoraphobia.pdf",
+    "format": "PDF",
+    "size_bytes": 145596,
+    "exact_duplicate": "Нет",
+    "fingerprint": "e3c4451818b8"
+  },
+  {
+    "resource_id": "EMDR-138",
+    "title": "Десенсибилизация зависимости: движения глаз для снижения тяги и интенсивности образов",
+    "filename": "Using Eye Movements to Reduce the-1.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Using Eye Movements to Reduce the-1.pdf",
+    "format": "PDF",
+    "size_bytes": 376649,
+    "exact_duplicate": "Да",
+    "fingerprint": "043c74048c25"
+  },
+  {
+    "resource_id": "EMDR-138",
+    "title": "Десенсибилизация зависимости: движения глаз для снижения тяги и интенсивности образов",
+    "filename": "Using Eye Movements to Reduce the.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Using Eye Movements to Reduce the.pdf",
+    "format": "PDF",
+    "size_bytes": 376649,
+    "exact_duplicate": "Да",
+    "fingerprint": "043c74048c25"
+  },
+  {
+    "resource_id": "EMDR-139",
+    "title": "Предотвращение устойчивого возвращения страха с помощью билатеральной стимуляции",
+    "filename": "Wurtz 2015 Preventing long-lasting fear recovery using bilateral alternating sensory stimulation.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Wurtz 2015 Preventing long-lasting fear recovery using bilateral alternating sensory stimulation.pdf",
+    "format": "PDF",
+    "size_bytes": 1793282,
+    "exact_duplicate": "Нет",
+    "fingerprint": "f8ab062fff7e"
+  },
+  {
+    "resource_id": "EMDR-140",
+    "title": "Пограничное расстройство личности и EMDR",
+    "filename": "BPD Journal of EMDR.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Статьи от Долорес Москуэра/BPD Journal of EMDR.pdf",
+    "format": "PDF",
+    "size_bytes": 3924968,
+    "exact_duplicate": "Нет",
+    "fingerprint": "08b45793b1b5"
+  },
+  {
+    "resource_id": "EMDR-141",
+    "title": "Пограничное расстройство личности, детская травма и структурная диссоциация",
+    "filename": "BPD, childhood trauma and structural dissociation.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Статьи от Долорес Москуэра/BPD, childhood trauma and structural dissociation.pdf",
+    "format": "PDF",
+    "size_bytes": 469372,
+    "exact_duplicate": "Нет",
+    "fingerprint": "b42994461d58"
+  },
+  {
+    "resource_id": "EMDR-142",
+    "title": "Комплексная травма, диссоциация и пограничное расстройство личности",
+    "filename": "Complex trauma, dissociation and BPD Mosquera & Steele 2017.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Статьи от Долорес Москуэра/Complex trauma, dissociation and BPD Mosquera & Steele 2017.pdf",
+    "format": "PDF",
+    "size_bytes": 519780,
+    "exact_duplicate": "Нет",
+    "fingerprint": "1c28149c5b79"
+  },
+  {
+    "resource_id": "EMDR-143",
+    "title": "Опросник причин для жизни",
+    "filename": "Reasons for Living Inventory English.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Статьи от Долорес Москуэра/Reasons for Living Inventory English.pdf",
+    "format": "PDF",
+    "size_bytes": 70291,
+    "exact_duplicate": "Нет",
+    "fingerprint": "f5271bfe62e5"
+  },
+  {
+    "resource_id": "EMDR-144",
+    "title": "EMDR в работе с самоповреждением",
+    "filename": "Selfharm EMDR10-2_PTR_A6_119-128.pdf",
+    "path": "Литература (книги и статьи)/Статьи на английском/Статьи от Долорес Москуэра/Selfharm EMDR10-2_PTR_A6_119-128.pdf",
+    "format": "PDF",
+    "size_bytes": 247470,
+    "exact_duplicate": "Нет",
+    "fingerprint": "854a0eff293e"
+  },
+  {
+    "resource_id": "EMDR-145",
+    "title": "EMDR при расстройствах пищевого поведения: «Отвергнутое Я»",
+    "filename": "26. EMDR_РПП_Отвергнутое я.pdf",
+    "path": "Литература (книги и статьи)/Статьи на русском/26. EMDR_РПП_Отвергнутое я.pdf",
+    "format": "PDF",
+    "size_bytes": 371779,
+    "exact_duplicate": "Нет",
+    "fingerprint": "80783c96fd60"
+  },
+  {
+    "resource_id": "EMDR-146",
+    "title": "Статья Диссоциация личности и Емдр терапия сложных, связанных с травмой расстройств: применение на фазе стабилизации Онно ван дер Харт",
+    "filename": "Статья_ Диссоциация личности и Емдр терапия сложных, связанных с травмой расстройств: применение на фазе стабилизации Онно ван дер Харт.pdf",
+    "path": "Литература (книги и статьи)/Статьи на русском/Статья_ Диссоциация личности и Емдр терапия сложных, связанных с травмой расстройств: применение на фазе стабилизации Онно ван дер Харт.pdf",
+    "format": "PDF",
+    "size_bytes": 7015411,
+    "exact_duplicate": "Да",
+    "fingerprint": "4b11cf6f4271"
+  },
+  {
+    "resource_id": "EMDR-147",
+    "title": "Когнитивные переплетения — Д. Корн и Д. Лалиотис",
+    "filename": "cognitive-interweaves-by-d-korn-and-d-laliotis-rus.pdf",
+    "path": "Литература (книги и статьи)/Статьи, материалы (РУС)/cognitive-interweaves-by-d-korn-and-d-laliotis-rus.pdf",
+    "format": "PDF",
+    "size_bytes": 175346,
+    "exact_duplicate": "Нет",
+    "fingerprint": "5f80356849c3"
+  },
+  {
+    "resource_id": "EMDR-148",
+    "title": "07. Протокол работы с недавними травматическими событиями Шапиро, 2001 R-Tep",
+    "filename": "07. Протокол работы с недавними травматическими событиями Шапиро, 2001 R-Tep.pdf",
+    "path": "Протоколы (открытый доступ)/07. Протокол работы с недавними травматическими событиями Шапиро, 2001 R-Tep.pdf",
+    "format": "PDF",
+    "size_bytes": 889639,
+    "exact_duplicate": "Нет",
+    "fingerprint": "b3e96346f4bd"
+  },
+  {
+    "resource_id": "EMDR-149",
+    "title": "08. Метод инсталяции ориентации в настоящем и безопасности из книги Джима Найпа. The CIPOS Procedure",
+    "filename": "08. Метод инсталяции ориентации в настоящем и безопасности из книги Джима Найпа. The CIPOS Procedure.pdf",
+    "path": "Протоколы (открытый доступ)/08. Метод инсталяции ориентации в настоящем и безопасности из книги Джима Найпа. The CIPOS Procedure.pdf",
+    "format": "PDF",
+    "size_bytes": 112346,
+    "exact_duplicate": "Нет",
+    "fingerprint": "24e41057bf20"
+  },
+  {
+    "resource_id": "EMDR-150",
+    "title": "10. Прокол Любящие глаза из книги Джима Найпа",
+    "filename": "10. Прокол Любящие глаза из книги Джима Найпа.pdf",
+    "path": "Протоколы (открытый доступ)/10. Прокол Любящие глаза из книги Джима Найпа.pdf",
+    "format": "PDF",
+    "size_bytes": 108343,
+    "exact_duplicate": "Нет",
+    "fingerprint": "525c1528f4a3"
+  },
+  {
+    "resource_id": "EMDR-151",
+    "title": "11. Статья Диссоциация личности и Емдр терапия сложных, связанных с травмой расстройств применение на фазе стабилизации Онно ван дер Харт",
+    "filename": "11. Статья Диссоциация личности и Емдр терапия сложных, связанных с травмой расстройств_ применение на фазе стабилизации Онно ван дер Харт.pdf",
+    "path": "Протоколы (открытый доступ)/11. Статья Диссоциация личности и Емдр терапия сложных, связанных с травмой расстройств_ применение на фазе стабилизации Онно ван дер Харт.pdf",
+    "format": "PDF",
+    "size_bytes": 7015411,
+    "exact_duplicate": "Да",
+    "fingerprint": "4b11cf6f4271"
+  },
+  {
+    "resource_id": "EMDR-152",
+    "title": "12. Протокол Толерантность к позитивному аффекту Andrew Leeds 2011",
+    "filename": "12. Протокол Толерантность к позитивному аффекту Andrew Leeds 2011.docx",
+    "path": "Протоколы (открытый доступ)/12. Протокол Толерантность к позитивному аффекту Andrew Leeds 2011.docx",
+    "format": "DOCX",
+    "size_bytes": 19148,
+    "exact_duplicate": "Нет",
+    "fingerprint": "50a7633dd10b"
+  },
+  {
+    "resource_id": "EMDR-153",
+    "title": "13. Протокол работы с чрезмерным горем Шапиро,2001",
+    "filename": "13. Протокол работы с чрезмерным горем Шапиро,2001.pdf",
+    "path": "Протоколы (открытый доступ)/13. Протокол работы с чрезмерным горем Шапиро,2001.pdf",
+    "format": "PDF",
+    "size_bytes": 132612,
+    "exact_duplicate": "Нет",
+    "fingerprint": "a2dc2f0e4a69"
+  },
+  {
+    "resource_id": "EMDR-154",
+    "title": "Флешфорвард и проверка мысленного видео — Оксфордская версия",
+    "filename": "Flashforward&Mental Video Check_Oxford Version_DF29-06-24.docx",
+    "path": "Протоколы (открытый доступ)/Flashforward&Mental Video Check_Oxford Version_DF29-06-24.docx",
+    "format": "DOCX",
+    "size_bytes": 37912,
+    "exact_duplicate": "Нет",
+    "fingerprint": "b3199298295c"
+  },
+  {
+    "resource_id": "EMDR-155",
+    "title": "НЕГАТИВНЫЕ САМОПРЕДСТАВЛЕНИЯ",
+    "filename": "НЕГАТИВНЫЕ САМОПРЕДСТАВЛЕНИЯ.docx",
+    "path": "Протоколы (открытый доступ)/НЕГАТИВНЫЕ САМОПРЕДСТАВЛЕНИЯ.docx",
+    "format": "DOCX",
+    "size_bytes": 16315,
+    "exact_duplicate": "Нет",
+    "fingerprint": "184498272af5"
+  },
+  {
+    "resource_id": "EMDR-156",
+    "title": "Протокол безмолвных воспоминаний — Оксфордская версия",
+    "filename": "Протокол безмолвных воспоминаний_Oxford Version_DF20-06-25.pdf",
+    "path": "Протоколы (открытый доступ)/Протокол безмолвных воспоминаний_Oxford Version_DF20-06-25.pdf",
+    "format": "PDF",
+    "size_bytes": 1507156,
+    "exact_duplicate": "Нет",
+    "fingerprint": "4b48e410b586"
+  },
+  {
+    "resource_id": "EMDR-157",
+    "title": "Работа с ресурсами в EMDR: комплект материалов Анны Коган",
+    "filename": "Доп.Ресурсы в EMDR_Анна Коган.docx",
+    "path": "Протоколы (открытый доступ)/Работа с ресурсами/Доп.Ресурсы в EMDR_Анна Коган.docx",
+    "format": "DOCX",
+    "size_bytes": 20219,
+    "exact_duplicate": "Нет",
+    "fingerprint": "da92b7829962"
+  },
+  {
+    "resource_id": "EMDR-157",
+    "title": "Работа с ресурсами в EMDR: комплект материалов Анны Коган",
+    "filename": "Ресурсы в EMDR_Анна Коган.docx",
+    "path": "Протоколы (открытый доступ)/Работа с ресурсами/Ресурсы в EMDR_Анна Коган.docx",
+    "format": "DOCX",
+    "size_bytes": 403733,
+    "exact_duplicate": "Нет",
+    "fingerprint": "8c4df708299e"
+  },
+  {
+    "resource_id": "EMDR-157",
+    "title": "Работа с ресурсами в EMDR: комплект материалов Анны Коган",
+    "filename": "Ресурсы_Контейнер.docx",
+    "path": "Протоколы (открытый доступ)/Работа с ресурсами/Ресурсы_Контейнер.docx",
+    "format": "DOCX",
+    "size_bytes": 18038,
+    "exact_duplicate": "Нет",
+    "fingerprint": "bc96cd72a996"
+  },
+  {
+    "resource_id": "EMDR-158",
+    "title": "Протокол «Флешфорвард» — Оксфордская версия",
+    "filename": "Флешфорвард_Oxford Version_DF29-06-24.pdf",
+    "path": "Протоколы (открытый доступ)/Флешфорвард_Oxford Version_DF29-06-24.pdf",
+    "format": "PDF",
+    "size_bytes": 1026479,
+    "exact_duplicate": "Нет",
+    "fingerprint": "c57b3cd93a02"
+  },
+  {
+    "resource_id": "EMDR-159",
+    "title": "EMDR при депрессии: материалы семинара и протокол DeprEnd",
+    "filename": "Carletto EMDR for depression meta analysis 2021.pdf",
+    "path": "Семинары и мастерские по темам/EMDR и депрессия/Carletto EMDR for depression meta analysis 2021.pdf",
+    "format": "PDF",
+    "size_bytes": 3505793,
+    "exact_duplicate": "Нет",
+    "fingerprint": "d1d51dbf4c00"
+  },
+  {
+    "resource_id": "EMDR-159",
+    "title": "EMDR при депрессии: материалы семинара и протокол DeprEnd",
+    "filename": "RUS Symptom-Event Map 2021.docx",
+    "path": "Семинары и мастерские по темам/EMDR и депрессия/RUS Symptom-Event Map 2021.docx",
+    "format": "DOCX",
+    "size_bytes": 37441,
+    "exact_duplicate": "Нет",
+    "fingerprint": "f7af55c55104"
+  },
+  {
+    "resource_id": "EMDR-159",
+    "title": "EMDR при депрессии: материалы семинара и протокол DeprEnd",
+    "filename": "Протокол работы с депрессией доктор Арне Хофманн и доктор Мария Ленную DeprEnd.pdf",
+    "path": "Семинары и мастерские по темам/EMDR и депрессия/Протокол работы с депрессией доктор Арне Хофманн и доктор Мария Ленную DeprEnd.pdf",
+    "format": "PDF",
+    "size_bytes": 6715306,
+    "exact_duplicate": "Нет",
+    "fingerprint": "d093a1e338bd"
+  },
+  {
+    "resource_id": "EMDR-159",
+    "title": "EMDR при депрессии: материалы семинара и протокол DeprEnd",
+    "filename": "Ссылка на видео.docx",
+    "path": "Семинары и мастерские по темам/EMDR и депрессия/Ссылка на видео.docx",
+    "format": "DOCX",
+    "size_bytes": 21267,
+    "exact_duplicate": "Нет",
+    "fingerprint": "0037345defee"
+  },
+  {
+    "resource_id": "EMDR-160",
+    "title": "Протокол зависимого состояния FSAP: запись мастерской и материалы",
+    "filename": "FSAP-part1.MP3",
+    "path": "Семинары и мастерские по темам/EMDR и зависимости/Мастерская_FSAP/FSAP-part1.MP3",
+    "format": "MP3",
+    "size_bytes": 67369774,
+    "exact_duplicate": "Нет",
+    "fingerprint": "fbbc035a0ca1"
+  },
+  {
+    "resource_id": "EMDR-160",
+    "title": "Протокол зависимого состояния FSAP: запись мастерской и материалы",
+    "filename": "FSAP_part2.MP3",
+    "path": "Семинары и мастерские по темам/EMDR и зависимости/Мастерская_FSAP/FSAP_part2.MP3",
+    "format": "MP3",
+    "size_bytes": 41017866,
+    "exact_duplicate": "Нет",
+    "fingerprint": "c8912b2c76af"
+  },
+  {
+    "resource_id": "EMDR-160",
+    "title": "Протокол зависимого состояния FSAP: запись мастерской и материалы",
+    "filename": "Rus_FSAP.pdf",
+    "path": "Семинары и мастерские по темам/EMDR и зависимости/Мастерская_FSAP/Rus_FSAP.pdf",
+    "format": "PDF",
+    "size_bytes": 5004505,
+    "exact_duplicate": "Нет",
+    "fingerprint": "dc898dc65173"
+  },
+  {
+    "resource_id": "EMDR-160",
+    "title": "Протокол зависимого состояния FSAP: запись мастерской и материалы",
+    "filename": "Ссылка на видео.docx",
+    "path": "Семинары и мастерские по темам/EMDR и зависимости/Мастерская_FSAP/Ссылка на видео.docx",
+    "format": "DOCX",
+    "size_bytes": 21559,
+    "exact_duplicate": "Нет",
+    "fingerprint": "3a6d2644afde"
+  },
+  {
+    "resource_id": "EMDR-161",
+    "title": "02.2022ПП психологу в ЧС Казенная Глазкова Младова Градовская 2022",
+    "filename": "02.2022ПП_психологу_в_ЧС_Казенная_Глазкова_Младова_Градовская_2022.pdf",
+    "path": "Семинары и мастерские по темам/EMDR при ЧС/02.2022ПП_психологу_в_ЧС_Казенная_Глазкова_Младова_Градовская_2022.pdf",
+    "format": "PDF",
+    "size_bytes": 4846866,
+    "exact_duplicate": "Нет",
+    "fingerprint": "833115dac41a"
+  },
+  {
+    "resource_id": "EMDR-162",
+    "title": "Материалы Гэри Куинна по EMDR в чрезвычайных ситуациях",
+    "filename": "54-GaryQUINNOK.pdf",
+    "path": "Семинары и мастерские по темам/EMDR при ЧС/54-GaryQUINNOK.pdf",
+    "format": "PDF",
+    "size_bytes": 3325816,
+    "exact_duplicate": "Нет",
+    "fingerprint": "61a3d1fe3db5"
+  },
+  {
+    "resource_id": "EMDR-163",
+    "title": "ERP/ISP: протокол EMDR для чрезвычайных ситуаций — Е. В. Казенная",
+    "filename": "ERP_ISP_EMDR_Казенная_Е_В_2020.pdf",
+    "path": "Семинары и мастерские по темам/EMDR при ЧС/ERP_ISP_EMDR_Казенная_Е_В_2020.pdf",
+    "format": "PDF",
+    "size_bytes": 1440836,
+    "exact_duplicate": "Нет",
+    "fingerprint": "b44905df723d"
+  },
+  {
+    "resource_id": "EMDR-164",
+    "title": "R-TEP - Протокол работы с недавними травматическими событиями",
+    "filename": "R-TEP - Протокол работы с недавними травматическими событиями.pdf",
+    "path": "Семинары и мастерские по темам/EMDR при ЧС/R-TEP - Протокол работы с недавними травматическими событиями.pdf",
+    "format": "PDF",
+    "size_bytes": 506050,
+    "exact_duplicate": "Нет",
+    "fingerprint": "b3757991de5d"
+  },
+  {
+    "resource_id": "EMDR-165",
+    "title": "Процедура самопомощи EMDR — русская версия, 2020",
+    "filename": "Self-Care-Procedure-April-12-2020_RUS_МК.docx",
+    "path": "Семинары и мастерские по темам/EMDR при ЧС/Self-Care-Procedure-April-12-2020_RUS_МК.docx",
+    "format": "DOCX",
+    "size_bytes": 46091,
+    "exact_duplicate": "Нет",
+    "fingerprint": "bc204bad0fbf"
+  },
+  {
+    "resource_id": "EMDR-166",
+    "title": "ERP EMDR — Е. В. Казенная и Е. Г. Протопопова, 2020",
+    "filename": "Казенная_Е_В_Протопопова_Е_Г_2020_ERP_EMDR.pdf",
+    "path": "Семинары и мастерские по темам/EMDR при ЧС/Казенная_Е_В_Протопопова_Е_Г_2020_ERP_EMDR.pdf",
+    "format": "PDF",
+    "size_bytes": 4244456,
+    "exact_duplicate": "Нет",
+    "fingerprint": "52848994bd0c"
+  },
+  {
+    "resource_id": "EMDR-167",
+    "title": "ссылка на вебинар EMDR в ЧС",
+    "filename": "ссылка на вебинар EMDR в ЧС.txt",
+    "path": "Семинары и мастерские по темам/EMDR при ЧС/ссылка на вебинар EMDR в ЧС.txt",
+    "format": "TXT",
+    "size_bytes": 1000,
+    "exact_duplicate": "Нет",
+    "fingerprint": "03c099de2e7d"
+  },
+  {
+    "resource_id": "EMDR-168",
+    "title": "Ссылка на видео",
+    "filename": "Ссылка на видео.docx",
+    "path": "Семинары и мастерские по темам/Групповой протокол EMDR/Ссылка на видео.docx",
+    "format": "DOCX",
+    "size_bytes": 21577,
+    "exact_duplicate": "Нет",
+    "fingerprint": "e32193eb61c0"
+  },
+  {
+    "resource_id": "EMDR-169",
+    "title": "Нарциссизм и травма — Долорес Москуэра: материалы семинара",
+    "filename": "Презентация_Narcissism Russia 2020_RUS.pdf",
+    "path": "Семинары и мастерские по темам/Нарциссизм_Маскуэра/Презентация_Narcissism Russia 2020_RUS.pdf",
+    "format": "PDF",
+    "size_bytes": 1451259,
+    "exact_duplicate": "Да",
+    "fingerprint": "fa40b059020a"
+  },
+  {
+    "resource_id": "EMDR-169",
+    "title": "Нарциссизм и травма — Долорес Москуэра: материалы семинара",
+    "filename": "Статья_Narcissism_Mosquera_and_Knipe_Journal_EM.pdf",
+    "path": "Семинары и мастерские по темам/Нарциссизм_Маскуэра/Статья_Narcissism_Mosquera_and_Knipe_Journal_EM.pdf",
+    "format": "PDF",
+    "size_bytes": 241143,
+    "exact_duplicate": "Да",
+    "fingerprint": "61c91e342b20"
+  },
+  {
+    "resource_id": "EMDR-169",
+    "title": "Нарциссизм и травма — Долорес Москуэра: материалы семинара",
+    "filename": "Статья_NarcissismandtraumaESTDNewsletter2011.pdf",
+    "path": "Семинары и мастерские по темам/Нарциссизм_Маскуэра/Статья_NarcissismandtraumaESTDNewsletter2011.pdf",
+    "format": "PDF",
+    "size_bytes": 83601,
+    "exact_duplicate": "Да",
+    "fingerprint": "7f1420f3017d"
+  },
+  {
+    "resource_id": "EMDR-170",
+    "title": "Диссоциация личности и EMDR-терапия сложных травматических расстройств — Онно ван дер Харт",
+    "filename": "Онно ван дер Харт.pdf",
+    "path": "Семинары и мастерские по темам/Онно ван дер Харт.pdf",
+    "format": "PDF",
+    "size_bytes": 7015411,
+    "exact_duplicate": "Да",
+    "fingerprint": "4b11cf6f4271"
+  },
+  {
+    "resource_id": "EMDR-171",
+    "title": "EMDR при пограничном расстройстве личности — Долорес Москуэра",
+    "filename": "24. EMDR_Borderline_Dolores Masquera.pdf",
+    "path": "Семинары и мастерские по темам/ПРЛ_Маскуэра/24. EMDR_Borderline_Dolores Masquera.pdf",
+    "format": "PDF",
+    "size_bytes": 4090265,
+    "exact_duplicate": "Нет",
+    "fingerprint": "441cdfc5aec9"
+  },
+  {
+    "resource_id": "EMDR-172",
+    "title": "Ссылка на видео",
+    "filename": "Ссылка на видео.docx",
+    "path": "Семинары и мастерские по темам/Работа с детьми/Ссылка на видео.docx",
+    "format": "DOCX",
+    "size_bytes": 21580,
+    "exact_duplicate": "Нет",
+    "fingerprint": "e05058442073"
+  },
+  {
+    "resource_id": "EMDR-173",
+    "title": "Структурная диссоциация личности и EMDR: аудиозапись и ссылка на видео",
+    "filename": "160512_001.mp3",
+    "path": "Семинары и мастерские по темам/Структурная диссоциация личности и EMDR/160512_001.mp3",
+    "format": "MP3",
+    "size_bytes": 87019897,
+    "exact_duplicate": "Нет",
+    "fingerprint": "ce2afec802d4"
+  },
+  {
+    "resource_id": "EMDR-173",
+    "title": "Структурная диссоциация личности и EMDR: аудиозапись и ссылка на видео",
+    "filename": "Ссылка на видео.docx",
+    "path": "Семинары и мастерские по темам/Структурная диссоциация личности и EMDR/Ссылка на видео.docx",
+    "format": "DOCX",
+    "size_bytes": 21580,
+    "exact_duplicate": "Нет",
+    "fingerprint": "b6e4c7639685"
+  },
+  {
+    "resource_id": "EMDR-174",
+    "title": "EMDR при тревожных расстройствах: флешфорвард и материалы семинара",
+    "filename": "Flashforward_Ad De Jongh.pdf",
+    "path": "Семинары и мастерские по темам/Тревожные расстройства/Flashforward_Ad De Jongh.pdf",
+    "format": "PDF",
+    "size_bytes": 118877,
+    "exact_duplicate": "Нет",
+    "fingerprint": "1f9fd506eb64"
+  },
+  {
+    "resource_id": "EMDR-174",
+    "title": "EMDR при тревожных расстройствах: флешфорвард и материалы семинара",
+    "filename": "Ссылка на видео.docx",
+    "path": "Семинары и мастерские по темам/Тревожные расстройства/Ссылка на видео.docx",
+    "format": "DOCX",
+    "size_bytes": 21508,
+    "exact_duplicate": "Нет",
+    "fingerprint": "3364b66c2d78"
+  },
+  {
+    "resource_id": "EMDR-174",
+    "title": "EMDR при тревожных расстройствах: флешфорвард и материалы семинара",
+    "filename": "Тревожные Расстройства де Йонг (2019) RUS.pptx.pdf",
+    "path": "Семинары и мастерские по темам/Тревожные расстройства/Тревожные Расстройства де Йонг (2019) RUS.pptx.pdf",
+    "format": "PDF",
+    "size_bytes": 15944176,
+    "exact_duplicate": "Нет",
+    "fingerprint": "38e642ee341b"
+  },
+  {
+    "resource_id": "EMDR-175",
+    "title": "EMDR как телесно-ориентированная психотерапия — Уди Орен",
+    "filename": "Oren -RU - EMDR Therapy as a body oriented psychotherapy Toulouse 2018.pdf",
+    "path": "Семинары и мастерские по темам/Уди Орен_EMDR как соматический подход/Oren -RU - EMDR Therapy as a body oriented psychotherapy Toulouse 2018.pdf",
+    "format": "PDF",
+    "size_bytes": 3570524,
+    "exact_duplicate": "Нет",
+    "fingerprint": "964cc8a7e224"
+  },
+  {
+    "resource_id": "EMDR-175",
+    "title": "EMDR как телесно-ориентированная психотерапия — Уди Орен",
+    "filename": "слайды на английском перевод.docx",
+    "path": "Семинары и мастерские по темам/Уди Орен_EMDR как соматический подход/слайды на английском перевод.docx",
+    "format": "DOCX",
+    "size_bytes": 20637,
+    "exact_duplicate": "Нет",
+    "fingerprint": "3e9c10f9a0c6"
+  },
+  {
+    "resource_id": "EMDR-175",
+    "title": "EMDR как телесно-ориентированная психотерапия — Уди Орен",
+    "filename": "Ссылки на видео.docx",
+    "path": "Семинары и мастерские по темам/Уди Орен_EMDR как соматический подход/Ссылки на видео.docx",
+    "format": "DOCX",
+    "size_bytes": 21870,
+    "exact_duplicate": "Нет",
+    "fingerprint": "8b810f27622e"
+  }
+]

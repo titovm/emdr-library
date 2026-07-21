@@ -4,19 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\LibraryItem;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class AdminTaxonomyController extends Controller
 {
-    /**
-     * Constructor to handle route-level middleware
-     */
-    public function __construct()
-    {
-        $this->middleware(['auth', 'admin']);
-    }
-
     /**
      * Display a listing of categories and tags.
      */

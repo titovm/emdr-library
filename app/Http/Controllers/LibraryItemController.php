@@ -779,39 +779,12 @@ class LibraryItemController extends Controller
             
             Log::info('Attempting to delete library item', [
                 'item_id' => $id,
-                'item_type' => $item->type,
-                'file_path' => $item->file_path,
+                'file_count' => $item->files()->count(),
                 'title' => $item->title
             ]);
-            
-            // If it's a document, delete the file from storage
-            if ($item->type === 'document' && $item->file_path) {
-                try {
-                    $deleted = Storage::disk('yandex')->delete($item->file_path);
-                    
-                    if ($deleted) {
-                        Log::info('File deleted successfully from Yandex S3', [
-                            'file_path' => $item->file_path,
-                            'item_id' => $id
-                        ]);
-                    } else {
-                        Log::warning('File deletion returned false (file may not exist)', [
-                            'file_path' => $item->file_path,
-                            'item_id' => $id
-                        ]);
-                    }
-                } catch (\Exception $fileError) {
-                    Log::error('Error deleting file from Yandex S3', [
-                        'error' => $fileError->getMessage(),
-                        'file_path' => $item->file_path,
-                        'item_id' => $id
-                    ]);
-                    
-                    // Don't stop the deletion process if file deletion fails
-                    // The database record should still be deleted
-                }
-            }
-            
+
+            // LibraryItem's deleting hook removes every child file from S3
+            // before the database cascade removes any remaining metadata.
             $item->delete();
             
             Log::info('Library item deleted successfully', [
