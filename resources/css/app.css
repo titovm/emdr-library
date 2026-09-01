@@ -9,34 +9,20 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-    --color-zinc-50: #fafafa;
-    --color-zinc-100: #f5f5f5;
-    --color-zinc-200: #e5e5e5;
-    --color-zinc-300: #d4d4d4;
-    --color-zinc-400: #a3a3a3;
-    --color-zinc-500: #737373;
-    --color-zinc-600: #525252;
-    --color-zinc-700: #404040;
-    --color-zinc-800: #262626;
-    --color-zinc-900: #171717;
-    --color-zinc-950: #0a0a0a;
+    --color-primary-50: #f2f7f4;
+    --color-primary-100: #dfece4;
+    --color-primary-200: #bfd9c9;
+    --color-primary-300: #91bea3;
+    --color-primary-400: #619c79;
+    --color-primary-500: #3f7d5c;
+    --color-primary-600: #2f684b;
+    --color-primary-700: #28543f;
+    --color-primary-800: #234435;
+    --color-primary-900: #1e392d;
+    --color-primary-950: #102018;
 
-    /* Custom primary green color palette */
-    --color-primary-50: #f0f9ff;
-    --color-primary-100: #e0f2fe;
-    --color-primary-200: #bae6fd;
-    --color-primary-300: #7dd3fc;
-    --color-primary-400: #38bdf8;
-    --color-primary-500: #65b136;
-    --color-primary-600: #529429;
-    --color-primary-700: #477a23;
-    --color-primary-800: #3d651d;
-    --color-primary-900: #2d4a15;
-    --color-primary-950: #1a2d0c;
-
-    /* Override indigo colors with our green palette */
     --color-indigo-50: var(--color-primary-50);
     --color-indigo-100: var(--color-primary-100);
     --color-indigo-200: var(--color-primary-200);
@@ -49,21 +35,20 @@
     --color-indigo-900: var(--color-primary-900);
     --color-indigo-950: var(--color-primary-950);
 
-    --color-accent: var(--color-neutral-800);
-    --color-accent-content: var(--color-neutral-800);
+    --color-accent: var(--color-primary-700);
+    --color-accent-content: var(--color-primary-700);
     --color-accent-foreground: var(--color-white);
 }
 
 @layer theme {
     .dark {
-        --color-accent: var(--color-white);
-        --color-accent-content: var(--color-white);
-        --color-accent-foreground: var(--color-neutral-800);
+        --color-accent: var(--color-primary-300);
+        --color-accent-content: var(--color-primary-300);
+        --color-accent-foreground: var(--color-primary-950);
     }
 }
 
 @layer base {
-
     *,
     ::after,
     ::before,
@@ -71,29 +56,36 @@
     ::file-selector-button {
         border-color: var(--color-gray-200, currentColor);
     }
+
+    html {
+        font-feature-settings: 'kern' 1, 'liga' 1;
+        text-rendering: optimizeLegibility;
+    }
+
+    body {
+        @apply bg-zinc-50 text-zinc-950 antialiased dark:bg-zinc-950 dark:text-zinc-100;
+    }
+
+    ::selection {
+        @apply bg-primary-200 text-primary-950;
+    }
+
+    .dark ::selection {
+        @apply bg-primary-700 text-white;
+    }
 }
 
 [data-flux-field]:not(ui-radio, ui-checkbox) {
     @apply grid gap-2;
 }
 
-/* Custom form styling for modern look */
+.app-container {
+    @apply mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8;
+}
+
 .form-container {
-    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-    border-radius: 16px;
-    padding: 1rem;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-@media (min-width: 640px) {
-    .form-container {
-        padding: 2rem;
-    }
-}
-
-.dark .form-container {
-    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+    @apply border border-zinc-200 bg-white p-4 sm:p-6 dark:border-zinc-800 dark:bg-zinc-900;
+    border-radius: 8px;
 }
 
 .form-field {
@@ -103,119 +95,90 @@
 .form-field input,
 .form-field textarea,
 .form-field select {
-    @apply transition-all duration-200 ease-in-out;
-    @apply border-2 border-gray-200 dark:border-gray-600;
-    @apply rounded-lg px-4 py-3;
-    @apply focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20;
-    @apply bg-white dark:bg-gray-800;
-    @apply text-gray-900 dark:text-gray-100;
-    font-size: 16px; /* Prevents zoom on mobile */
-}
-
-.form-field input:focus,
-.form-field textarea:focus {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(101, 177, 54, 0.15);
+    @apply border border-zinc-300 bg-white px-3 py-2.5 text-zinc-950 transition-colors duration-150 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100;
+    @apply focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-600/20 dark:focus:border-primary-400 dark:focus:ring-primary-400/20;
+    border-radius: 6px;
+    font-size: 16px;
 }
 
 .form-field label {
-    @apply font-semibold text-gray-700 dark:text-gray-300;
-    @apply text-sm tracking-wide;
-    margin-bottom: 0.5rem;
+    @apply mb-1.5 text-sm font-semibold text-zinc-800 dark:text-zinc-200;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-danger {
+    @apply inline-flex min-h-9 items-center justify-center whitespace-nowrap border px-3 py-2 text-sm font-semibold transition-colors duration-150;
+    border-radius: 6px;
 }
 
 .btn-primary {
-    @apply bg-gradient-to-r from-primary-500 to-primary-600;
-    @apply hover:from-primary-600 hover:to-primary-700;
-    @apply text-white font-semibold;
-    @apply px-6 py-3 rounded-lg;
-    @apply transition-all duration-200 ease-in-out;
-    @apply shadow-lg hover:shadow-xl;
-    @apply transform hover:scale-105 active:scale-95;
-    @apply border-0;
+    @apply border-primary-700 bg-primary-700 text-white hover:border-primary-800 hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-offset-2 active:translate-y-px dark:border-primary-400 dark:bg-primary-400 dark:text-primary-950 dark:hover:border-primary-300 dark:hover:bg-primary-300 dark:focus:ring-primary-400 dark:focus:ring-offset-zinc-950;
 }
 
 .btn-secondary {
-    @apply bg-gray-100 dark:bg-gray-700;
-    @apply hover:bg-gray-200 dark:hover:bg-gray-600;
-    @apply text-gray-700 dark:text-gray-300;
-    @apply font-medium px-4 py-2 rounded-lg;
-    @apply transition-all duration-200 ease-in-out;
-    @apply border border-gray-300 dark:border-gray-600;
+    @apply border-zinc-300 bg-white text-zinc-800 hover:border-zinc-400 hover:bg-zinc-100 focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-offset-2 active:translate-y-px dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:focus:ring-primary-400 dark:focus:ring-offset-zinc-950;
 }
 
 .btn-danger {
-    @apply bg-red-500 hover:bg-red-600;
-    @apply text-white font-medium;
-    @apply px-3 py-2 rounded-lg;
-    @apply transition-all duration-200 ease-in-out;
-    @apply shadow-md hover:shadow-lg;
+    @apply border-red-700 bg-red-700 text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 active:translate-y-px dark:border-red-500 dark:bg-red-600 dark:hover:bg-red-500 dark:focus:ring-offset-zinc-950;
 }
 
 .field-section {
-    @apply bg-white dark:bg-gray-800/50;
-    @apply rounded-xl p-6 mb-6;
-    @apply border border-gray-200 dark:border-gray-700;
-    @apply shadow-sm;
+    @apply mb-4 border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900;
+    border-radius: 8px;
 }
 
 .section-header {
-    @apply flex items-center justify-between mb-4;
-    @apply border-b border-gray-200 dark:border-gray-700 pb-3;
+    @apply mb-3 flex items-center justify-between border-b border-zinc-200 pb-2.5 dark:border-zinc-800;
 }
 
 .section-title {
-    @apply text-lg font-semibold text-gray-800 dark:text-gray-200;
-    @apply flex items-center gap-2;
+    @apply flex items-center gap-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100;
 }
 
 .dynamic-input-group {
-    @apply bg-gray-50 dark:bg-gray-900/50;
-    @apply rounded-lg p-4 mb-3;
-    @apply border border-gray-200 dark:border-gray-700;
-    @apply transition-all duration-200;
-}
-
-.dynamic-input-group:hover {
-    @apply shadow-md;
+    @apply mb-2 border border-zinc-200 bg-zinc-50 p-3 dark:border-zinc-800 dark:bg-zinc-950;
+    border-radius: 6px;
 }
 
 .help-text {
-    @apply text-sm text-gray-500 dark:text-gray-400;
-    @apply mt-2 leading-relaxed;
+    @apply mt-1.5 text-xs leading-5 text-zinc-600 dark:text-zinc-400;
 }
 
 .form-header {
-    @apply mb-8 text-center;
+    @apply mb-5 text-left;
 }
 
 .form-title {
-    @apply text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2;
-    background: linear-gradient(135deg, #65b136, #529429);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    @apply text-2xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50;
 }
 
 .form-subtitle {
-    @apply text-gray-600 dark:text-gray-400;
+    @apply mt-1 max-w-2xl text-sm leading-6 text-zinc-600 dark:text-zinc-400;
 }
 
-/* Icon styling */
 .icon {
-    @apply w-5 h-5;
+    @apply size-5;
 }
 
 [data-flux-label] {
-    @apply  !mb-0 !leading-tight;
+    @apply !mb-0 !leading-tight;
 }
 
 input:focus[data-flux-control],
 textarea:focus[data-flux-control],
 select:focus[data-flux-control] {
-    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+    @apply outline-hidden ring-2 ring-primary-600 ring-offset-2 ring-offset-white dark:ring-primary-400 dark:ring-offset-zinc-950;
 }
 
-/* \[:where(&)\]:size-4 {
-    @apply size-4;
-} */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}

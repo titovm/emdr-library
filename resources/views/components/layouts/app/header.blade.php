@@ -1,88 +1,67 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         @include('partials.head')
     </head>
-    <body class="min-h-screen bg-white dark:bg-zinc-800">
-        <div id="app">
-            <flux:header container class="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 overflow-visible">
+    <body class="min-h-[100dvh] bg-zinc-50 dark:bg-zinc-950">
+        <div id="app" class="min-h-[100dvh]">
+            <flux:header container class="h-16 overflow-visible border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
                 <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
-                <a href="{{ auth()->check() ? route('dashboard') : route('home') }}" class="ms-2 me-5 flex items-center space-x-2 rtl:space-x-reverse lg:ms-0" wire:navigate>
+                <a href="{{ auth()->check() ? route('dashboard') : route('home') }}" class="ms-1 me-6 shrink-0 lg:ms-0" wire:navigate>
                     <x-app-logo />
                 </a>
 
-                <flux:navbar class="-mb-px max-lg:hidden">
+                <flux:navbar class="-mb-px hidden h-full lg:flex">
                     @auth
-                        <flux:navbar.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
-                            {{ __('Dashboard') }}
-                        </flux:navbar.item>
+                        @if(auth()->user()->is_admin)
+                            <flux:navbar.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
+                                {{ __('Dashboard') }}
+                            </flux:navbar.item>
+                        @endif
                     @endauth
                     <flux:navbar.item icon="book-open" :href="route('library.index')" :current="request()->routeIs('library.*')" wire:navigate>
                         {{ __('Library') }}
                     </flux:navbar.item>
+                    @auth
+                        @if(auth()->user()->is_admin)
+                            <flux:navbar.item icon="tag" :href="route('admin.taxonomy.index')" :current="request()->routeIs('admin.taxonomy.*')" wire:navigate>
+                                {{ __('Taxonomy') }}
+                            </flux:navbar.item>
+                            <flux:navbar.item icon="chart-bar" :href="route('admin.stats')" :current="request()->routeIs('admin.stats*')" wire:navigate>
+                                {{ __('Statistics') }}
+                            </flux:navbar.item>
+                        @endif
+                    @endauth
                 </flux:navbar>
 
                 <flux:spacer />
 
-                {{--<flux:navbar class="me-1.5 space-x-0.5 rtl:space-x-reverse py-0!">
-                    <flux:navbar.item class="!h-10 [&>div>svg]:size-5" icon="magnifying-glass" href="#" :label="__('Search')" />
-                    <flux:tooltip :content="__('Repository')" position="bottom">
-                        <flux:navbar.item
-                            class="h-10 max-lg:hidden [&>div>svg]:size-5"
-                            icon="folder-git-2"
-                            href="https://github.com/laravel/livewire-starter-kit"
-                            target="_blank"
-                            :label="__('Repository')"
-                        />
-                    </flux:tooltip>
-                    <flux:tooltip :content="__('Documentation')" position="bottom">
-                        <flux:navbar.item
-                            class="h-10 max-lg:hidden [&>div>svg]:size-5"
-                            icon="book-open-text"
-                            href="https://laravel.com/docs/starter-kits#livewire"
-                            target="_blank"
-                            label="Documentation"
-                        />
-                    </flux:tooltip> 
-                </flux:navbar> --}}
+                <flux:button
+                    x-data
+                    x-on:click="$flux.appearance = $flux.appearance === 'dark' ? 'light' : 'dark'"
+                    variant="ghost"
+                    size="sm"
+                    icon="moon"
+                    aria-label="{{ __('Toggle color theme') }}"
+                />
 
-                <!-- Desktop User Menu -->
+                <div class="hidden sm:block">
+                    <x-language-switcher />
+                </div>
+
                 @auth
                     <flux:dropdown position="bottom" align="end">
-                        <flux:profile
-                            :initials="auth()->user()->initials()"
-                            icon-trailing="chevron-down"
-                        />
+                        <flux:profile :initials="auth()->user()->initials()" icon-trailing="chevron-down" />
 
-                        <flux:menu class="w-[220px]">
-                            <flux:menu.radio.group>
-                                <div class="p-0 text-sm font-normal">
-                                    <div class="flex items-center gap-2 px-1 py-1.5 text-start text-sm">
-                                        <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg">
-                                            <span
-                                                class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white"
-                                            >
-                                                {{ auth()->user()->initials() }}
-                                            </span>
-                                        </span>
-
-                                        <div class="grid flex-1 text-start text-sm leading-tight">
-                                            <span class="truncate font-semibold">{{ auth()->user()->name }}</span>
-                                            <span class="truncate text-xs">{{ auth()->user()->email }}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </flux:menu.radio.group>
-
+                        <flux:menu class="w-[240px]">
+                            <div class="px-2 py-2">
+                                <p class="truncate text-sm font-semibold text-zinc-900 dark:text-zinc-100">{{ auth()->user()->name }}</p>
+                                <p class="truncate text-xs text-zinc-500 dark:text-zinc-400">{{ auth()->user()->email }}</p>
+                            </div>
                             <flux:menu.separator />
-
-                            <flux:menu.radio.group>
-                                <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
-                            </flux:menu.radio.group>
-
+                            <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
                             <flux:menu.separator />
-
                             <form method="POST" action="{{ route('logout') }}" class="w-full">
                                 @csrf
                                 <flux:menu.item as="button" type="submit" icon="arrow-right-start-on-rectangle" class="w-full">
@@ -92,80 +71,53 @@
                         </flux:menu>
                     </flux:dropdown>
                 @else
-                    <!-- Guest User Actions -->
-                    <flux:navbar class="me-1.5 space-x-0.5 rtl:space-x-reverse py-0!">
-                        <flux:tooltip :content="__('Login')" position="bottom">
-                            <flux:navbar.item class="!h-10 [&>div>svg]:size-5" icon="user" :href="route('login')" :label="__('Login')" />
-                        </flux:tooltip>
-                    </flux:navbar>
+                    <div class="hidden sm:block">
+                        <a href="{{ route('login') }}" class="btn-secondary">{{ __('Staff Login') }}</a>
+                    </div>
                 @endauth
             </flux:header>
 
-            <!-- Mobile Menu -->
-            <flux:sidebar stashable sticky class="lg:hidden border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
-                <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
-
-                <a href="{{ auth()->check() ? route('dashboard') : route('home') }}" class="ms-1 flex items-center space-x-2 rtl:space-x-reverse" wire:navigate>
+            <flux:sidebar stashable sticky class="border-e border-zinc-200 bg-white lg:hidden dark:border-zinc-800 dark:bg-zinc-950">
+                <div class="flex items-center justify-between">
                     <x-app-logo />
-                </a>
+                    <flux:sidebar.toggle icon="x-mark" />
+                </div>
 
-                @auth
-                    <flux:navlist variant="outline">
-                        <flux:navlist.group :heading="__('Platform')">
-                            <flux:navlist.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
-                            {{ __('Dashboard') }}
-                            </flux:navlist.item>
-                            <flux:navlist.item icon="book-open" :href="route('library.index')" :current="request()->routeIs('library.*')" wire:navigate>
-                            {{ __('Library') }}
-                            </flux:navlist.item>
-                        </flux:navlist.group>
-                    </flux:navlist>
-                @else
-                    <flux:navlist variant="outline">
-                        <flux:navlist.group :heading="__('Library')">
-                            <flux:navlist.item icon="book-open" :href="route('library.index')" :current="request()->routeIs('library.*')" wire:navigate>
-                            {{ __('Browse Library') }}
-                            </flux:navlist.item>
-                        </flux:navlist.group>
-                    </flux:navlist>
-                @endauth
+                <flux:navlist variant="outline" class="mt-5">
+                    @auth
+                        @if(auth()->user()->is_admin)
+                            <flux:navlist.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
+                        @endif
+                    @endauth
+                    <flux:navlist.item icon="book-open" :href="route('library.index')" :current="request()->routeIs('library.*')" wire:navigate>{{ __('Library') }}</flux:navlist.item>
+                    @auth
+                        @if(auth()->user()->is_admin)
+                            <flux:navlist.item icon="tag" :href="route('admin.taxonomy.index')" :current="request()->routeIs('admin.taxonomy.*')" wire:navigate>{{ __('Taxonomy') }}</flux:navlist.item>
+                            <flux:navlist.item icon="chart-bar" :href="route('admin.stats')" :current="request()->routeIs('admin.stats*')" wire:navigate>{{ __('Statistics') }}</flux:navlist.item>
+                        @endif
+                    @endauth
+                </flux:navlist>
 
                 <flux:spacer />
 
-                <flux:navlist variant="outline">
+                <div class="border-t border-zinc-200 pt-4 dark:border-zinc-800">
+                    <x-language-switcher />
                     @auth
-                        <flux:navlist.item icon="cog" :href="route('settings.profile')" wire:navigate>
-                        {{ __('Settings') }}
-                        </flux:navlist.item>
-                        
-                        <form method="POST" action="{{ route('logout') }}" class="w-full">
+                        <a href="{{ route('settings.profile') }}" class="mt-4 block text-sm font-medium text-zinc-700 dark:text-zinc-300">{{ __('Settings') }}</a>
+                        <form method="POST" action="{{ route('logout') }}" class="mt-3">
                             @csrf
-                            <flux:navlist.item as="button" type="submit" icon="arrow-right-start-on-rectangle">
-                                {{ __('Log Out') }}
-                            </flux:navlist.item>
+                            <button type="submit" class="text-sm font-medium text-zinc-700 dark:text-zinc-300">{{ __('Log Out') }}</button>
                         </form>
                     @else
-                        <flux:navlist.item icon="user" :href="route('login')">
-                        {{ __('Login') }}
-                        </flux:navlist.item>
+                        <a href="{{ route('login') }}" class="btn-secondary mt-4 w-full">{{ __('Staff Login') }}</a>
                     @endauth
-
-                    {{-- <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
-                    {{ __('Repository') }}
-                    </flux:navlist.item>
-
-                    <flux:navlist.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
-                    {{ __('Documentation') }}
-                    </flux:navlist.item> --}}
-                </flux:navlist>
+                </div>
             </flux:sidebar>
 
             {{ $slot }}
         </div>
 
         @fluxScripts
-        
-        <!-- Page Scripts -->
         @stack('scripts')
     </body>
 </html>

@@ -327,12 +327,8 @@
 
                 // Add remove functionality
                 fileDiv.querySelector('.remove-file-btn').addEventListener('click', function() {
-                    fileDiv.style.animation = 'fadeOut 0.3s ease-out';
-                    setTimeout(() => fileDiv.remove(), 300);
+                    fileDiv.remove();
                 });
-
-                // Add fade in animation
-                fileDiv.style.animation = 'fadeIn 0.3s ease-in';
             });
 
             // Add video input functionality  
@@ -362,54 +358,26 @@
 
                 // Add remove functionality
                 videoDiv.querySelector('.remove-video-btn').addEventListener('click', function() {
-                    videoDiv.style.animation = 'fadeOut 0.3s ease-out';
-                    setTimeout(() => videoDiv.remove(), 300);
+                    videoDiv.remove();
                 });
-
-                // Add fade in animation
-                videoDiv.style.animation = 'fadeIn 0.3s ease-in';
             });
         });
     </script>
 
     <style>
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeOut {
-            from {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            to {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-        }
-
-        /* File input styling improvements */
         input[type="file"]::-webkit-file-upload-button {
-            background: linear-gradient(135deg, #65b136, #529429);
+            background: #28543f;
             color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-weight: 500;
+            border: 1px solid #28543f;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: background-color 150ms ease;
         }
 
         input[type="file"]::-webkit-file-upload-button:hover {
-            background: linear-gradient(135deg, #529429, #477a23);
-            transform: translateY(-1px);
+            background: #234435;
         }
 
         /* Focus styles for better accessibility */
@@ -418,10 +386,6 @@
             box-shadow: 0 0 0 3px rgba(101, 177, 54, 0.1);
         }
 
-        /* Smooth transitions for all interactive elements */
-        * {
-            transition: all 0.2s ease;
-        }
     </style>
     @endpush
 </x-app-layout>

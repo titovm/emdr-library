@@ -1,85 +1,86 @@
 <x-app-layout>
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl mx-auto">
-                    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-                        
-                        <h2 class="mt-10 mb-8 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white">
-                            {{ __('Access the Therapist Library') }}
-                        </h2>
+    <main class="py-6 sm:py-10">
+        <div class="app-container">
+            <div class="mx-auto grid max-w-5xl overflow-hidden border border-zinc-200 bg-white lg:grid-cols-[0.85fr_1.15fr] dark:border-zinc-800 dark:bg-zinc-900" style="border-radius: 8px;">
+                <section class="border-b border-zinc-200 bg-zinc-100 p-5 sm:p-7 lg:border-b-0 lg:border-e dark:border-zinc-800 dark:bg-zinc-950">
+                    <p class="text-xs font-semibold uppercase tracking-[0.12em] text-primary-700 dark:text-primary-300">{{ __('Restricted professional access') }}</p>
+                    <h1 class="mt-2 text-2xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">{{ __('Access the Therapist Library') }}</h1>
+                    <p class="mt-3 text-sm leading-6 text-zinc-700 dark:text-zinc-300">{{ __('Please enter your name and email address to access the library resources.') }}</p>
+
+                    <div class="mt-6 border-s-2 border-primary-600 ps-3 text-sm leading-6 text-zinc-700 dark:border-primary-400 dark:text-zinc-300">
+                        {{ __('Warning! Access to the library is intended for your personal use only. By receiving it, you accept the non-disclosure agreement. In case of its publication in open sources, we will be forced to terminate this service.') }}
                     </div>
 
-                    <p class="my-2 text-sm font-medium text-gray-800 dark:text-gray-300">
-                        {{ __('Warning! Access to the library is intended for your personal use only. By receiving it, you accept the non-disclosure agreement. In case of its publication in open sources, we will be forced to terminate this service.') }}
-                    </p>
-
-                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                        {{ __('Please enter your name and email address to access the library resources.') }}
-                    </p>
-
-                    <!-- Session Status -->
-                    @if (session('error'))
-                        <div class="mb-4 font-medium text-sm text-red-600">
-                            {{ session('error') }}
+                    <dl class="mt-7 space-y-3 text-sm">
+                        <div class="flex items-start gap-2.5">
+                            <flux:icon.lock-closed class="mt-0.5 size-4 shrink-0 text-primary-700 dark:text-primary-300" />
+                            <div>
+                                <dt class="font-semibold text-zinc-900 dark:text-zinc-100">{{ __('Personal access') }}</dt>
+                                <dd class="text-zinc-600 dark:text-zinc-400">{{ __('Do not share files or access links with third parties.') }}</dd>
+                            </div>
                         </div>
+                        <div class="flex items-start gap-2.5">
+                            <flux:icon.shield-check class="mt-0.5 size-4 shrink-0 text-primary-700 dark:text-primary-300" />
+                            <div>
+                                <dt class="font-semibold text-zinc-900 dark:text-zinc-100">{{ __('Data processing') }}</dt>
+                                <dd class="text-zinc-600 dark:text-zinc-400">{{ __('Your details are used to provide and record library access.') }}</dd>
+                            </div>
+                        </div>
+                    </dl>
+                </section>
+
+                <section class="p-5 sm:p-7">
+                    @if (session('error'))
+                        <div class="mb-4 rounded-md border border-red-300 bg-red-50 px-3 py-2.5 text-sm text-red-800 dark:border-red-900 dark:bg-red-950/50 dark:text-red-200" role="alert">{{ session('error') }}</div>
                     @endif
 
                     @if (session('success'))
-                        <div class="mb-4 font-medium text-sm text-green-600">
-                            {{ session('success') }}
-                        </div>
+                        <div class="mb-4 rounded-md border border-primary-300 bg-primary-50 px-3 py-2.5 text-sm text-primary-900 dark:border-primary-800 dark:bg-primary-950/50 dark:text-primary-200" role="status">{{ session('success') }}</div>
                     @endif
 
-                    <form method="POST" action="{{ route('library.process-access') }}" class="mt-6 space-y-6">
+                    <form method="POST" action="{{ route('library.process-access') }}" class="space-y-5">
                         @csrf
 
-                        <!-- Name -->
                         <div>
                             <x-input-label for="name" :value="__('Name')" />
-                            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name')" required autofocus />
-                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                            <x-text-input id="name" name="name" type="text" class="mt-1.5" :value="old('name')" autocomplete="name" required autofocus />
+                            <x-input-error :messages="$errors->get('name')" class="mt-1.5" />
                         </div>
 
-                        <!-- Email Address -->
-                        <div class="mt-4">
+                        <div>
                             <x-input-label for="email" :value="__('Email')" />
-                            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email')" required />
-                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                            <x-text-input id="email" name="email" type="email" class="mt-1.5" :value="old('email')" autocomplete="email" required />
+                            <x-input-error :messages="$errors->get('email')" class="mt-1.5" />
                         </div>
 
-                        <!-- Consent Checkbox -->
-                        <div class="mt-4">
-                            <label for="consent" class="inline-flex items-start">
-                                <input id="consent" type="checkbox" name="consent" class="mt-0.5 rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" required>
-                                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">
-                                    Даю согласие на обработку моих персональных данных (имя, e-mail) для предоставления доступа к онлайн-библиотеке и сервисных уведомлений.
-                                    <a href="{{ route('privacy-consent') }}" class="text-indigo-600 dark:text-indigo-400 hover:underline">{{ __('Подробнее') }}</a>
-                                </span>
-                            </label>
-                            <x-input-error :messages="$errors->get('consent')" class="mt-2" />
-                        </div>
-                        
-                        <!-- Non-Disclosure Agreement Checkbox -->
-                        <div class="mt-4">
-                            <label for="nda_consent" class="inline-flex items-start">
-                                <input id="nda_consent" type="checkbox" name="nda_consent" class="mt-0.5 rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" required>
-                                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">
-                                    Я принимаю Условия использования и нераспространения материалов: не буду передавать файлы/ссылки третьим лицам, публиковать материалы или их части (включая скриншоты/записи экрана).
-                                    <a href="{{ route('terms') }}" class="text-indigo-600 dark:text-indigo-400 hover:underline">{{ __('Читать условия') }}</a>
-                                </span>
-                            </label>
-                            <x-input-error :messages="$errors->get('nda_consent')" class="mt-2" />
+                        <div class="space-y-3 border-t border-zinc-200 pt-4 dark:border-zinc-800">
+                            <div>
+                                <label for="consent" class="flex cursor-pointer items-start gap-3">
+                                    <input id="consent" type="checkbox" name="consent" value="1" class="mt-1 size-4 rounded border-zinc-400 text-primary-700 focus:ring-primary-600 dark:border-zinc-600 dark:bg-zinc-950 dark:text-primary-400 dark:focus:ring-primary-400" required>
+                                    <span class="text-sm leading-5 text-zinc-700 dark:text-zinc-300">
+                                        Даю согласие на обработку моих персональных данных (имя, e-mail) для предоставления доступа к онлайн-библиотеке и сервисных уведомлений.
+                                        <a href="{{ route('privacy-consent') }}" class="font-semibold text-primary-700 underline-offset-2 hover:underline dark:text-primary-300">{{ __('Подробнее') }}</a>
+                                    </span>
+                                </label>
+                                <x-input-error :messages="$errors->get('consent')" class="mt-1.5" />
+                            </div>
+
+                            <div>
+                                <label for="nda_consent" class="flex cursor-pointer items-start gap-3">
+                                    <input id="nda_consent" type="checkbox" name="nda_consent" value="1" class="mt-1 size-4 rounded border-zinc-400 text-primary-700 focus:ring-primary-600 dark:border-zinc-600 dark:bg-zinc-950 dark:text-primary-400 dark:focus:ring-primary-400" required>
+                                    <span class="text-sm leading-5 text-zinc-700 dark:text-zinc-300">
+                                        Я принимаю Условия использования и нераспространения материалов: не буду передавать файлы/ссылки третьим лицам, публиковать материалы или их части (включая скриншоты/записи экрана).
+                                        <a href="{{ route('terms') }}" class="font-semibold text-primary-700 underline-offset-2 hover:underline dark:text-primary-300">{{ __('Читать условия') }}</a>
+                                    </span>
+                                </label>
+                                <x-input-error :messages="$errors->get('nda_consent')" class="mt-1.5" />
+                            </div>
                         </div>
 
-                        <div class="flex items-center justify-end mt-4">
-                            <x-primary-button class="ms-3">
-                                {{ __('Access Library') }}
-                            </x-primary-button>
-                        </div>
+                        <x-primary-button class="w-full">{{ __('Access Library') }}</x-primary-button>
                     </form>
-                </div>
+                </section>
             </div>
         </div>
-    </div>
+    </main>
 </x-app-layout>

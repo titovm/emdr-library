@@ -1,5 +1,5 @@
 @props(['value', 'for' => null])
 
-<label {{ $for ? "for=\"{$for}\"" : '' }} {{ $attributes->merge(['class' => 'block font-medium text-sm text-gray-700 dark:text-gray-300']) }}>
+<label {{ $for ? "for=\"{$for}\"" : '' }} {{ $attributes->merge(['class' => 'block text-sm font-semibold text-zinc-800 dark:text-zinc-200']) }}>
     {{ $value ?? $slot }}
 </label>

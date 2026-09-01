@@ -1,169 +1,130 @@
 <x-app-layout>
-    <div class="py-4 sm:py-6">
-        <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
-            <!-- Modern Card Container -->
-            <div class="form-container">
-                <!-- Header Section -->
-                <header class="form-header mb-4">
-                    <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                        @if(auth()->check() && auth()->user()->is_admin)
-                            🛠️ {{ __('Manage Library') }}
-                        @else
-                            📚 {{ __('EMDR Therapist Library') }}
-                        @endif
-                    </h1>
-                </header>
+    <main class="py-5 sm:py-7">
+        <div class="app-container">
+            <header class="mb-5 border-b border-zinc-300 pb-5 dark:border-zinc-700">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                    <div>
+                        <p class="mb-1 text-xs font-semibold uppercase tracking-[0.12em] text-primary-700 dark:text-primary-300">
+                            {{ auth()->check() && auth()->user()->is_admin ? __('Administration') : __('Professional collection') }}
+                        </p>
+                        <h1 class="text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl dark:text-zinc-50">
+                            {{ auth()->check() && auth()->user()->is_admin ? __('Manage Library') : __('EMDR Therapist Library') }}
+                        </h1>
+                        <p class="mt-1 max-w-2xl text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+                            {{ __('Protocols, worksheets, presentations, and training materials for clinical practice.') }}
+                        </p>
+                    </div>
 
-                <!-- Action Bar -->
-                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-3 p-3 bg-white dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700">
                     @if(auth()->check() && auth()->user()->is_admin)
-                        <a href="{{ route('library.create') }}" class="btn-primary inline-flex items-center text-sm py-2 px-4">
-                            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                            </svg>
+                        <a href="{{ route('library.create') }}" class="btn-primary self-start lg:self-auto">
+                            <flux:icon.plus class="me-1.5 size-4" />
                             {{ __('Add New Item') }}
                         </a>
-                    @else
-                        <div></div>
                     @endif
-                    
-                    <!-- Search Form -->
-                    <form method="GET" action="{{ route('library.index') }}" class="flex items-center gap-2">
-                        <input
-                            type="text"
-                            name="search"
-                            value="{{ request('search') }}"
-                            placeholder="{{ __('Search...') }}"
-                            class="w-32 sm:w-auto px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:border-primary-500 focus:ring-1 focus:ring-primary-500/20 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
-                        />
-                        <button type="submit" class="btn-primary inline-flex items-center whitespace-nowrap text-sm py-1.5 px-4">
-                            <svg class="w-4 h-4 sm:mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                            </svg>
-                            <span class="hidden sm:inline">{{ __('Search') }}</span>
-                        </button>
-                        @if(request()->filled('search'))
-                            <a href="{{ route('library.index') }}" class="btn-secondary inline-flex items-center whitespace-nowrap text-sm py-1.5 px-3">
-                                <svg class="w-4 h-4 sm:mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                </svg>
-                                <span class="hidden sm:inline">{{ __('Reset') }}</span>
-                            </a>
-                        @endif
-                    </form>
                 </div>
+            </header>
 
-                <!-- Session Status Messages -->
-                @if (session('error'))
-                    <div class="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-                        <div class="flex items-center">
-                            <svg class="w-4 h-4 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span class="text-xs font-medium text-red-700 dark:text-red-300">{{ session('error') }}</span>
-                        </div>
-                    </div>
+            @if (session('error'))
+                <div class="mb-4 rounded-md border border-red-300 bg-red-50 px-3 py-2.5 text-sm font-medium text-red-800 dark:border-red-900 dark:bg-red-950/50 dark:text-red-200" role="alert">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+            @if (session('success'))
+                <div class="mb-4 rounded-md border border-primary-300 bg-primary-50 px-3 py-2.5 text-sm font-medium text-primary-900 dark:border-primary-800 dark:bg-primary-950/50 dark:text-primary-200" role="status">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            <form method="GET" action="{{ route('library.index') }}" class="mb-5 grid gap-2 border border-zinc-200 bg-white p-3 sm:grid-cols-[minmax(0,1fr)_auto] dark:border-zinc-800 dark:bg-zinc-900" style="border-radius: 8px;">
+                @if($activeCategory)
+                    <input type="hidden" name="category" value="{{ $activeCategory }}">
                 @endif
-
-                @if (session('success'))
-                    <div class="mb-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
-                        <div class="flex items-center">
-                            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span class="text-xs font-medium text-green-700 dark:text-green-300">{{ session('success') }}</span>
-                        </div>
-                    </div>
+                @if($activeTag)
+                    <input type="hidden" name="tag" value="{{ $activeTag }}">
                 @endif
+                <label class="sr-only" for="library-search">{{ __('Search library') }}</label>
+                <div class="relative">
+                    <flux:icon.magnifying-glass class="pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-zinc-500" />
+                    <input
+                        id="library-search"
+                        type="search"
+                        name="search"
+                        value="{{ request('search') }}"
+                        placeholder="{{ __('Search by resource title') }}"
+                        class="h-10 w-full rounded-md border border-zinc-300 bg-white ps-9 pe-3 text-sm text-zinc-950 placeholder:text-zinc-500 focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-600/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:placeholder:text-zinc-500 dark:focus:border-primary-400"
+                    />
+                </div>
+                <div class="flex gap-2">
+                    <button type="submit" class="btn-primary flex-1 sm:flex-none">{{ __('Search') }}</button>
+                    @if(request()->filled('search') || $activeCategory || $activeTag)
+                        <a href="{{ route('library.index') }}" class="btn-secondary flex-1 sm:flex-none">{{ __('Reset') }}</a>
+                    @endif
+                </div>
+            </form>
 
-                <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
-                    <!-- Sidebar with Filters -->
-                    <div class="lg:col-span-1">
-                        <!-- Categories Filter -->
-                        <div class="field-section mb-4">
-                            <div class="section-header">
-                                <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2 flex items-center gap-1.5">
-                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
-                                    </svg>
-                                    {{ __('Categories') }}
-                                </h3>
-                            </div>
-                            <ul class="space-y-1">
-                                @foreach($categories as $category)
-                                    <li>
-                                        <a href="{{ route('library.index', array_filter(['category' => $category, 'search' => request('search')])) }}" 
-                                           class="flex items-center p-2 rounded-lg transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm {{ isset($activeCategory) && $activeCategory === $category ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 font-semibold' : 'text-gray-700 dark:text-gray-300' }}">
-                                            <svg class="w-3 h-3 mr-1.5 {{ isset($activeCategory) && $activeCategory === $category ? 'text-primary-500' : 'text-gray-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                            </svg>
-                                            {{ $category }}
-                                        </a>
-                                    </li>
-                                @endforeach
-                                
-                                @if(isset($activeCategory) || isset($activeTag))
-                                    <li class="pt-2 mt-2 border-t border-gray-200 dark:border-gray-700">
-                                        <a href="{{ route('library.index', request()->filled('search') ? ['search' => request('search')] : []) }}" 
-                                           class="flex items-center p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200 text-sm">
-                                            <svg class="w-3 h-3 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                            </svg>
-                                            {{ __('Reset filters') }}
-                                        </a>
-                                    </li>
-                                @endif
-                            </ul>
-                        </div>
+            <div class="grid gap-5 lg:grid-cols-[220px_minmax(0,1fr)] xl:grid-cols-[240px_minmax(0,1fr)]">
+                <aside class="space-y-5 lg:sticky lg:top-20 lg:self-start" aria-label="{{ __('Library filters') }}">
+                    <section>
+                        <h2 class="mb-2 text-xs font-semibold uppercase tracking-[0.1em] text-zinc-500 dark:text-zinc-400">{{ __('Categories') }}</h2>
+                        <nav class="space-y-0.5">
+                            @foreach($categories as $category)
+                                <a href="{{ route('library.index', array_filter(['category' => $category, 'search' => request('search')])) }}"
+                                   class="flex items-center justify-between rounded-md px-2.5 py-2 text-sm font-medium transition-colors {{ $activeCategory === $category ? 'bg-primary-100 text-primary-900 dark:bg-primary-900/60 dark:text-primary-100' : 'text-zinc-700 hover:bg-zinc-200/70 dark:text-zinc-300 dark:hover:bg-zinc-800' }}">
+                                    <span class="truncate">{{ $category }}</span>
+                                    @if($activeCategory === $category)
+                                        <flux:icon.check class="size-3.5 shrink-0" />
+                                    @endif
+                                </a>
+                            @endforeach
+                        </nav>
+                    </section>
 
-                        <!-- Tags Filter -->
-                        <div class="field-section">
-                            <div class="section-header">
-                                <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2 flex items-center gap-1.5">
-                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
-                                    </svg>
-                                    {{ __('Tags') }}
-                                </h3>
-                            </div>
+                    @if(count($tags) > 0)
+                        <section class="border-t border-zinc-200 pt-4 dark:border-zinc-800">
+                            <h2 class="mb-2 text-xs font-semibold uppercase tracking-[0.1em] text-zinc-500 dark:text-zinc-400">{{ __('Tags') }}</h2>
                             <div class="flex flex-wrap gap-1.5">
                                 @foreach($tags as $tag)
-                                    <a href="{{ route('library.index', array_filter(['category' => $activeCategory ?? null, 'tag' => $tag, 'search' => request('search')])) }}" 
-                                       class="px-2 py-1 rounded text-xs font-medium transition-all duration-200 {{ isset($activeTag) && $activeTag === $tag ? 'bg-primary-500 text-white shadow-lg' : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600' }}">
-                                        #{{ $tag }}
+                                    <a href="{{ route('library.index', array_filter(['category' => $activeCategory, 'tag' => $tag, 'search' => request('search')])) }}"
+                                       class="rounded-md border px-2 py-1 text-xs font-medium transition-colors {{ $activeTag === $tag ? 'border-primary-700 bg-primary-700 text-white dark:border-primary-300 dark:bg-primary-300 dark:text-primary-950' : 'border-zinc-300 bg-white text-zinc-700 hover:border-zinc-400 hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-800' }}">
+                                        {{ $tag }}
                                     </a>
                                 @endforeach
                             </div>
-                        </div>
+                        </section>
+                    @endif
+                </aside>
+
+                <section aria-labelledby="results-heading">
+                    <div class="mb-3 flex items-center justify-between">
+                        <h2 id="results-heading" class="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                            {{ __('Resources') }}
+                        </h2>
+                        <span class="text-xs tabular-nums text-zinc-500 dark:text-zinc-400">
+                            {{ $items->total() }} {{ __('items') }}
+                        </span>
                     </div>
 
-                    <!-- Library Items Grid -->
-                    <div class="lg:col-span-3">
-                        @if($items->isEmpty())
-                            <div class="field-section text-center py-16">
-                                <svg class="w-16 h-16 mx-auto text-gray-300 dark:text-gray-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                </svg>
-                                <p class="text-xl font-medium text-gray-500 dark:text-gray-400 mb-2">{{ __('No items found') }}</p>
-                                <p class="text-gray-400 dark:text-gray-500">{{ __('Try adjusting your search or filters') }}</p>
-                            </div>
-                        @else
-                            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                                @foreach($items as $item)
-                                    <x-library-item-card :item="$item" />
-                                @endforeach
-                            </div>
-                            
-                            <!-- Pagination -->
-                            <div class="mt-6 flex justify-center">
-                                <div class="bg-white dark:bg-gray-800 rounded-lg shadow px-4 py-3 border border-gray-200 dark:border-gray-700">
-                                    {{ $items->appends(request()->only('search'))->links() }}
-                                </div>
-                            </div>
-                        @endif
-                    </div>
-                </div>
+                    @if($items->isEmpty())
+                        <div class="border border-zinc-200 bg-white px-5 py-12 text-center dark:border-zinc-800 dark:bg-zinc-900" style="border-radius: 8px;">
+                            <flux:icon.document-magnifying-glass class="mx-auto size-8 text-zinc-400" />
+                            <h3 class="mt-3 text-base font-semibold text-zinc-900 dark:text-zinc-100">{{ __('No items found') }}</h3>
+                            <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{{ __('Try adjusting your search or filters') }}</p>
+                            <a href="{{ route('library.index') }}" class="btn-secondary mt-4">{{ __('Clear filters') }}</a>
+                        </div>
+                    @else
+                        <div class="grid grid-cols-1 gap-3 xl:grid-cols-2">
+                            @foreach($items as $item)
+                                <x-library-item-card :item="$item" />
+                            @endforeach
+                        </div>
+
+                        <div class="mt-5 border-t border-zinc-200 pt-4 dark:border-zinc-800">
+                            {{ $items->appends(request()->only('search', 'category', 'tag'))->links() }}
+                        </div>
+                    @endif
+                </section>
             </div>
         </div>
-    </div>
+    </main>
 </x-app-layout>

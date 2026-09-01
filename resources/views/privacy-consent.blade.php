@@ -3,7 +3,7 @@
     <head>
         @include('partials.head')
     </head>
-    <body class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <body class="min-h-screen bg-zinc-50 text-zinc-950 dark:bg-zinc-950 dark:text-zinc-100">
         <div class="min-h-screen flex flex-col py-8 px-4 sm:py-12">
             <div class="w-full max-w-4xl mx-auto">
                 <!-- Back Button -->
@@ -17,7 +17,7 @@
                 </div>
 
                 <!-- Content Card -->
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 sm:p-8 md:p-10 border border-gray-200 dark:border-gray-700">
+                <div class="rounded-lg border border-zinc-200 bg-white p-6 sm:p-8 md:p-10 dark:border-zinc-800 dark:bg-zinc-900">
                     <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                         Согласие на обработку персональных данных
                     </h1>

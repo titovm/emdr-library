@@ -90,7 +90,7 @@ class LibraryItemController extends Controller
         $activeTag = $request->query('tag');
 
         // Prepare query (with published filter)
-        $query = LibraryItem::query();
+        $query = LibraryItem::with('files');
         if (!Auth::check() || !Auth::user()->is_admin) {
             $query->where('is_published', true);
         }
